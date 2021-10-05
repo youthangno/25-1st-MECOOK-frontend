@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductImage from './ProductImage/ProductImage';
+import ProductExplan from './ProductExplan/ProductExplan';
 import './ProductDetail.scss';
 import ProductInfo from './ProductInfo/ProductInfo';
 
@@ -10,7 +10,7 @@ class ProductDetail extends React.Component {
       <>
         <div className="ProductDetail">
           ProductDetail
-          <ProductImage />
+          <ProductExplan />
           <ProductInfo />
         </div>
         ;

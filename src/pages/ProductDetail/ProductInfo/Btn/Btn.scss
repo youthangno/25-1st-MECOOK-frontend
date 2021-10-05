@@ -1,0 +1,24 @@
+.Btn {
+  position: absolute;
+  bottom: 100px;
+  left: 700px;
+  width: 100%;
+
+  .ProductCountBtn {
+    border: 2px solid #1f695b;
+    font-size: 22px;
+    display: block;
+    width: 210px;
+    height: 48px;
+    text-align: left;
+    margin-bottom: 8px;
+  }
+  .AddCartBtn {
+    border: 2px solid #1f695b;
+    font-size: 22px;
+    display: block;
+    width: 210px;
+    height: 48px;
+    text-align: left;
+  }
+}

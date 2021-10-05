@@ -1,13 +1,13 @@
 import React from 'react';
-import ProductExplan from './ProductExplan/ProductExplan';
 import './ProductImage.scss';
 
 class ProductImage extends React.Component {
   render() {
+    const { url, info } = this.props;
+    console.log(info);
     return (
-      <div>
-        <p>ProductImage</p>
-        <ProductExplan />
+      <div className="image">
+        <img src={url} alt="물만두" />
       </div>
     );
   }
