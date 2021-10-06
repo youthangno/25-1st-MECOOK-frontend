@@ -8,7 +8,7 @@ const categories = ['KOREAN', 'CHINESE', 'JAPANESE', 'ITALIAN'];
 class ProductCategory extends React.Component {
   state = {
     isVisible: false,
-    backgroundImage: 0,
+    listId: 0,
   };
 
   handleShowProductList = e => {
@@ -16,10 +16,7 @@ class ProductCategory extends React.Component {
   };
 
   handleMouseOverList = e => {
-    console.log(e.target.id);
-    this.setState({ backgroundImage: e.target.id });
-    console.log('id:' + e.target.id);
-    console.log('state:' + this.state.backgroundImage);
+    this.setState({ listId: e.target.id });
   };
 
   handleCloseProductList = () => {
@@ -28,9 +25,7 @@ class ProductCategory extends React.Component {
 
   render() {
     return (
-      <div
-        className={`categoryContainer background${this.state.backgroundImage}`}
-      >
+      <div className={`categoryContainer background${this.state.listId}`}>
         <div className="cover">
           <button className="btnClose"></button>
           <p className="categoryListTitle">
@@ -51,6 +46,7 @@ class ProductCategory extends React.Component {
           </ul>
         </div>
         <ProductList
+          listId={this.state.listId}
           isVisible={this.state.isVisible}
           handleCloseProductList={this.handleCloseProductList}
         />

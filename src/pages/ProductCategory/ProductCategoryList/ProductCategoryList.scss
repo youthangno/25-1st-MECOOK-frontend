@@ -13,18 +13,14 @@
     width: 100%;
     margin: 20px 0;
 
-    span {
-      margin: 0 30px;
-    }
-
     &:hover {
       cursor: pointer;
+
       &:before {
         content: '';
         display: block;
         flex: 1;
         height: 1px;
-        background-color: transparent;
         transition: background-color 0.3s ease-out;
         background-color: white;
       }
@@ -34,7 +30,6 @@
         display: block;
         flex: 1;
         height: 1px;
-        background-color: transparent;
         transition: background-color 0.3s ease-out;
         background-color: white;
       }

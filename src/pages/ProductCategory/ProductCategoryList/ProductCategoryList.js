@@ -9,7 +9,7 @@ class ProductCategory extends React.Component {
         onClick={this.props.handleShowProductList}
         onMouseOver={this.props.handleMouseOverList}
       >
-        <span>{this.props.name}</span>
+        &nbsp;{this.props.name}&nbsp;
       </li>
     );
   }
