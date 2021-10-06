@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ProductPreview from '../../ProductList/ProductPreview/ProductPreview';
 import '../Best/Best.scss';
 
 class Best extends Component {
@@ -6,6 +7,7 @@ class Best extends Component {
     return (
       <section className="best">
         <div className="bestTitle">
+          <img alt="dish" src="/images/Main/dish.png" />
           <div className="topTitle">
             <p>MECOOK</p>
             <p id="best">BEST</p>
@@ -16,16 +18,28 @@ class Best extends Component {
           </div>
         </div>
         <div className="bestList">
-          <p>
+          <p id="viewBest">
             VIEW BEST&nbsp;<i class="fas fa-chevron-right"></i>
           </p>
           <ul className="listItems">
-            <li className="food">1</li>
-            <li className="food">2</li>
-            <li className="food">3</li>
-            <li className="food">4</li>
-            <li className="food">5</li>
-            <li className="food">6</li>
+            <li className="food">
+              <ProductPreview />
+            </li>
+            <li className="food">
+              <ProductPreview />
+            </li>
+            <li className="food">
+              <ProductPreview />
+            </li>
+            <li className="food">
+              <ProductPreview />
+            </li>
+            <li className="food">
+              <ProductPreview />
+            </li>
+            <li className="food">
+              <ProductPreview />
+            </li>
           </ul>
         </div>
       </section>
