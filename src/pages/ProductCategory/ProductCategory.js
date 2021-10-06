@@ -5,7 +5,7 @@ import './ProductCategory.scss';
 import CATEGORY_DATA from './productCategoryData';
 
 // Header와 연결시 헤더에서 누른 카테고리값 props로 받아올 부분
-const category = 'DINING';
+const category = 'DINING'.toLowerCase();
 
 class ProductCategory extends React.Component {
   state = {
@@ -27,11 +27,11 @@ class ProductCategory extends React.Component {
 
   render() {
     return (
-      <div className={`categoryContainer background${this.state.listId}`}>
+      <div className={`categoryContainer ${category}${this.state.listId}`}>
         <div className="cover">
           <button className="btnClose"></button>
           <p className="categoryListTitle">
-            <span>DINING</span>
+            <span>{category.toUpperCase()}</span>
           </p>
           <ul className="categoryListContainer">
             {CATEGORY_DATA[category].map((category, index) => {

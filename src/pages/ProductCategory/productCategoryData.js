@@ -1,7 +1,7 @@
 const CATEGORY_DATA = {
-  DINING: ['KOREAN', 'CHINESE', 'JAPANESE', 'ITALIAN'],
-  CAFE: ['SWEET', 'BAKERY', 'BAVERAGE'],
-  CUPBOARD: ['CEREAL', 'SPICE', 'SNACK'],
+  dining: ['KOREAN', 'CHINESE', 'JAPANESE', 'ITALIAN'],
+  cafe: ['SWEET', 'BAKERY', 'BAVERAGE'],
+  cupboard: ['CEREAL', 'SPICE', 'SNACK'],
 };
 
 export default CATEGORY_DATA;

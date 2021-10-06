@@ -52,14 +52,5 @@
     "cookingTime": "5분",
     "availPeople": "1~2인분",
     "like": 72
-  },
-  {
-    "id": 7,
-    "image": "images/ProductPreview/pet7.png",
-    "type": "국/찌개/육수",
-    "name": "얼큰닭개장",
-    "cookingTime": "5분",
-    "availPeople": "1~2인분",
-    "like": 90
   }
 ]

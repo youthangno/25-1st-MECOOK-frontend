@@ -52,14 +52,5 @@
     "cookingTime": "6분",
     "availPeople": "2인분",
     "like": 59
-  },
-  {
-    "id": 7,
-    "image": "images/ProductPreview/pet1.png",
-    "type": "고기",
-    "name": "파콕반점 깐풍기",
-    "cookingTime": "8분",
-    "availPeople": "2~3인분",
-    "like": 61
   }
 ]
