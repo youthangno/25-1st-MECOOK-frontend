@@ -3,13 +3,14 @@ import './ProductCategoryList.scss';
 
 class ProductCategory extends React.Component {
   render() {
+    const { id, handleShowProductList, handleMouseOverList, name } = this.props;
     return (
       <li
-        id={this.props.id}
-        onClick={this.props.handleShowProductList}
-        onMouseOver={this.props.handleMouseOverList}
+        id={id}
+        onClick={handleShowProductList}
+        onMouseOver={handleMouseOverList}
       >
-        &nbsp;{this.props.name}&nbsp;
+        &nbsp;{name}&nbsp;
       </li>
     );
   }

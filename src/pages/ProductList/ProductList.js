@@ -16,16 +16,17 @@ class ProductList extends React.Component {
   }
 
   render() {
+    const { isVisible, handleCloseProductList } = this.props;
     return (
       <div
         className={`productListContainer ${
-          this.props.isVisible ? 'showProductList' : 'hideProductList'
+          isVisible ? 'showProductList' : 'hideProductList'
         }`}
       >
         <div className="productListHeader">
           <button
             className="btnCloseProductList"
-            onClick={this.props.handleCloseProductList}
+            onClick={handleCloseProductList}
           >
             <i className="fas fa-chevron-circle-left fa-2x"></i>{' '}
             <span>BACK</span>
@@ -35,15 +36,17 @@ class ProductList extends React.Component {
         <div className="productListContent">
           {/* mock data로 map 돌려서 구현 예정 */}
           {this.state.productList.map(product => {
+            const { id, image, type, name, cookingTime, availPeople, like } =
+              product;
             return (
               <ProductPreview
-                key={product.id}
-                image={product.image}
-                type={product.type}
-                name={product.name}
-                cookingTime={product.cookingTime}
-                availPeople={product.availPeople}
-                like={product.like}
+                key={id}
+                image={image}
+                type={type}
+                name={name}
+                cookingTime={cookingTime}
+                availPeople={availPeople}
+                like={like}
               />
             );
           })}
