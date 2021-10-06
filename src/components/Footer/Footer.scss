@@ -1,0 +1,79 @@
+@font-face {
+  src: url('../../components/fonts/DINCond-Medium\ Regular.otf');
+  font-family: mecook;
+}
+
+.footer {
+  width: 100%;
+  height: 290px;
+  display: flex;
+  justify-content: center;
+
+  .botLogo {
+    height: 100%;
+    width: 200px;
+    font-size: 28px;
+    font-family: mecook;
+    letter-spacing: 3px;
+  }
+
+  .botDesc {
+    height: 100%;
+    width: 760px;
+
+    .botIntroduce {
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px;
+
+      .botIntroduceMenu {
+        .footerBtn {
+          padding-right: 20px;
+          text-decoration: none;
+          font-weight: 700;
+          color: #21685a;
+
+          &:first-child {
+            color: black;
+          }
+          &:last-child::after {
+            content: '';
+            display: block;
+            border-bottom: 2px solid black;
+            padding-bottom: 20px;
+            margin: 0;
+            width: 15px;
+          }
+        }
+      }
+
+      .botIntroduceSns {
+        a {
+          font-size: 25px;
+          padding-left: 10px;
+        }
+      }
+    }
+
+    .botEtc {
+      p {
+        line-height: 150%;
+        span {
+          font-weight: 400;
+          padding-right: 20px;
+          margin-right: 10px;
+          font-size: 14px;
+          border-right: 1px solid black;
+
+          &:last-child {
+            border-right: transparent;
+          }
+        }
+        &:last-child {
+          color: gray;
+          line-height: 400%;
+        }
+      }
+    }
+  }
+}
