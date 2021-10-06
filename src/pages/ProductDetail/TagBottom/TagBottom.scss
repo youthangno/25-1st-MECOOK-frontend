@@ -1,0 +1,32 @@
+.tagBottom {
+  position: relative;
+  width: 100%;
+  min-height: 120px;
+  margin-top: 59px;
+  margin-bottom: 100px;
+  background: #f8f8f8;
+
+  .recommandTag {
+    float: left;
+    padding: 43px 0 0 55px;
+
+    h1 {
+      font-size: 25px;
+    }
+  }
+
+  .tagBottom::after {
+    content: '#';
+    font-size: 167px;
+  }
+  ul {
+    float: right;
+    width: 466px;
+    padding: 30px;
+    li {
+      display: inline-block;
+      font-size: 18px;
+      margin: 4px 40px 4px 0;
+    }
+  }
+}

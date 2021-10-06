@@ -1,0 +1,17 @@
+.nutritionTable {
+  position: absolute;
+  bottom: 230px;
+  right: -50px;
+  p {
+    margin-bottom: 5px;
+    animation: nutritionTableFadeIn 2s;
+    @keyframes nutritionTableFadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
+}

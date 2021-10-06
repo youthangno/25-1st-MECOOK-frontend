@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductImage from './ProductExplan';
+import ProductImage from './ProductImage/ProductImage';
 import './ProductExplan.scss';
 import ProductImageList from './ProductImageList/ProductImageList';
 

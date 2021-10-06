@@ -1,0 +1,65 @@
+// .detailImageTop {
+//   position: relative;
+//   width: 100%;
+//   font-size: 0;
+//   vertical-align: middle;
+//   line-height: 300px;
+//   figure {
+//     display: inline-block;
+//     padding-right: 88px;
+//     text-align: right;
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     img {
+//       display: inline-block;
+//       max-width: 400px;
+//       vertical-align: top;
+//       opacity: 0.3;
+//     }
+//   }
+//   p {
+//     display: inline-block;
+//     width: 400px;
+//     color: #ba9180;
+//     text-align: right;
+//     vertical-align: middle;
+//     font-size: 28px;
+//     line-height: 42px;
+//   }
+// }
+
+.detailImageTop {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  animation: detailImageTopTransfer 1.5s ease-in-out;
+  @keyframes detailImageTopTransfer {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .imageTopInfo {
+    display: flex;
+    flex-direction: column;
+    padding-left: 100px;
+    width: 400px;
+    color: #ba9180;
+    margin-top: 200px;
+    font-size: 28px;
+  }
+  p {
+    margin: 10px;
+  }
+  figure {
+    img {
+      max-width: 424px;
+    }
+  }
+}

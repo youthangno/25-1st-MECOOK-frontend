@@ -1,24 +1,15 @@
-.Btn {
+.btn {
   position: absolute;
+  left: 832px;
   bottom: 100px;
-  left: 700px;
   width: 100%;
-
-  .ProductCountBtn {
-    border: 2px solid #1f695b;
-    font-size: 22px;
-    display: block;
-    width: 210px;
-    height: 48px;
-    text-align: left;
-    margin-bottom: 8px;
-  }
-  .AddCartBtn {
-    border: 2px solid #1f695b;
-    font-size: 22px;
-    display: block;
-    width: 210px;
-    height: 48px;
-    text-align: left;
+  animation: buttonFadeIn 2s;
+  @keyframes buttonFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }
