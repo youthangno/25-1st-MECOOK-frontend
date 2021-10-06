@@ -4,22 +4,22 @@
 }
 
 .footer {
+  display: flex;
   width: 100%;
   height: 290px;
-  display: flex;
   justify-content: center;
 
   .botLogo {
-    height: 100%;
     width: 200px;
+    height: 100%;
     font-size: 28px;
     font-family: mecook;
     letter-spacing: 3px;
   }
 
   .botDesc {
-    height: 100%;
     width: 760px;
+    height: 100%;
 
     .botIntroduce {
       display: flex;
@@ -39,18 +39,19 @@
           &:last-child::after {
             content: '';
             display: block;
+            width: 15px;
+            margin: 0;
             border-bottom: 2px solid black;
             padding-bottom: 20px;
-            margin: 0;
-            width: 15px;
           }
         }
       }
 
       .botIntroduceSns {
         a {
-          font-size: 25px;
           padding-left: 10px;
+          font-size: 25px;
+          color: black;
         }
       }
     }
@@ -59,11 +60,11 @@
       p {
         line-height: 150%;
         span {
-          font-weight: 400;
           padding-right: 20px;
           margin-right: 10px;
-          font-size: 14px;
           border-right: 1px solid black;
+          font-weight: 400;
+          font-size: 14px;
 
           &:last-child {
             border-right: transparent;

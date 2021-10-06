@@ -24,10 +24,10 @@ class Footer extends React.Component {
                 </Link>
               </div>
               <div className="botIntroduceSns">
-                <a>
+                <a href="https://www.facebook.com/">
                   <i class="fab fa-facebook-square"></i>
                 </a>
-                <a>
+                <a href="https://www.instagram.com/">
                   <i class="fab fa-instagram-square"></i>
                 </a>
               </div>

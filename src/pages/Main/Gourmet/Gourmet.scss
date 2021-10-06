@@ -1,27 +1,27 @@
 .gourmet {
+  width: 100%;
+  height: 450px;
   text-align: center;
   margin-top: 70px;
   margin-bottom: 100px;
   padding: 50px 100px;
-  height: 450px;
-  width: 100%;
+  border: 3px solid black;
   font-family: mecook;
   background-color: greenyellow;
-  border: 3px solid black;
 
   .gourmetTitle {
+    text-align: left;
+    padding-left: 240px;
     font-size: 35px;
     letter-spacing: 7px;
-    padding-left: 240px;
-    text-align: left;
     font-weight: 700;
 
     ::after {
       content: '';
       display: block;
-      border-bottom: 2px solid black;
-      padding-bottom: 20px;
       width: 20px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid black;
     }
 
     span {
@@ -31,22 +31,20 @@
 
   .gourmetList {
     display: flex;
+    height: 324px;
     align-items: center;
     justify-content: space-between;
-
-    height: 324px;
     padding: 50px 240px 0 240px;
-
     font-size: 35px;
     font-weight: 300;
     color: white;
 
     .gList1 {
+      position: relative;
       display: flex;
       width: 216px;
       height: 100%;
       border: 3px solid black;
-      position: relative;
 
       &:hover {
         transform: scaleX(1.2);
@@ -61,8 +59,8 @@
       }
 
       p {
-        width: 100%;
         position: absolute;
+        width: 100%;
         top: 20%;
       }
     }
@@ -86,9 +84,9 @@
       }
 
       p {
-        width: 100%;
-        display: block;
         position: absolute;
+        display: block;
+        width: 100%;
         top: 20%;
       }
     }
@@ -107,9 +105,9 @@
       }
 
       p {
+        position: absolute;
         width: 100%;
         top: 20%;
-        position: absolute;
       }
 
       img {

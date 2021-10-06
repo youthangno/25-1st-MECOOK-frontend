@@ -5,7 +5,7 @@ class Brand extends Component {
   render() {
     return (
       <section className="brand">
-        <img id="brandPic" src="/images/Main/brand2.jpg" />
+        <img id="brandPic" alt="brand2" src="/images/Main/brand2.jpg" />
         <div className="brandTitle">
           <p>BRAND STORY</p>
         </div>
