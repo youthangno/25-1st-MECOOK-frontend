@@ -8,7 +8,7 @@ class Login extends React.Component {
   }
 
   goTOMain = () => {
-    // this.props.history.push('/');
+    this.props.history.push('/');
     fetch('http://10.58.2.115:8000/user/login', {
       method: 'POST',
       body: JSON.stringify({
