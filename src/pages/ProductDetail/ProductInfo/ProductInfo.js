@@ -1,30 +1,12 @@
 import React from 'react';
 import './ProductInfo.scss';
-import NutritionTable from './NutritionTable(영양성분)/NutritionTable';
 import Btn from './Btn/Btn';
 class ProductInfo extends React.Component {
-  state = {
-    productData: [],
-  };
-
-  componentDidMount() {
-    fetch('http://localhost:3000/data/data.json')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          productData: data,
-        });
-      });
-  }
-
   render() {
-    const { productData } = this.state;
+    const { title } = this.props.dataList;
     return (
       <div className="productInfoBox">
-        {productData.map(data => {
-          return <h1>{data.info}이이이이이</h1>;
-        })}
-        <NutritionTable />
+        <h1>{title}</h1>
         <Btn />
       </div>
     );

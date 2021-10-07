@@ -5,6 +5,11 @@
   font-size: 22px;
   display: block;
   padding-right: 110px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   text-align: left;
   margin-bottom: 8px;
+  &:hover {
+    cursor: pointer;
+  }
 }

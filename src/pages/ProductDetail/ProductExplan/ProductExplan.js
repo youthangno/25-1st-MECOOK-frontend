@@ -1,31 +1,14 @@
 import React from 'react';
-import ProductImage from './ProductImage/ProductImage';
 import './ProductExplan.scss';
-import ProductImageList from './ProductImageList/ProductImageList';
 
 class ProductExplan extends React.Component {
-  state = {
-    productData: [],
-  };
-
-  componentDidMount() {
-    fetch('http://localhost:3000/data/data.json')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          productData: data,
-        });
-      });
-  }
-
   render() {
-    const { productData } = this.state;
+    // console.log(this.props);
+    const { image } = this.props.dataList;
     return (
-      <>
-        <div>
-          <ProductImageList productData={productData} />
-        </div>
-      </>
+      <div className="productImage">
+        <img alt="물만두" src={image} />
+      </div>
     );
   }
 }
