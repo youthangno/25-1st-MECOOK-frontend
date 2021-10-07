@@ -1,12 +1,11 @@
-@import '../../../styles/variable.scss';
-
 .myInfoBoxContainer {
-  background-color: salmon;
+  background-color: white;
   width: 30%;
   height: 100%;
   position: absolute;
   top: 0;
-  transition: right 1s ease-in-out;
+  transition: right 0.5s ease-in-out;
+  padding: 20px 30px;
 }
 
 .showBox {
@@ -15,28 +14,4 @@
 
 .hideBox {
   right: -30%;
-}
-
-.btnMyInfo {
-  position: absolute;
-  top: 45%;
-  left: -90px;
-  padding: 10px 4px;
-  transform: rotate(90deg);
-  font-size: 18px;
-  background-color: $theme-color;
-  color: white;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  span {
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    padding: 6px 24px 6px 30px;
-
-    i {
-      margin-left: 6px;
-    }
-  }
 }

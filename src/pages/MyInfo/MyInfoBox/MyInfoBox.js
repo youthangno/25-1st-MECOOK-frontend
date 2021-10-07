@@ -1,4 +1,7 @@
 import React from 'react';
+import BtnMyInfo from './BtnMyInfo/BtnMyInfo';
+import MyInfo from './MyInfo/MyInfo';
+import Cart from './Cart/Cart';
 import './MyInfoBox.scss';
 
 class MyInfoBox extends React.Component {
@@ -18,12 +21,9 @@ class MyInfoBox extends React.Component {
             this.state.isBoxVisible ? 'showBox' : 'hideBox'
           }`}
         >
-          My Info Box
-          <button className="btnMyInfo" onClick={this.handleShowBtnClick}>
-            <span>
-              My Info<i className="fas fa-caret-down"></i>
-            </span>
-          </button>
+          <MyInfo />
+          <Cart />
+          <BtnMyInfo handleShowBtnClick={this.handleShowBtnClick} />
         </div>
       </>
     );
