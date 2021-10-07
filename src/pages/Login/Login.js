@@ -6,58 +6,64 @@ class Login extends React.Component {
     super();
     this.state = { id: '', pw: '', isActive: false };
   }
+
   goTOMain = () => {
-    this.props.history.push('/main');
+    this.props.history.push('/');
     /* fetch('http://10.58.1.9:8000/users/signin/', {
       method: 'POST',
       body: JSON.stringify({
-        email: this.state.Id,
-        password: this.state.Pw,
-        //phone: '010326445555',
-        //name: 'anna',
+        email: this.state.id,
+        password: this.state.pw,
+      
       }),
     })
       .then(response => response.json())
       .then(result => console.log('결과: ', result));*/
   };
 
+  goToSignin = () => {
+    this.props.history.push('/signin');
+  };
+
   handleIdInput = event => {
     this.setState({ id: event.target.value });
-    console.log(this.state);
   };
+
   changeButton = () => {
     const { id, pw } = this.state;
     id.includes('@') && pw.length >= 8
       ? this.setState({ isActive: true })
       : this.setState({ isActive: false });
   };
+
   render() {
+    console.log(this.state);
     return (
       <div className="outBox">
-        <button class="close">X</button>
+        <button className="close">X</button>
         <h1>LOGIN</h1>
-        <div class="infoContainer">
+        <div className="infoContainer">
           <input
-            Class="myInfo"
-            onchage={this.handleIdInput}
+            className="myInfo"
+            onChange={this.handleIdInput}
             onKeyUp={this.changeButton}
             type="text"
             placeholder="아이디"
-          ></input>
+          />
         </div>
         <div className="numContainer">
           <input
-            onchange={this.handleIdInput}
+            onChange={this.handleIdInput}
             onKeyUp={this.changeButton}
-            class="secretNumber"
+            className="secretNumber"
             type="password"
             placeholder="비밀번호"
-          ></input>
+          />
         </div>
-        <span class="searchBox">
-          <a herf="">아이디 찾기</a>
-          <span class="slash">/</span>
-          <a herf=""> 비밀번호 찾기</a>
+        <span className="searchBox">
+          <a href="">아이디 찾기</a>
+          <span className="slash">/</span>
+          <a href=""> 비밀번호 찾기</a>
         </span>
         <span className="saveBtn">아이디 저장</span>
 
@@ -68,7 +74,7 @@ class Login extends React.Component {
           LOGIN
         </button>
 
-        <button class="signInBtn"> SIGN IN </button>
+        <button className="signInBtn">SIGN IN</button>
       </div>
     );
   }
