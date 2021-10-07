@@ -1,8 +1,8 @@
 import React from 'react';
 import ProductCategoryList from './ProductCategoryList/ProductCategoryList';
 import ProductList from '../ProductList/ProductList';
-import './ProductCategory.scss';
 import CATEGORY_DATA from './productCategoryData';
+import './ProductCategory.scss';
 
 // Header와 연결시 헤더에서 누른 카테고리값 props로 받아올 부분
 const category = 'DINING'.toLowerCase();
@@ -10,7 +10,7 @@ const category = 'DINING'.toLowerCase();
 class ProductCategory extends React.Component {
   state = {
     isVisible: false,
-    listId: 0,
+    listId: 1,
   };
 
   handleShowProductList = e => {
@@ -38,7 +38,7 @@ class ProductCategory extends React.Component {
               return (
                 <ProductCategoryList
                   key={index}
-                  id={index}
+                  id={index + 1}
                   name={category}
                   handleShowProductList={this.handleShowProductList}
                   handleMouseOverList={this.handleMouseOverList}

@@ -1,6 +1,5 @@
 .categoryContainer {
   display: flex;
-  flex-direction: row;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -40,9 +39,6 @@
         transform-origin: center;
         border-top: 1px solid white;
         transform: rotate(-45deg);
-      }
-
-      &:hover {
         cursor: pointer;
       }
     }
@@ -61,42 +57,11 @@
   }
 }
 
-.dining0 {
-  background-image: url('./assets/dining0.jpg');
-}
+$images: 'dining1', 'dining2', 'dining3', 'dining4', 'cafe1', 'cafe2', 'cafe3',
+  'cupboard1', 'cupboard2', 'cupboard3';
 
-.dining1 {
-  background-image: url('./assets/dining1.jpg');
-}
-
-.dining2 {
-  background-image: url('./assets/dining2.jpg');
-}
-
-.dining3 {
-  background-image: url('./assets/dining3.jpg');
-}
-
-.cafe0 {
-  background-image: url('./assets/cafe0.jpg');
-}
-
-.cafe1 {
-  background-image: url('./assets/cafe1.jpg');
-}
-
-.cafe2 {
-  background-image: url('./assets/cafe2.jpg');
-}
-
-.cupboard0 {
-  background-image: url('./assets/cupboard0.jpg');
-}
-
-.cupboard1 {
-  background-image: url('./assets/cupboard1.jpg');
-}
-
-.cupboard2 {
-  background-image: url('./assets/cupboard2.jpg');
+@each $image in $images {
+  .#{$image} {
+    background-image: url('../../assets/images/' + $image + '.jpg');
+  }
 }

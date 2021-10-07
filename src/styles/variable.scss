@@ -1,1 +1,7 @@
 $theme-color: #1d544a;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

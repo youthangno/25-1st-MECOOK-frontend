@@ -9,7 +9,7 @@ class ProductList extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.listId !== prevProps.listId) {
-      fetch(`http://localhost:3000/data/productData${this.props.listId}.json`, {
+      fetch(`/data/productData${this.props.listId}.json`, {
         method: 'GET',
       })
         .then(res => res.json())
@@ -17,8 +17,17 @@ class ProductList extends React.Component {
     }
   }
 
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.listId !== prevProps.listId) {
+  //     fetch(`http://10.58.4.11:8000/product/product/${this.props.listId}/`, {
+  //       method: 'GET',
+  //     })
+  //       .then(res => res.json())
+  //       .then(data => this.setState({ productList: data.result }));
+  //   }
+  // }
+
   render() {
-    console.log('call render');
     const { isVisible, handleCloseProductList } = this.props;
     return (
       <div
@@ -31,7 +40,7 @@ class ProductList extends React.Component {
             className="btnCloseProductList"
             onClick={handleCloseProductList}
           >
-            <i className="fas fa-chevron-circle-left fa-2x"></i>{' '}
+            <i className="fas fa-chevron-circle-left fa-2x"></i>
             <span>BACK</span>
           </button>
         </div>
