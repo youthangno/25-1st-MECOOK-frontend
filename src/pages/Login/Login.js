@@ -8,25 +8,24 @@ class Login extends React.Component {
   }
 
   goTOMain = () => {
-    this.props.history.push('/');
-    /* fetch('http://10.58.1.9:8000/users/signin/', {
+    // this.props.history.push('/');
+    fetch('http://10.58.2.115:8000/user/login', {
       method: 'POST',
       body: JSON.stringify({
-        email: this.state.id,
+        account: this.state.id,
         password: this.state.pw,
-      
       }),
     })
       .then(response => response.json())
-      .then(result => console.log('결과: ', result));*/
+      .then(result => console.log('결과: ', result));
   };
 
   goToSignin = () => {
     this.props.history.push('/signin');
   };
 
-  handleIdInput = (event, name) => {
-    this.setState({ [name]: event.target.value });
+  handleIdInput = event => {
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   changeButton = () => {
