@@ -1,21 +1,10 @@
 import React from 'react';
 import ProductPreview from './ProductPreview/ProductPreview';
 import './ProductList.scss';
-
 class ProductList extends React.Component {
   state = {
     productList: [],
   };
-
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.listId !== prevProps.listId) {
-  //     fetch(`/data/productData${this.props.listId}.json`, {
-  //       method: 'GET',
-  //     })
-  //       .then(res => res.json())
-  //       .then(data => this.setState({ productList: data }));
-  //   }
-  // }
 
   componentDidUpdate(prevProps) {
     if (this.props.listId !== prevProps.listId) {
@@ -48,17 +37,23 @@ class ProductList extends React.Component {
         <div className="productListContent">
           {/* mock data로 map 돌려서 구현 예정 */}
           {this.state.productList.map(product => {
-            console.log(product);
-            const { id, image, type, name, cookingTime, availPeople, like } =
-              product;
+            const {
+              id,
+              mainImage,
+              category,
+              name,
+              cookingTime,
+              serving,
+              like,
+            } = product;
             return (
               <ProductPreview
                 key={id}
-                image={image}
-                type={type}
+                mainImage={mainImage}
+                category={category}
                 name={name}
                 cookingTime={cookingTime}
-                availPeople={availPeople}
+                serving={serving}
                 like={like}
               />
             );

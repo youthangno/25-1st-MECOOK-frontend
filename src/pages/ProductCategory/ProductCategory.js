@@ -10,7 +10,7 @@ const category = 'DINING'.toLowerCase();
 class ProductCategory extends React.Component {
   state = {
     isVisible: false,
-    listId: 1,
+    listId: CATEGORY_DATA[category][0].id,
   };
 
   handleShowProductList = e => {
@@ -27,19 +27,19 @@ class ProductCategory extends React.Component {
 
   render() {
     return (
-      <div className={`categoryContainer ${category}${this.state.listId}`}>
+      <div className={`categoryContainer image${this.state.listId}`}>
         <div className="cover">
           <button className="btnClose"></button>
           <p className="categoryListTitle">
             <span>{category.toUpperCase()}</span>
           </p>
           <ul className="categoryListContainer">
-            {CATEGORY_DATA[category].map((category, index) => {
+            {CATEGORY_DATA[category].map(category => {
               return (
                 <ProductCategoryList
-                  key={index}
-                  id={index + 1}
-                  name={category}
+                  key={category.id}
+                  id={category.id}
+                  name={category.name}
                   handleShowProductList={this.handleShowProductList}
                   handleMouseOverList={this.handleMouseOverList}
                 />

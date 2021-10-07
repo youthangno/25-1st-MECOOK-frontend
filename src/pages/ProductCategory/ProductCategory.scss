@@ -57,11 +57,10 @@
   }
 }
 
-$images: 'dining1', 'dining2', 'dining3', 'dining4', 'cafe1', 'cafe2', 'cafe3',
-  'cupboard1', 'cupboard2', 'cupboard3';
+$images: 1, 2, 3, 4, '5', 6, 7, 8, 9, 10;
 
-@each $image in $images {
-  .#{$image} {
-    background-image: url('../../assets/images/' + $image + '.jpg');
+@each $number in $images {
+  .image#{$number} {
+    background-image: url('../../assets/images/' + $number + '.jpg');
   }
 }
