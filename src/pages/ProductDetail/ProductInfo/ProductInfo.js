@@ -22,7 +22,7 @@ class ProductInfo extends React.Component {
     return (
       <div className="productInfoBox">
         {productData.map(data => {
-          return <h1>{data.info}</h1>;
+          return <h1>{data.info}이이이이이</h1>;
         })}
         <NutritionTable />
         <Btn />

@@ -1,34 +1,3 @@
-// .detailImageTop {
-//   position: relative;
-//   width: 100%;
-//   font-size: 0;
-//   vertical-align: middle;
-//   line-height: 300px;
-//   figure {
-//     display: inline-block;
-//     padding-right: 88px;
-//     text-align: right;
-//     position: absolute;
-//     top: 0;
-//     right: 0;
-//     img {
-//       display: inline-block;
-//       max-width: 400px;
-//       vertical-align: top;
-//       opacity: 0.3;
-//     }
-//   }
-//   p {
-//     display: inline-block;
-//     width: 400px;
-//     color: #ba9180;
-//     text-align: right;
-//     vertical-align: middle;
-//     font-size: 28px;
-//     line-height: 42px;
-//   }
-// }
-
 .detailImageTop {
   display: flex;
   width: 100%;
