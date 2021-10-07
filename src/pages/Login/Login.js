@@ -25,8 +25,8 @@ class Login extends React.Component {
     this.props.history.push('/signin');
   };
 
-  handleIdInput = event => {
-    this.setState({ id: event.target.value });
+  handleIdInput = (event, name) => {
+    this.setState({ [name]: event.target.value });
   };
 
   changeButton = () => {
@@ -48,6 +48,7 @@ class Login extends React.Component {
             onChange={this.handleIdInput}
             onKeyUp={this.changeButton}
             type="text"
+            name="id"
             placeholder="아이디"
           />
         </div>
@@ -57,6 +58,7 @@ class Login extends React.Component {
             onKeyUp={this.changeButton}
             className="secretNumber"
             type="password"
+            name="pw"
             placeholder="비밀번호"
           />
         </div>
