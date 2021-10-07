@@ -1,11 +1,57 @@
-.MyInfoContainer {
-  .MyInfoTitle {
+@import '../../../../styles/variable.scss';
+
+.myInfoContainer {
+  .myInfoTitle {
     font-size: 35px;
     font-weight: 600;
     margin-top: 50px;
   }
 
   .myInfoContent {
-    border: 1px solid black;
+    margin-top: 30px;
+
+    .myInfoPoint {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      .userName {
+        font-size: 20px;
+      }
+
+      .line {
+        border: 1px solid $theme-color;
+        width: 180px;
+        height: 1px;
+        margin: 0 6px;
+      }
+
+      h5 {
+        i {
+          background-color: $theme-color;
+          color: white;
+          border-radius: 50%;
+          padding: 4px;
+          transform: scale(0.8);
+        }
+
+        .userPoint {
+          margin-left: 4px;
+        }
+      }
+    }
+
+    .myInfoGrade {
+      text-align: right;
+      margin-top: 10px;
+
+      .userGrade {
+        font-weight: bold;
+        font-size: 20px;
+        color: $theme-color;
+        margin-right: 4px;
+      }
+    }
   }
 }

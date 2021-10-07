@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "image": "images/pet1",
+    "category": "디저트",
+    "name": "바닐라 마카롱",
+    "price": "3,900"
+  },
+  {
+    "id": 2,
+    "image": "images/pet2",
+    "category": "국/찌개/육수",
+    "name": "반계탕",
+    "price": "5,980"
+  },
+  {
+    "id": 3,
+    "image": "images/pet3",
+    "category": "국/찌개/육수",
+    "name": "진한 우보탕",
+    "price": "5,580"
+  },
+  {
+    "id": 4,
+    "image": "images/pet4",
+    "category": "베이커리",
+    "name": "우유 식빵",
+    "price": "4,000"
+  }
+]
