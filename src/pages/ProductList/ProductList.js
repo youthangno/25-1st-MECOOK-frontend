@@ -6,13 +6,23 @@ class ProductList extends React.Component {
     productList: [],
   };
 
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.listId !== prevProps.listId) {
+  //     fetch(`http://10.58.4.11:8000/product/menu/${this.props.listId}/navbar`, {
+  //       method: 'GET',
+  //     })
+  //       .then(res => res.json())
+  //       .then(data => this.setState({ productList: data.result[0] }));
+  //   }
+  // }
+
   componentDidUpdate(prevProps) {
     if (this.props.listId !== prevProps.listId) {
-      fetch(`http://10.58.4.11:8000/product/menu/${this.props.listId}/navbar`, {
+      fetch(`data/productData${this.props.listId}.json`, {
         method: 'GET',
       })
         .then(res => res.json())
-        .then(data => this.setState({ productList: data.result[0] }));
+        .then(data => this.setState({ productList: data }));
     }
   }
 

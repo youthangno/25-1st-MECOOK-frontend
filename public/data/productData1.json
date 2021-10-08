@@ -5,7 +5,7 @@
     "type": "ddddd",
     "name": "진한 우보탕",
     "cookingTime": "5분",
-    "availPeople": "1~2인분",
+    "serving": "1~2인분",
     "like": 134
   },
   {
@@ -14,7 +14,7 @@
     "type": "국/찌개/육수",
     "name": "진한 얼큰 육개장",
     "cookingTime": "5분",
-    "availPeople": "1~2인분",
+    "serving": "1~2인분",
     "like": 158
   },
   {
@@ -23,7 +23,7 @@
     "type": "국/찌개/육수",
     "name": "전복반계탕",
     "cookingTime": "5분",
-    "availPeople": "1~2인분",
+    "serving": "1~2인분",
     "like": 103
   },
   {
@@ -32,7 +32,7 @@
     "type": "국/찌개/육수",
     "name": "녹두삼계탕",
     "cookingTime": "5분",
-    "availPeople": "1~2인분",
+    "serving": "1~2인분",
     "like": 87
   },
   {
@@ -41,7 +41,7 @@
     "type": "국/찌개/육수",
     "name": "진한 추어탕",
     "cookingTime": "5분",
-    "availPeople": "1~2인분",
+    "serving": "1~2인분",
     "like": 72
   },
   {
@@ -50,7 +50,7 @@
     "type": "국/찌개/육수",
     "name": "시골 장터국",
     "cookingTime": "5분",
-    "availPeople": "1~2인분",
+    "serving": "1~2인분",
     "like": 72
   }
 ]
