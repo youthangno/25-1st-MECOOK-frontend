@@ -16,6 +16,9 @@ class Review extends Component {
   }
 
   addRepl = e => {
+    if (e.target.value.length > 100) {
+      return e.target.value.substring(0, 100);
+    }
     this.setState({
       content: e.target.value,
     });
@@ -28,6 +31,8 @@ class Review extends Component {
       e.target.value = '';
     } else if (e.key === 'Enter' && !content.trim()) {
       alert('리뷰를 입력해주세요.');
+      e.target.value = '';
+      e.target.focus();
     }
   };
 
@@ -91,7 +96,7 @@ class Review extends Component {
       <section className="review">
         <div className="reviewTop">
           <label className="reviewTitle">
-            REVIEW<span>(200)</span>
+            REVIEW<span>({this.state.replList.length})</span>
           </label>
           <div className="textArea">
             <div className="textInputBox">
@@ -102,7 +107,9 @@ class Review extends Component {
                 onKeyPress={this.enterBtn}
                 value={this.state.content}
               />
-              <div className="textInputLimit">0/100</div>
+              <div className="textInputLimit">
+                {this.state.content.length}/100
+              </div>
             </div>
             <button className="textInputBtn" onClick={this.addComment}>
               등록
