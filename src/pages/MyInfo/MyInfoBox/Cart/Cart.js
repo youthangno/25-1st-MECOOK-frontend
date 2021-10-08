@@ -29,6 +29,10 @@ class Cart extends React.Component {
   };
 
   render() {
+    let totalPrice = 0;
+    const prices = this.state.cartList.map(item => Number(item.price));
+    prices.forEach(item => (totalPrice += item));
+
     return (
       <div className="cartContainer">
         <h1 className="cartTitle">Cart</h1>
@@ -59,11 +63,11 @@ class Cart extends React.Component {
         <span className="checkAllLabel">전체선택</span>
         <div className="cartTotal">
           <p className="totalCount">
-            TOTAL<span>1</span>
+            TOTAL<span>{this.state.cartList.length}</span>
           </p>
           <p className="totalPrice">
             <i className="fas fa-won-sign"></i>
-            5,300
+            {totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
           </p>
         </div>
         <button className="btnOrder">BUY NOW</button>

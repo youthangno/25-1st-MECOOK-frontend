@@ -34,7 +34,7 @@ class CartItem extends React.Component {
             <h4 className="itemName">{name}</h4>
             <h3 className="itemPrice">
               <i className="fas fa-won-sign"></i>
-              {price}
+              {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
             </h3>
           </div>
           <i
