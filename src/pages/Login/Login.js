@@ -7,7 +7,7 @@ class Login extends React.Component {
     this.state = { id: '', pw: '', isActive: false };
   }
   goTOMain = () => {
-    this.props.history.push('/main');
+    this.props.history.push('/');
     /* fetch('http://10.58.1.9:8000/users/signin/', {
       method: 'POST',
       body: JSON.stringify({
@@ -23,7 +23,6 @@ class Login extends React.Component {
 
   handleIdInput = event => {
     this.setState({ id: event.target.value });
-    console.log(this.state);
   };
   changeButton = () => {
     const { id, pw } = this.state;
@@ -55,9 +54,9 @@ class Login extends React.Component {
           ></input>
         </div>
         <span class="searchBox">
-          <a herf="">아이디 찾기</a>
+          <a href=" # ">아이디 찾기</a>
           <span class="slash">/</span>
-          <a herf=""> 비밀번호 찾기</a>
+          <a href=" # "> 비밀번호 찾기</a>
         </span>
         <span className="saveBtn">아이디 저장</span>
 

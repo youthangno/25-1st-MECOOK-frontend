@@ -6,6 +6,9 @@ class Signin extends React.Component {
     super();
     this.state = { name: '', id: '', pw: '', email: '' };
   }
+  goToMain = () => {
+    this.props.history.push('/');
+  };
 
   render() {
     return (
@@ -25,7 +28,9 @@ class Signin extends React.Component {
           <input className="emailInfo" placeholder="이메일" />
         </div>
         <input type="checkbox" className="agreeCheck" /> 동의
-        <button class="join"> 가입하기 </button>
+        <button class="join" onclick={this.goToMain}>
+          가입하기
+        </button>
       </div>
     );
   }
