@@ -80,7 +80,7 @@ class Signin extends React.Component {
           />
         </div>
         <div className="emailBox">
-          <input
+          <inputgit
             className="emailInfo"
             placeholder="이메일"
             onChange={this.handleInput}
