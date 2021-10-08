@@ -22,7 +22,7 @@ class Login extends React.Component {
   };
 
   handleIdInput = event => {
-    this.setState({ id: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   };
   changeButton = () => {
     const { id, pw } = this.state;
@@ -42,6 +42,7 @@ class Login extends React.Component {
             onKeyUp={this.changeButton}
             type="text"
             placeholder="아이디"
+            name="id"
           ></input>
         </div>
         <div className="numContainer">
@@ -51,6 +52,7 @@ class Login extends React.Component {
             class="secretNumber"
             type="password"
             placeholder="비밀번호"
+            name="pw"
           ></input>
         </div>
         <span class="searchBox">
