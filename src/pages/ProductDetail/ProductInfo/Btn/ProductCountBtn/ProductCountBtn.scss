@@ -1,15 +1,13 @@
 .productCountBtn {
   position: relative;
+  width: 220px;
   display: flex;
   justify-content: space-between;
-  text-align: left;
-  background-color: #1f695b;
   padding: 8px;
-  width: 220px;
+  margin-bottom: 10px;
+  background-color: #1f695b;
   color: white;
   font-size: 22px;
-  margin-bottom: 10px;
-  cursor: pointer;
 
   input {
     width: 30px;
@@ -19,11 +17,9 @@
   }
   .button {
     i {
+      color: white;
       font-size: 20px;
+      cursor: pointer;
     }
-  }
-
-  &:hover {
-    background-color: #51978c;
   }
 }

@@ -1,8 +1,8 @@
 .productImage {
   max-width: 960px;
   img {
-    width: 350px;
     display: block;
+    width: 350px;
     margin: 0 auto;
     animation: productImageFadeIn 0.3s;
     @keyframes productImageFadeIn {

@@ -13,13 +13,13 @@
     h1 {
       font-size: 25px;
       &::before {
-        content: '#';
-        font-size: 165px;
         display: block;
         position: absolute;
-        opacity: 0.1;
         top: -33px;
         left: 19px;
+        content: '#';
+        font-size: 165px;
+        opacity: 0.1;
       }
     }
   }
