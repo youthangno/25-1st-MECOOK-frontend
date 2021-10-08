@@ -1,5 +1,5 @@
 @font-face {
-  src: url('../../components/fonts/DINCond-Medium\ Regular.otf');
+  src: url('../../styles/fonts/DINCond-Medium\ Regular.otf');
   font-family: mecook;
 }
 
@@ -36,6 +36,7 @@
           &:first-child {
             color: black;
           }
+
           &:last-child::after {
             content: '';
             display: block;
@@ -59,6 +60,7 @@
     .botEtc {
       p {
         line-height: 150%;
+
         span {
           padding-right: 20px;
           margin-right: 10px;
@@ -70,6 +72,7 @@
             border-right: transparent;
           }
         }
+
         &:last-child {
           color: gray;
           line-height: 400%;

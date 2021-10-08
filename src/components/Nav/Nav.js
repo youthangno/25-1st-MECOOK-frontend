@@ -1,54 +1,72 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import './Nav.scss';
 
-class Nav extends React.Component {
+class Nav extends Component {
+  constructor() {
+    super();
+    this.state = {
+      scrollTop: 0,
+    };
+  }
+
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll);
-    this.getDropdownMenuData();
-    this.getIconData();
   };
 
   componentWillUnMount = () => {
     window.removeEventListener('scroll', this.handleScroll);
   };
 
-  handleScroll = () => {
+  handleScroll = e => {
+    const scrollTop = ('scroll', e.srcElement.scrollingElement.scrollTop);
     this.setState({
-      isNavTransparent: !window.pageYOffset > 0,
+      scrollTop,
     });
   };
-
   render() {
+    const { scrollTop } = this.state;
     return (
-      <nav id="mainNav">
-        <div className="logo">MECOOK</div>
-        <div className="menu">
-          <Link to="/n" className="menuBtn">
-            DINING
-          </Link>
-          <Link to="/n" className="menuBtn">
-            CAFE
-          </Link>
-          <Link to="/n" className="menuBtn">
-            CUPBOARD
-          </Link>
-          <Link to="/n" className="menuBtn">
-            GOURMET
-          </Link>
-          <Link to="/n" className="menuBtn">
-            LIFE&#8314;
-          </Link>
-          <Link to="/n" className="menuBtn">
-            ARCHIVE
-          </Link>
-        </div>
-        <div className="login">
-          <button>L O G I N</button>
-          <Link to="/n">
-            <i className="fas fa-search"></i>
-          </Link>
-        </div>
-      </nav>
+      <>
+        <nav
+          className={!scrollTop ? 'original_header' : 'change_header'}
+          onScroll={this.handleScroll}
+        >
+          <div className="threeLine">
+            <Link to="/minmenu">
+              <i className="fas fa-bars"></i>
+            </Link>
+            MECOOK
+          </div>
+          <div className="logo">MECOOK</div>
+          <div className="menu">
+            <Link to="/n" className="menuBtn">
+              DINING
+            </Link>
+            <Link to="/n" className="menuBtn">
+              CAFE
+            </Link>
+            <Link to="/n" className="menuBtn">
+              CUPBOARD
+            </Link>
+            <Link to="/n" className="menuBtn">
+              GOURMET
+            </Link>
+            <Link to="/n" className="menuBtn">
+              LIFE&#8314;
+            </Link>
+            <Link to="/n" className="menuBtn">
+              ARCHIVE
+            </Link>
+          </div>
+          <div className="login">
+            <button>L O G I N</button>
+            <Link to="/n">
+              <i className="fas fa-search"></i>
+            </Link>
+          </div>
+        </nav>
+      </>
     );
   }
 }

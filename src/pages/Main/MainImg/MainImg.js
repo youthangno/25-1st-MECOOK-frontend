@@ -7,7 +7,7 @@ class MainImg extends Component {
       <section className="mainImg">
         <img alt="hamburger" src="/images/Main/hamburger.jpg" />
         <p>
-          VIEW MORE&nbsp;<i class="far fa-play-circle"></i>
+          VIEW MORE&nbsp;<i className="far fa-play-circle"></i>
         </p>
       </section>
     );

@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav2 from '../../components/Nav/Nav2';
+import Nav from '../../components/Nav/Nav';
 import Footer from '../../components/Footer/Footer';
 import MainImg from './MainImg/MainImg';
 import Best from './Best/Best';
@@ -11,7 +11,7 @@ class Main extends React.Component {
   render() {
     return (
       <>
-        <Nav2 />
+        <Nav />
         <MainImg />
         <Best />
         <Brand />

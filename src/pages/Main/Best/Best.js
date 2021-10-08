@@ -3,7 +3,27 @@ import ProductPreview from '../../ProductList/ProductPreview/ProductPreview';
 import '../Best/Best.scss';
 
 class Best extends Component {
+  constructor() {
+    super();
+    this.state = {
+      menuList: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch('./data/bestMenuData.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          menuList: data.result,
+        });
+      });
+  }
+
   render() {
+    const { menuList } = this.state;
     return (
       <section className="best">
         <div className="bestTitle">
@@ -19,27 +39,32 @@ class Best extends Component {
         </div>
         <div className="bestList">
           <p id="viewBest">
-            VIEW BEST&nbsp;<i class="fas fa-chevron-right"></i>
+            VIEW BEST&nbsp;<i className="fas fa-chevron-right"></i>
           </p>
           <ul className="listItems">
-            <li className="food">
-              <ProductPreview />
-            </li>
-            <li className="food">
-              <ProductPreview />
-            </li>
-            <li className="food">
-              <ProductPreview />
-            </li>
-            <li className="food">
-              <ProductPreview />
-            </li>
-            <li className="food">
-              <ProductPreview />
-            </li>
-            <li className="food">
-              <ProductPreview />
-            </li>
+            {menuList &&
+              menuList.map(m => {
+                const {
+                  id,
+                  image,
+                  type,
+                  name,
+                  cookingTime,
+                  availPeople,
+                  like,
+                } = m;
+                return (
+                  <ProductPreview
+                    id={id}
+                    image={image}
+                    type={type}
+                    name={name}
+                    cookingTime={cookingTime}
+                    availPeople={availPeople}
+                    like={like}
+                  />
+                );
+              })}
           </ul>
         </div>
       </section>

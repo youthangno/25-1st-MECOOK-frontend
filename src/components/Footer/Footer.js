@@ -25,10 +25,10 @@ class Footer extends React.Component {
               </div>
               <div className="botIntroduceSns">
                 <a href="https://www.facebook.com/">
-                  <i class="fab fa-facebook-square"></i>
+                  <i className="fab fa-facebook-square" />
                 </a>
                 <a href="https://www.instagram.com/">
-                  <i class="fab fa-instagram-square"></i>
+                  <i className="fab fa-instagram-square" />
                 </a>
               </div>
             </div>
@@ -52,7 +52,8 @@ class Footer extends React.Component {
               </p>
               <p id="botCopy">
                 <span>
-                  <i class="far fa-copyright"></i>MECOOK.All Rights Reserved.
+                  <i className="far fa-copyright" />
+                  MECOOK.All Rights Reserved.
                 </span>
               </p>
             </div>
