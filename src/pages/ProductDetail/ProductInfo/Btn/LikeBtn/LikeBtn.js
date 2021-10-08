@@ -3,7 +3,12 @@ import './LikeBtn.scss';
 
 class LikeBtn extends React.Component {
   render() {
-    return <button className="likeBtn">❤70</button>;
+    return (
+      <button className="likeBtn">
+        <i class="far fa-heart"></i>
+        <span> 70</span>
+      </button>
+    );
   }
 }
 

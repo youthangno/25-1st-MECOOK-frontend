@@ -9,7 +9,10 @@ class DetailImageBottom extends React.Component {
         <h1> 늘 고기만 더 럽, 질긴 맛</h1>
         <figure>
           {/* 이미지 데이터 값 */}
-          <img src="https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032_960_720.jpg" />
+          <img
+            alt="연어"
+            src="https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032_960_720.jpg"
+          />
         </figure>
       </div>
     );

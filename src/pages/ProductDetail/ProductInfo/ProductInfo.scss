@@ -1,10 +1,11 @@
 .productInfoBox {
+  display: flex;
+  justify-content: space-between;
   position: relative;
-  padding-bottom: 32px;
   max-width: 960px;
   margin: 0 auto;
-  height: 216px;
-  margin-top: -200px;
+  margin-bottom: 100px;
+  margin-top: -150px;
 
   h1 {
     max-width: 480px;

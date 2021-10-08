@@ -1,15 +1,29 @@
 .productCountBtn {
-  border: 2px solid #1f695b;
-  background-color: #206a5b;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  background-color: #1f695b;
+  padding: 8px;
+  width: 220px;
   color: white;
   font-size: 22px;
-  display: block;
-  padding-right: 110px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-align: left;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+
+  input {
+    width: 30px;
+    position: absolute;
+    top: 10px;
+    right: 70px;
+  }
+  .button {
+    i {
+      font-size: 20px;
+    }
+  }
+
   &:hover {
-    cursor: pointer;
+    background-color: #51978c;
   }
 }

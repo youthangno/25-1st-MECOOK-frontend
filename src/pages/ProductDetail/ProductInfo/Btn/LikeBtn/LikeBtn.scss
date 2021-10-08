@@ -2,11 +2,14 @@
   position: relative;
   border: 2px solid #206a5b;
   margin-bottom: 10px;
-  border-radius: 35px;
+  border-radius: 20px;
   height: 35px;
   font-size: 18px;
   padding: 0 22px;
   left: 120px;
+  .fa-heart {
+    color: #206a5b;
+  }
   &:hover {
     cursor: pointer;
   }

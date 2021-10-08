@@ -1,8 +1,5 @@
 .btn {
-  position: absolute;
-  left: 832px;
-  bottom: 100px;
-  width: 100%;
+  display: block;
   animation: buttonFadeIn 2s;
   @keyframes buttonFadeIn {
     from {
