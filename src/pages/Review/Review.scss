@@ -1,8 +1,14 @@
 .review {
-  width: 960px;
+  width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border: 3px solid black;
+
   .reviewTop {
+    width: 100%;
     .reviewTitle {
       font-size: 30px;
       span {
@@ -17,11 +23,12 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        width: 400px;
+        height: 90px;
+        width: 100%;
         margin-right: 15px;
         border: 2px solid black;
         .textInput {
-          width: 390px;
+          width: 100%;
           height: 70px;
           margin-right: 15px;
           border: transparent;
@@ -29,6 +36,7 @@
         }
         .textInputLimit {
           text-align: right;
+          padding: 10px;
           font-size: 10px;
         }
       }
@@ -44,16 +52,16 @@
       li {
         display: flex;
         height: 70px;
-        width: 500px;
+        width: 100%;
         border-bottom: 1px solid black;
         .reviewContent {
           display: flex;
           align-items: center;
-          width: 400px;
+          width: 80%;
           font-weight: 300;
         }
         .reviewInfo {
-          width: 90px;
+          width: 20%;
           margin: auto;
           #userId {
           }
