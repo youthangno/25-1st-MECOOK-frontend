@@ -6,25 +6,32 @@ class ProductList extends React.Component {
     productList: [],
   };
 
+  // API 연동될 때
+  componentDidUpdate(prevProps) {
+    if (this.props.listId !== prevProps.listId) {
+      fetch(
+        `https://f960-211-106-114-186.ngrok.io/product/menu/${this.props.listId}/navbar`,
+        {
+          method: 'GET',
+        }
+      )
+        .then(res => res.json())
+        .then(data => {
+          this.setState({ productList: data.result[0] });
+        });
+    }
+  }
+
+  // API 연동 안될때
   // componentDidUpdate(prevProps) {
   //   if (this.props.listId !== prevProps.listId) {
-  //     fetch(`http://10.58.4.11:8000/product/menu/${this.props.listId}/navbar`, {
+  //     fetch(`data/productData${this.props.listId}.json`, {
   //       method: 'GET',
   //     })
   //       .then(res => res.json())
-  //       .then(data => this.setState({ productList: data.result[0] }));
+  //       .then(data => this.setState({ productList: data }));
   //   }
   // }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.listId !== prevProps.listId) {
-      fetch(`data/productData${this.props.listId}.json`, {
-        method: 'GET',
-      })
-        .then(res => res.json())
-        .then(data => this.setState({ productList: data }));
-    }
-  }
 
   render() {
     const { isVisible, handleCloseProductList } = this.props;
