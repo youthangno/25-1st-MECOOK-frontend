@@ -59,6 +59,7 @@ class ProductList extends React.Component {
             return (
               <ProductPreview
                 key={id}
+                productId={id}
                 mainImage={mainImage}
                 category={category}
                 name={name}

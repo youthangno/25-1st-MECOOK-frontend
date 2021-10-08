@@ -6,8 +6,36 @@ class ProductPreview extends React.Component {
     isLiked: false,
   };
 
+  // 상품 리스트 불러올때 상품별 좋아요 개수 GET
+  // componentDidMount() {
+  //   fetch(``, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-type': 'application/json',
+  //       Authorization: localStorage.getItem('userToken'),
+  //     },
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => console.log(data));
+  // }
+
   toggleBtnLike = () => {
     this.setState({ isLiked: !this.state.isLiked });
+
+    // btnLike click 시 유저의 해당 상품 좋아요 정보 POST
+    // fetch(``, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-type': 'application/json',
+    //     Authorization: localStorage.getItem('userToken'),
+    //   },
+    //   body: {
+    //     userId: this.props.productId,
+    //     productId: '',
+    //   },
+    // })
+    //   .then(res => res.json())
+    //   .then(data => console.log(data));
   };
 
   render() {
