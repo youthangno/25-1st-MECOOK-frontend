@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import './Review.scss';
 import Repl from './Repl/Repl';
+import ReviewBtn from './ReviewBtn/ReviewBtn';
 
 class Review extends Component {
   constructor() {
@@ -26,21 +26,23 @@ class Review extends Component {
     if (e.key === 'Enter' && content.trim()) {
       this.addComment();
       e.target.value = '';
+    } else if (e.key === 'Enter' && !content.trim()) {
+      alert('리뷰를 입력해주세요.');
     }
   };
 
   addComment = () => {
     const { content, replList, userName } = this.state;
-    // const cnt = replList.length + 1;
-    let today = new Date(); // today 객체에 Date()의 결과를 넣어줬다
+    let today = new Date();
     let time = {
-      year: today.getFullYear(), //현재 년도
-      month: today.getMonth() + 1, // 현재 월
-      date: today.getDate(), // 현제 날짜
+      year: today.getFullYear(),
+      month: today.getMonth() + 1,
+      date: today.getDate(),
     };
     const cnt = replList.length + 1;
     let timestring = `${time.year}/${time.month}/${time.date}`;
     if (content.trim() === '' || content === '') {
+      alert('리뷰를 입력해주세요.');
       return;
     }
     this.setState({
@@ -61,12 +63,19 @@ class Review extends Component {
   };
 
   componentDidMount() {
+    // const token =
+    //   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24';
     fetch('./data/reviewData.json', {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
         Authorization: localStorage.getItem('userToken'),
       },
+      // body: JSON.stringify({
+      //   user: '1',
+      //   product: '1',
+      //   review: 'sdfsdf',
+      // }),
     })
       .then(res => res.json())
       .then(data => {
@@ -101,7 +110,7 @@ class Review extends Component {
           </div>
           <ul className="reviewList">
             {this.state.replList &&
-              this.state.replList.map((repl, idx) => {
+              this.state.replList.map(repl => {
                 const { userName, content, userDate, id } = repl;
                 return (
                   <Repl
@@ -114,11 +123,7 @@ class Review extends Component {
               })}
           </ul>
         </div>
-        <div className="viewMore">
-          <Link to="/n">&nbsp;&nbsp;VIEW MORE&#8314;&nbsp;&nbsp;</Link>
-          <span>1</span>
-          <span>/10</span>
-        </div>
+        <ReviewBtn replList={this.state.replList} />
       </section>
     );
   }
