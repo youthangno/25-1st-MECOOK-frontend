@@ -13,6 +13,8 @@ class MyInfoBox extends React.Component {
     this.setState({ isBoxVisible: !this.state.isBoxVisible });
   };
 
+  getBoxWidth = () => {};
+
   render() {
     return (
       <>

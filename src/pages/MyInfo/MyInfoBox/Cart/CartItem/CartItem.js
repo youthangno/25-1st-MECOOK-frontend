@@ -3,6 +3,7 @@ import './CartItem.scss';
 
 class CartItem extends React.Component {
   render() {
+    const { image, category, name, price } = this.props;
     return (
       <li className="cartItemContainer">
         <input
@@ -14,16 +15,13 @@ class CartItem extends React.Component {
           readOnly={false}
         />
         <label className="cartItem" htmlFor="item1">
-          <img
-            className="itemImage"
-            src="images/ProductPreview/pet1.png"
-            alt="food"
-          />
+          <img className="itemImage" src={image} alt="food" />
           <div className="itemInfo">
-            <h5 className="itemCategory">디저트</h5>
-            <h4 className="itemName">바닐라 마카롱</h4>
+            <h5 className="itemCategory">{category}</h5>
+            <h4 className="itemName">{name}</h4>
             <h3 className="itemPrice">
-              <i className="fas fa-won-sign"></i>3,900
+              <i className="fas fa-won-sign"></i>
+              {price}
             </h3>
           </div>
           <i className="btnDeleteCartItem far fa-trash-alt"></i>

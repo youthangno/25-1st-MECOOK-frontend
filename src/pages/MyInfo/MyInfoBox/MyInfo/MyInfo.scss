@@ -4,7 +4,7 @@
   .myInfoTitle {
     font-size: 35px;
     font-weight: 600;
-    margin-top: 50px;
+    margin-top: 40px;
   }
 
   .myInfoContent {
@@ -21,9 +21,9 @@
       }
 
       .line {
-        border: 1px solid $theme-color;
+        background-color: $theme-color;
         width: 180px;
-        height: 1px;
+        height: 1.5px;
         margin: 0 6px;
       }
 
