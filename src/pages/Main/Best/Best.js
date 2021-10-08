@@ -39,7 +39,8 @@ class Best extends Component {
         </div>
         <div className="bestList">
           <p id="viewBest">
-            VIEW BEST&nbsp;<i className="fas fa-chevron-right"></i>
+            <i className="fas fa-award" />
+            &nbsp;BEST ITEMS
           </p>
           <ul className="listItems">
             {menuList &&
