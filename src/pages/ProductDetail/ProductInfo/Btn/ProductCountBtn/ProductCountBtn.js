@@ -37,10 +37,10 @@ class ProductCountBtn extends React.Component {
         </div>
         <div className="button">
           <button onClick={this.quantityIncrease}>
-            <i class="fas fa-plus-square"></i>
+            <i className="fas fa-plus-square"></i>
           </button>
           <button onClick={this.quantityDecrease}>
-            <i class="fas fa-minus-square"></i>
+            <i className="fas fa-minus-square"></i>
           </button>
         </div>
       </div>
