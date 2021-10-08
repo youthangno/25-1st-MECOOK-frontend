@@ -36,7 +36,6 @@ class Login extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div className="outBox">
         <button className="close">X</button>
@@ -62,9 +61,9 @@ class Login extends React.Component {
           />
         </div>
         <span className="searchBox">
-          <a href="">아이디 찾기</a>
+          <a href=" #">아이디 찾기</a>
           <span className="slash">/</span>
-          <a href=""> 비밀번호 찾기</a>
+          <a href=" #"> 비밀번호 찾기</a>
         </span>
         <span className="saveBtn">아이디 저장</span>
 
@@ -75,7 +74,9 @@ class Login extends React.Component {
           LOGIN
         </button>
 
-        <button className="signInBtn">SIGN IN</button>
+        <button className="signInBtn" onClick={this.goToSignin}>
+          SIGN IN
+        </button>
       </div>
     );
   }
