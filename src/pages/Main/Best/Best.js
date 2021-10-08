@@ -55,6 +55,7 @@ class Best extends Component {
                 } = m;
                 return (
                   <ProductPreview
+                    key={id}
                     id={id}
                     image={image}
                     type={type}

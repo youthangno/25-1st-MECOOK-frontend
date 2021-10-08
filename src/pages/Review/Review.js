@@ -11,7 +11,7 @@ class Review extends Component {
       userName: '4.21ee',
       userDate: '2021/10/07',
       replList: [],
-      // id: 0,
+      id: this.cnt,
     };
   }
 
@@ -30,16 +30,24 @@ class Review extends Component {
   };
 
   addComment = () => {
-    const { content, replList, userName, userDate } = this.state;
+    const { content, replList, userName } = this.state;
     // const cnt = replList.length + 1;
+    let today = new Date(); // today 객체에 Date()의 결과를 넣어줬다
+    let time = {
+      year: today.getFullYear(), //현재 년도
+      month: today.getMonth() + 1, // 현재 월
+      date: today.getDate(), // 현제 날짜
+    };
+    const cnt = replList.length + 1;
+    let timestring = `${time.year}/${time.month}/${time.date}`;
     if (content.trim() === '' || content === '') {
       return;
     }
     this.setState({
       replList: replList.concat({
-        // id: cnt,
+        id: cnt,
         userName: userName,
-        userDate: userDate,
+        userDate: timestring,
         content: content.trim(),
       }),
       content: '',
@@ -55,6 +63,10 @@ class Review extends Component {
   componentDidMount() {
     fetch('./data/reviewData.json', {
       method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: localStorage.getItem('userToken'),
+      },
     })
       .then(res => res.json())
       .then(data => {
@@ -90,10 +102,10 @@ class Review extends Component {
           <ul className="reviewList">
             {this.state.replList &&
               this.state.replList.map((repl, idx) => {
-                const { userName, content, userDate } = repl;
+                const { userName, content, userDate, id } = repl;
                 return (
                   <Repl
-                    className="dfdf"
+                    key={id}
                     userName={userName}
                     content={content}
                     userDate={userDate}
