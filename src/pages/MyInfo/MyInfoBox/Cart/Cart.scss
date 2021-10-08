@@ -2,36 +2,35 @@
 
 .cartContainer {
   .cartTitle {
+    margin-top: 40px;
     font-size: 35px;
     font-weight: 600;
-    margin-top: 40px;
   }
 
   .cartList {
     height: 300px;
     margin-top: 30px;
-    overflow: scroll;
     border-top: 1px solid rgba(0, 0, 0, 0.6);
     border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+    overflow: scroll;
   }
 
   .checkAllBox {
+    position: relative;
+    top: 1.5px;
     width: 15px;
     height: 15px;
     margin-top: 10px;
     border: 2px solid #bcbcbc;
     cursor: pointer;
-    position: relative;
-    top: 1.5px;
   }
 
   .checkAllLabel {
-    margin-left: 2px;
-    display: inline-block;
-    font-size: 13px;
-    color: rgba(0, 0, 0, 0.5);
     position: relative;
     top: -1.5px;
+    margin-left: 2px;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.5);
   }
 
   .cartTotal {
@@ -56,12 +55,13 @@
   }
 
   .btnOrder {
+    width: 100%;
+    margin: 0 4px;
+    padding: 15px 0;
     background-color: $theme-color;
-    color: white;
     font-size: 17px;
     font-weight: 600;
-    margin: 0 4px;
-    width: 100%;
-    padding: 15px 0;
+    color: white;
+    cursor: pointer;
   }
 }

@@ -5,6 +5,7 @@ import './Cart.scss';
 class Cart extends React.Component {
   state = {
     cartList: [],
+    isAllChecked: false,
   };
 
   componentDidMount() {
@@ -14,6 +15,18 @@ class Cart extends React.Component {
       .then(res => res.json())
       .then(data => this.setState({ cartList: data }));
   }
+
+  toggleAllChecked = () => {
+    this.setState({ isAllChecked: !this.state.isAllChecked });
+  };
+
+  deleteCartItem = itemId => {
+    const deletedCartList = this.state.cartList.filter(
+      item => item.id !== itemId
+    );
+
+    this.setState({ cartList: deletedCartList });
+  };
 
   render() {
     return (
@@ -25,15 +38,24 @@ class Cart extends React.Component {
             return (
               <CartItem
                 key={id}
+                id={id}
                 image={image}
                 category={category}
                 name={name}
                 price={price}
+                isAllChecked={this.state.isAllChecked ? true : false}
+                deleteCartItem={this.deleteCartItem}
               />
             );
           })}
         </ul>
-        <input className="checkAllBox" type="checkbox" name="checkAllBox" />
+        <input
+          className="checkAllBox"
+          type="checkbox"
+          name="checkAllBox"
+          checked={this.state.isAllChecked}
+          onChange={this.toggleAllChecked}
+        />
         <span className="checkAllLabel">전체선택</span>
         <div className="cartTotal">
           <p className="totalCount">
