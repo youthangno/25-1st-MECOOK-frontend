@@ -67,28 +67,49 @@ class Review extends Component {
     });
   };
 
-  componentDidMount() {
-    // const token =
-    //   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24';
-    fetch('./data/reviewData.json', {
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: localStorage.getItem('userToken'),
-      },
-      // body: JSON.stringify({
-      //   user: '1',
-      //   product: '1',
-      //   review: 'sdfsdf',
-      // }),
-    })
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          replList: data.result,
-        });
-      });
-  }
+  // componentDidMount() {
+  //   // const token =
+  //   //   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24';
+  //   fetch('./data/reviewData.json', {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-type': 'application/json',
+  //       Authorization: localStorage.getItem('userToken'),
+  //     },
+  //     // body: JSON.stringify({
+  //     //   user: '1',
+  //     //   product: '1',
+  //     //   review: 'sdfsdf',
+  //     // }),
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       this.setState({
+  //         replList: data.result,
+  //       });
+  //     });
+  // }
+
+  // componentDidMount() {
+  //   fetch('./data/reviewData.json', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       id: this.state.id,
+  //       userName: this.state.userName,
+  //       userDate: timestring,
+  //       content: content.trim(),
+  //     }),
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       this.setState({
+  //         replList: data.result,
+  //       });
+  //     });
+  // }
 
   render() {
     console.log(this.state);
