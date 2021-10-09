@@ -33,11 +33,6 @@ class Signin extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  idCheck = e => {
-    e.preventDefault();
-    const { usableId } = this.state;
-  };
-
   render() {
     return (
       <div className="outContainer">
