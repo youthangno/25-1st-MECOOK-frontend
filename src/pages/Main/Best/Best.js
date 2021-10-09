@@ -11,7 +11,7 @@ class Best extends Component {
   }
 
   componentDidMount() {
-    fetch('./data/bestMenuData.json', {
+    fetch('https://f960-211-106-114-186.ngrok.io/product/main', {
       method: 'GET',
     })
       .then(res => res.json())
@@ -47,22 +47,22 @@ class Best extends Component {
               menuList.map(m => {
                 const {
                   id,
-                  image,
-                  type,
+                  mainImage,
+                  category,
                   name,
                   cookingTime,
-                  availPeople,
+                  serving,
                   like,
                 } = m;
                 return (
                   <ProductPreview
                     key={id}
                     id={id}
-                    image={image}
-                    type={type}
+                    image={mainImage}
+                    type={category}
                     name={name}
                     cookingTime={cookingTime}
-                    availPeople={availPeople}
+                    availPeople={serving}
                     like={like}
                   />
                 );
