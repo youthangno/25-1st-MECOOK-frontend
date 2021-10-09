@@ -1,5 +1,5 @@
 import React from 'react';
-import './Signin.scss';
+import './Signup.scss';
 //import './variable.scss';
 class Signin extends React.Component {
   constructor() {
