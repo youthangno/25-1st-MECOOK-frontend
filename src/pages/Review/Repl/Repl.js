@@ -3,12 +3,15 @@ import './Repl.scss';
 
 class Repl extends Component {
   render() {
-    const { userName, content, userDate } = this.props;
+    const { user, review, userDate } = this.props;
     return (
       <li>
-        <div className="reviewContent">{content}</div>
+        <div className="reviewContent">{review}</div>
+        <div className="deleteReview">
+          <button className="deleteBtn">X</button>
+        </div>
         <div className="reviewInfo">
-          <p id="userId">{userName}</p>
+          <p id="userId">{user}</p>
           <p id="userDate">{userDate}</p>
         </div>
       </li>

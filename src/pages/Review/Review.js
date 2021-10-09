@@ -7,11 +7,14 @@ class Review extends Component {
   constructor() {
     super();
     this.state = {
-      content: '',
-      userName: '4.21ee',
-      userDate: '2021/10/07',
+      // content: '',
+      // userName: '4.21ee',
+      // userDate: '2021/10/07',
+      // replList: [],
+      // id: this.cnt,
+      review: '',
+      product: '상품 id',
       replList: [],
-      id: this.cnt,
     };
   }
 
@@ -20,16 +23,16 @@ class Review extends Component {
       return e.target.value.substring(0, 100);
     }
     this.setState({
-      content: e.target.value,
+      review: e.target.value,
     });
   };
 
   enterBtn = e => {
-    const { content } = this.state;
-    if (e.key === 'Enter' && content.trim()) {
+    const { review } = this.state;
+    if (e.key === 'Enter' && review.trim()) {
       this.addComment();
       e.target.value = '';
-    } else if (e.key === 'Enter' && !content.trim()) {
+    } else if (e.key === 'Enter' && !review.trim()) {
       alert('리뷰를 입력해주세요.');
       e.target.value = '';
       e.target.focus();
@@ -37,19 +40,19 @@ class Review extends Component {
   };
 
   addComment = () => {
-    const { content, replList, userName } = this.state;
-    let today = new Date();
-    let time = {
-      year: today.getFullYear(),
-      month: today.getMonth() + 1,
-      date: today.getDate(),
-    };
-    // const cnt = replList.length + 1;
-    let timestring = `${time.year}/${time.month}/${time.date}`;
-    if (content.trim() === '' || content === '') {
-      alert('리뷰를 입력해주세요.');
-      return;
-    }
+    // const { review, replList, product } = this.state;
+    // let today = new Date();
+    // let time = {
+    //   year: today.getFullYear(),
+    //   month: today.getMonth() + 1,
+    //   date: today.getDate(),
+    // };
+    // // const cnt = replList.length + 1;
+    // let timestring = `${time.year}/${time.month}/${time.date}`;
+    // if (content.trim() === '' || content === '') {
+    //   alert('리뷰를 입력해주세요.');
+    //   return;
+    // }
     // this.setState({
     //   replList: replList.concat({
     //     id: cnt,
@@ -60,22 +63,37 @@ class Review extends Component {
     //   content: '',
     // });
 
-    fetch('./data/reviewData.json', {
+    // id: 1,
+    //     userName: this.state.userName,
+    //     userDate: timestring,
+    //     review: this.state.content.trim(),
+
+    // review_id : 1
+    // review : 내용
+    // product : 상품 id
+    // usesr :
+
+    const token =
+      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s';
+
+    fetch('https://f960-211-106-114-186.ngrok.io/review/comment', {
       method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: token,
+      },
       body: JSON.stringify({
-        id: 1,
-        userName: this.state.userName,
-        userDate: this.state.userDate,
-        content: content.trim(),
+        product: '상품id',
+        review: '리뷰내용',
       }),
     })
       .then(res => res.json())
       .then(
-        fetch('./data/reviewData.json')
+        fetch('https://f960-211-106-114-186.ngrok.io/review/list/1')
           .then(res => res.json())
           .then(data => {
             this.setState({
-              replList: data.blahblah,
+              replList: data.result,
             });
           })
           .catch(err => console.log('feeds', err))
@@ -84,7 +102,7 @@ class Review extends Component {
 
   clearInput = () => {
     this.setState({
-      content: '',
+      review: '',
     });
   };
 
@@ -138,6 +156,7 @@ class Review extends Component {
 
   render() {
     console.log(this.state);
+    const { review, replList } = this.state;
     return (
       <section className="review">
         <div className="reviewTop">
@@ -152,32 +171,37 @@ class Review extends Component {
                 placeholder="통신예절에 어긋나는 글이나 상업적인 글. 타 사이트에 관련된 글은 관리자에 의해 사전 통보없이 삭제될 수 있습니다"
                 onChange={this.addRepl}
                 onKeyPress={this.enterBtn}
-                value={this.state.content}
+                value={review}
               />
-              <div className="textInputLimit">
-                {this.state.content.length}/100
-              </div>
+              <div className="textInputLimit">{review.length}/100</div>
             </div>
             <button className="textInputBtn" onClick={this.addComment}>
               등록
             </button>
           </div>
           <ul className="reviewList">
-            {this.state.replList &&
-              this.state.replList.map(repl => {
-                const { userName, content, userDate, id } = repl;
+            <li>
+              <div className="reviewContent">asdasfasf</div>
+              <div className="reviewInfo">
+                <p id="userId">asdasfasfas</p>
+                <p id="userDate">2021/10/09</p>
+              </div>
+            </li>
+            {replList &&
+              replList.map(repl => {
+                const { user, review, userDate, id } = repl;
                 return (
                   <Repl
                     key={id}
-                    userName={userName}
-                    content={content}
+                    user={user}
+                    review={review}
                     userDate={userDate}
                   />
                 );
               })}
           </ul>
         </div>
-        <ReviewBtn replList={this.state.replList} />
+        <ReviewBtn replList={replList} />
       </section>
     );
   }
