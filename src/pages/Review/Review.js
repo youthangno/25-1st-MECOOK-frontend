@@ -44,21 +44,42 @@ class Review extends Component {
       month: today.getMonth() + 1,
       date: today.getDate(),
     };
-    const cnt = replList.length + 1;
+    // const cnt = replList.length + 1;
     let timestring = `${time.year}/${time.month}/${time.date}`;
     if (content.trim() === '' || content === '') {
       alert('리뷰를 입력해주세요.');
       return;
     }
-    this.setState({
-      replList: replList.concat({
-        id: cnt,
-        userName: userName,
-        userDate: timestring,
+    // this.setState({
+    //   replList: replList.concat({
+    //     id: cnt,
+    //     userName: userName,
+    //     userDate: timestring,
+    //     content: content.trim(),
+    //   }),
+    //   content: '',
+    // });
+
+    fetch('./data/reviewData.json', {
+      method: 'POST',
+      body: JSON.stringify({
+        id: 1,
+        userName: this.state.userName,
+        userDate: this.state.userDate,
         content: content.trim(),
       }),
-      content: '',
-    });
+    })
+      .then(res => res.json())
+      .then(
+        fetch('./data/reviewData.json')
+          .then(res => res.json())
+          .then(data => {
+            this.setState({
+              replList: data.blahblah,
+            });
+          })
+          .catch(err => console.log('feeds', err))
+      );
   };
 
   clearInput = () => {
@@ -90,30 +111,30 @@ class Review extends Component {
   //     });
   // }
 
-  componentDidMount() {
-    fetch('./data/reviewData.json', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        id: this.state.id,
-        userName: this.state.userName,
-        userDate: this.state.userDate,
-        content: this.state.content.trim(),
-      }),
-    })
-      .then(res => {
-        if (res.ok) {
-          alert('댓글이 추가 되었습니다.');
-        }
-      })
-      .then(data => {
-        this.setState({
-          replList: data.result,
-        });
-      });
-  }
+  // componentDidMount() {
+  //   fetch('./data/reviewData.json', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       id: this.state.id,
+  //       userName: this.state.userName,
+  //       userDate: this.state.userDate,
+  //       content: this.state.content.trim(),
+  //     }),
+  //   })
+  //     .then(res => {
+  //       if (res.ok) {
+  //         alert('댓글이 추가 되었습니다.');
+  //       }
+  //     })
+  //     .then(data => {
+  //       this.setState({
+  //         replList: data.result,
+  //       });
+  //     });
+  // }
 
   render() {
     console.log(this.state);
@@ -121,7 +142,8 @@ class Review extends Component {
       <section className="review">
         <div className="reviewTop">
           <label className="reviewTitle">
-            REVIEW<span>({this.state.replList.length})</span>
+            REVIEW
+            <span>(0)</span>
           </label>
           <div className="textArea">
             <div className="textInputBox">
