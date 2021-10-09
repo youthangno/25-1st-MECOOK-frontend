@@ -90,26 +90,30 @@ class Review extends Component {
   //     });
   // }
 
-  // componentDidMount() {
-  //   fetch('./data/reviewData.json', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       id: this.state.id,
-  //       userName: this.state.userName,
-  //       userDate: timestring,
-  //       content: content.trim(),
-  //     }),
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       this.setState({
-  //         replList: data.result,
-  //       });
-  //     });
-  // }
+  componentDidMount() {
+    fetch('./data/reviewData.json', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: this.state.id,
+        userName: this.state.userName,
+        userDate: this.state.userDate,
+        content: this.state.content.trim(),
+      }),
+    })
+      .then(res => {
+        if (res.ok) {
+          alert('댓글이 추가 되었습니다.');
+        }
+      })
+      .then(data => {
+        this.setState({
+          replList: data.result,
+        });
+      });
+  }
 
   render() {
     console.log(this.state);
