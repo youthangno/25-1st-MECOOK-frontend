@@ -1,6 +1,12 @@
 import React from 'react';
 import CartItem from './CartItem/CartItem';
+import EmptyCart from './EmptyCart/EmptyCart';
 import './Cart.scss';
+
+const userToken =
+  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24';
+// detail page에서 this.props.listId로 받을 부분
+const productID = 21;
 
 class Cart extends React.Component {
   state = {
@@ -11,6 +17,10 @@ class Cart extends React.Component {
   componentDidMount() {
     fetch('data/Cart/cartData.json', {
       method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: localStorage.getItem('userToken'),
+      },
     })
       .then(res => res.json())
       .then(data => this.setState({ cartList: data }));
@@ -29,6 +39,8 @@ class Cart extends React.Component {
   };
 
   render() {
+    //localStorage.setItem('userToken', userToken);
+    console.log(this.state.cartList);
     let totalPrice = 0;
     const prices = this.state.cartList.map(item => Number(item.price));
     prices.forEach(item => (totalPrice += item));
@@ -36,23 +48,27 @@ class Cart extends React.Component {
     return (
       <div className="cartContainer">
         <h1 className="cartTitle">Cart</h1>
-        <ul className="cartList">
-          {this.state.cartList.map(cartItem => {
-            const { id, image, category, name, price } = cartItem;
-            return (
-              <CartItem
-                key={id}
-                id={id}
-                image={image}
-                category={category}
-                name={name}
-                price={price}
-                isAllChecked={this.state.isAllChecked ? true : false}
-                deleteCartItem={this.deleteCartItem}
-              />
-            );
-          })}
-        </ul>
+        {this.state.cartList.length > 0 ? (
+          <ul className="cartList">
+            {this.state.cartList.map(cartItem => {
+              const { id, image, category, name, price } = cartItem;
+              return (
+                <CartItem
+                  key={id}
+                  id={id}
+                  image={image}
+                  category={category}
+                  name={name}
+                  price={price}
+                  isAllChecked={this.state.isAllChecked ? true : false}
+                  deleteCartItem={this.deleteCartItem}
+                />
+              );
+            })}
+          </ul>
+        ) : (
+          <EmptyCart />
+        )}
         <input
           className="checkAllBox"
           type="checkbox"
