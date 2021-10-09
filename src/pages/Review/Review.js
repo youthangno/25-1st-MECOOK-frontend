@@ -83,8 +83,8 @@ class Review extends Component {
         Authorization: token,
       },
       body: JSON.stringify({
-        product: '상품id',
-        review: '리뷰내용',
+        product: 1,
+        review: this.state.review,
       }),
     })
       .then(res => res.json())
@@ -106,28 +106,24 @@ class Review extends Component {
     });
   };
 
-  // componentDidMount() {
-  //   // const token =
-  //   //   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24';
-  //   fetch('./data/reviewData.json', {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-type': 'application/json',
-  //       Authorization: localStorage.getItem('userToken'),
-  //     },
-  //     // body: JSON.stringify({
-  //     //   user: '1',
-  //     //   product: '1',
-  //     //   review: 'sdfsdf',
-  //     // }),
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       this.setState({
-  //         replList: data.result,
-  //       });
-  //     });
-  // }
+  componentDidMount() {
+    const token =
+      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s';
+
+    fetch('https://f960-211-106-114-186.ngrok.io/review/list/1', {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: token,
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          replList: data.result,
+        });
+      });
+  }
 
   // componentDidMount() {
   //   fetch('./data/reviewData.json', {
@@ -180,13 +176,13 @@ class Review extends Component {
             </button>
           </div>
           <ul className="reviewList">
-            <li>
+            {/* <li>
               <div className="reviewContent">asdasfasf</div>
               <div className="reviewInfo">
                 <p id="userId">asdasfasfas</p>
                 <p id="userDate">2021/10/09</p>
               </div>
-            </li>
+            </li> */}
             {replList &&
               replList.map(repl => {
                 const { user, review, userDate, id } = repl;
