@@ -1,7 +1,7 @@
 import React from 'react';
 import './Signup.scss';
 //import './variable.scss';
-class Signin extends React.Component {
+class Signup extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -93,4 +93,4 @@ class Signin extends React.Component {
   }
 }
 
-export default Signin;
+export default Signup;
