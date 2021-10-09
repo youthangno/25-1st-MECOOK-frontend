@@ -83,7 +83,7 @@ class Signup extends React.Component {
           />
         </div>
         <input type="checkbox" className="agreeCheck" />
-        <p>회원약관에 동의하시면 체크해주세요.</p>
+        <p> 가입 동의하시면 체크해주세요.</p>
 
         <button className="join" onClick={this.goToMain}>
           가입하기
