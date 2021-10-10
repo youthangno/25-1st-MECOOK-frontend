@@ -24,6 +24,7 @@ class Nav extends Component {
       scrollTop,
     });
   };
+
   render() {
     const { scrollTop } = this.state;
     return (
