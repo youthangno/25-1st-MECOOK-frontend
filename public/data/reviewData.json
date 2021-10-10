@@ -2,21 +2,21 @@
   "result": [
     {
       "id": 1,
-      "userName": "wecode",
+      "user": "wecode",
       "userDate": "2021/10/7",
-      "content": "오늘 점심 뭐먹지"
+      "review": "오늘 점심 뭐먹지"
     },
     {
       "id": 2,
-      "userName": "dydgus0421",
+      "user": "dydgus0421",
       "userDate": "2021/10/7",
-      "content": "인증인가 인가인가"
+      "review": "인증인가 인가인가"
     },
     {
       "id": 3,
-      "userName": "Hy_un",
+      "user": "Hy_un",
       "userDate": "2021/10/7",
-      "content": "댓글을 달아주세요"
+      "review": "댓글을 달아주세요"
     }
   ]
 }

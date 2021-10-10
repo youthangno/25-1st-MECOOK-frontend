@@ -110,12 +110,14 @@ class Review extends Component {
     const token =
       'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s';
 
-    fetch('https://f960-211-106-114-186.ngrok.io/review/list/1', {
+    // 'https://f960-211-106-114-186.ngrok.io/review/list/1'
+
+    fetch('./data/reviewData.json', {
       method: 'GET',
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: token,
-      },
+      // headers: {
+      //   'Content-type': 'application/json',
+      //   Authorization: token,
+      // },
     })
       .then(res => res.json())
       .then(data => {
