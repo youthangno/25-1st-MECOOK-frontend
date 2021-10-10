@@ -11,7 +11,8 @@ const TOKEN = localStorage.getItem('token');
 class Cart extends React.Component {
   state = {
     cartList: [],
-    isAllChecked: false,
+    checkedItemList: [],
+    totalPrice: 0,
   };
 
   // 로그인한 유저의 장바구니 list GET
@@ -45,8 +46,49 @@ class Cart extends React.Component {
     }
   }
 
-  toggleAllChecked = () => {
-    this.setState({ isAllChecked: !this.state.isAllChecked });
+  // 총 상품 가격 계산하는 함수
+  getTotalPrice = () => {
+    const orderList = this.state.cartList.filter(item =>
+      this.state.checkedItemList.includes(item.id)
+    );
+
+    const orderPriceList = orderList.map(item => Number(item.price));
+    let totalPrice = 0;
+    orderPriceList.map(item => (totalPrice += item));
+
+    this.setState({ totalPrice: totalPrice });
+  };
+
+  // check한 아이템들 담는 배열 만들어서 체크한 상품 총가격 set
+  handleItemCheck = itemId => {
+    const getTotalPrice = () => {
+      this.getTotalPrice();
+    };
+
+    if (this.state.checkedItemList.includes(itemId)) {
+      const deleteItem = this.state.checkedItemList.filter(
+        item => item !== itemId
+      );
+      this.setState({ checkedItemList: deleteItem }, getTotalPrice);
+    } else {
+      const newItem = this.state.checkedItemList.concat(itemId);
+      this.setState({ checkedItemList: newItem }, getTotalPrice);
+    }
+  };
+
+  // allCheck했을 때 모든 상품 추가, allUnCheck했을 때 모든 상품 삭제하고 총 가격 set
+  handleItemAllCheck = () => {
+    const getTotalPrice = () => {
+      this.getTotalPrice();
+    };
+
+    if (this.state.cartList.length === this.state.checkedItemList.length) {
+      this.setState({ checkedItemList: [] }, getTotalPrice);
+    } else {
+      const allItem = [];
+      this.state.cartList.map(item => allItem.push(item.id));
+      this.setState({ checkedItemList: allItem }, getTotalPrice);
+    }
   };
 
   deleteCartItem = itemId => {
@@ -71,17 +113,27 @@ class Cart extends React.Component {
     // }
   };
 
+  orderProduct = () => {
+    if (TOKEN) {
+      const restPoint = this.props.point - this.state.totalPrice;
+      alert('주문이 완료되었습니다!');
+
+      // 포인트 차감하고, 남은 포인트 서버에 보내는 API
+      // fetch('api', {
+      //   method: 'POST',
+      //   headers: {
+      //     Authorization: localStorage.getItem('token'),
+      //   },
+      //   body: JSON.stringify({
+      //     point: restPoint,
+      //   }),
+      // });
+    } else {
+      alert('로그인 해주세요.');
+    }
+  };
+
   render() {
-    // login과 merge 시 삭제
-    // localStorage.setItem(
-    //   'token',
-    //   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s'
-    // );
-
-    let totalPrice = 0;
-    const prices = this.state.cartList.map(item => Number(item.price));
-    prices.forEach(item => (totalPrice += item));
-
     return (
       <div className="cartContainer">
         <h1 className="cartTitle">Cart</h1>
@@ -98,7 +150,8 @@ class Cart extends React.Component {
                       category={category}
                       name={name}
                       price={price}
-                      isAllChecked={this.state.isAllChecked ? true : false}
+                      isChecked={this.state.checkedItemList.includes(id)}
+                      handleItemCheck={this.handleItemCheck}
                       deleteCartItem={this.deleteCartItem}
                     />
                   );
@@ -112,8 +165,7 @@ class Cart extends React.Component {
           className="checkAllBox"
           type="checkbox"
           name="checkAllBox"
-          checked={this.state.isAllChecked}
-          onChange={this.toggleAllChecked}
+          onChange={this.handleItemAllCheck}
         />
         <span className="checkAllLabel">전체선택</span>
         <div className="cartTotal">
@@ -122,7 +174,9 @@ class Cart extends React.Component {
           </p>
           <p className="totalPrice">
             <i className="fas fa-won-sign"></i>
-            {totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+            {this.state.totalPrice
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
           </p>
         </div>
         <button className="btnOrder" onClick={this.orderProduct}>

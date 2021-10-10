@@ -3,22 +3,27 @@ import './MyInfo.scss';
 
 class MyInfo extends React.Component {
   render() {
+    const { userName, point, grade } = this.props;
     return (
       <div className="myInfoContainer">
         <h1 className="myInfoTitle">My Info</h1>
         <div className="myInfoContent">
           <div className="myInfoPoint">
             <p>
-              <span className="userName">정민지</span> 고객님!
+              <span className="userName">{userName}</span> 고객님!
             </p>
             <div className="line"></div>
             <h5>
               <i className="fas fa-coins"></i>
-              <span className="userPoint">4,000</span>점
+              <span className="userPoint">
+                {point &&
+                  point.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+              </span>
+              점
             </h5>
           </div>
           <div className="myInfoGrade">
-            <span className="userGrade">VIP</span>등급
+            <span className="userGrade">{grade}</span>등급
           </div>
         </div>
       </div>

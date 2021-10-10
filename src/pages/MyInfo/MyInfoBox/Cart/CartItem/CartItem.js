@@ -2,30 +2,25 @@ import React from 'react';
 import './CartItem.scss';
 
 class CartItem extends React.Component {
-  state = {
-    isChecked: false,
-  };
-
-  toggleIsChecked = () => {
-    this.setState({ isChecked: !this.state.isChecked });
-  };
-
-  componentDidUpdate(prevProps) {
-    if (this.props.isAllChecked !== prevProps.isAllChecked) {
-      this.setState({ isChecked: this.props.isAllChecked });
-    }
-  }
-
   render() {
-    const { id, image, category, name, price, deleteCartItem } = this.props;
+    const {
+      id,
+      image,
+      category,
+      name,
+      price,
+      isChecked,
+      handleItemCheck,
+      deleteCartItem,
+    } = this.props;
     return (
       <li className="cartItemContainer">
         <input
           className="itemCheckbox"
           type="checkbox"
           name="checkItem"
-          checked={this.state.isChecked}
-          onChange={this.toggleIsChecked}
+          checked={isChecked}
+          onChange={() => handleItemCheck(id)}
         />
         <label className="cartItem">
           <img className="itemImage" src={image} alt="food" />
