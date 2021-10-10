@@ -10,35 +10,40 @@ class ProductList extends React.Component {
     productList: [],
   };
 
+  // API 연동 안될때
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.listId !== prevProps.listId) {
+  //     fetch(`data/productData${this.props.listId}.json`, {
+  //       method: 'GET',
+  //     })
+  //       .then(res => res.json())
+  //       .then(data => {
+  //         console.log(data);
+  //         this.setState({ productList: data });
+  //       });
+  //   }
+  // }
+
+  // API 연동 될 때
   componentDidUpdate(prevProps) {
     if (this.props.listId !== prevProps.listId) {
-      if (localStorage.getItem('token') === null) {
-        fetch(
-          `https://f960-211-106-114-186.ngrok.io/product/menu/${this.props.listId}/navbar`,
-          {
-            method: 'GET',
-          }
-        )
-          .then(res => res.json())
-          .then(data => {
-            this.setState({ productList: data.result });
-          });
-      } else {
-        fetch(
-          `https://f960-211-106-114-186.ngrok.io/product/menu/${this.props.listId}/navbar`,
-          {
-            method: 'GET',
+      const TOKEN = localStorage.getItem('token');
+
+      fetch(
+        `https://f960-211-106-114-186.ngrok.io/product/menu/${this.props.listId}/navbar`,
+        {
+          method: 'GET',
+          ...(TOKEN && {
             headers: {
-              'Content-type': 'application/json',
-              Authorization: localStorage.getItem('token'),
+              Authorization: TOKEN,
             },
-          }
-        )
-          .then(res => res.json())
-          .then(data => {
-            this.setState({ productList: data.result });
-          });
-      }
+          }),
+        }
+      )
+        .then(res => res.json())
+        .then(data => {
+          this.setState({ productList: data.result });
+        });
     }
   }
 
@@ -63,32 +68,31 @@ class ProductList extends React.Component {
 
         <div className="productListContent">
           {/* mock data로 map 돌려서 구현 예정 */}
-          {this.state.productList &&
-            this.state.productList.map(product => {
-              const {
-                id,
-                mainImage,
-                category,
-                name,
-                cookingTime,
-                serving,
-                like,
-                this_user_like,
-              } = product;
-              return (
-                <ProductPreview
-                  key={id}
-                  productId={id}
-                  mainImage={mainImage}
-                  category={category}
-                  name={name}
-                  cookingTime={cookingTime}
-                  serving={serving}
-                  like={like}
-                  userLike={this_user_like}
-                />
-              );
-            })}
+          {this.state?.productList.map(product => {
+            const {
+              id,
+              mainImage,
+              category,
+              name,
+              cookingTime,
+              serving,
+              like,
+              this_user_like,
+            } = product;
+            return (
+              <ProductPreview
+                key={id}
+                productId={id}
+                mainImage={mainImage}
+                category={category}
+                name={name}
+                cookingTime={cookingTime}
+                serving={serving}
+                like={like}
+                userLike={this_user_like}
+              />
+            );
+          })}
         </div>
       </div>
     );
