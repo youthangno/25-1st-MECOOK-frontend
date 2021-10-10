@@ -4,7 +4,7 @@ import EmptyCart from './EmptyCart/EmptyCart';
 import './Cart.scss';
 
 // detail page에서 this.props.productId로 받을 부분
-//const productID = 21;
+//const productList = [];
 
 const TOKEN = localStorage.getItem('token');
 
@@ -55,6 +55,20 @@ class Cart extends React.Component {
     );
 
     this.setState({ cartList: deletedCartList });
+
+    // 장바구니 삭제시 POST할 API
+    // if (TOKEN) {
+    //   fetch(`data/Cart/cartData.json`, {
+    //     method: 'POST',
+    //     headers: {
+    //       Authorization: TOKEN,
+    //     },
+    //     body: JSON.stringify({
+    //       user: '',
+    //       product: '',
+    //     }),
+    //   });
+    // }
   };
 
   render() {
@@ -111,7 +125,9 @@ class Cart extends React.Component {
             {totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
           </p>
         </div>
-        <button className="btnOrder">BUY NOW</button>
+        <button className="btnOrder" onClick={this.orderProduct}>
+          BUY NOW
+        </button>
       </div>
     );
   }

@@ -21,7 +21,6 @@ class MyInfoBox extends React.Component {
             this.state.isBoxVisible ? 'showBox' : 'hideBox'
           }`}
         >
-          <button onClick={this.plus}>plus</button>
           <MyInfo />
           <Cart />
           {/* <Cart productList={this.state.productList} /> */}
