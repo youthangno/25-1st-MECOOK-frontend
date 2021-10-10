@@ -15,6 +15,7 @@
     cursor: pointer;
     -webkit-appearance: button;
   }
+
   h1 {
     position: relative;
     top: 50px;
@@ -22,6 +23,7 @@
     font-size: 44px;
     font-weight: 1700;
   }
+
   .infoContainer {
     position: relative;
     top: 100px;
@@ -42,6 +44,7 @@
       border-left: none;
     }
   }
+
   .numContainer {
     position: relative;
     top: 100px;
@@ -73,11 +76,13 @@
     top: 128px;
     left: -160px;
   }
+
   .searchBox {
     position: relative;
     top: 120px;
     left: 230px;
   }
+
   .loginBtn {
     position: relative;
     top: 170px;

@@ -74,7 +74,7 @@ class Login extends React.Component {
         </label>
 
         <button
-          className={`loginBtn ${this.state.isActive ? 'Active' : 'Disabled'}`}
+          className={`loginBtn ${this.state.isActive ? 'active' : 'disabled'}`}
           onClick={this.goTOMain}
         >
           LOGIN

@@ -1,6 +1,6 @@
 import React from 'react';
 import './Signup.scss';
-//import './variable.scss';
+
 class Signup extends React.Component {
   constructor() {
     super();
@@ -29,7 +29,7 @@ class Signup extends React.Component {
     this.props.history.push('/');*/
   };
 
-  handleInput = event => {
+  handleIdPwInput = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
@@ -75,7 +75,7 @@ class Signup extends React.Component {
           />
         </div>
         <div className="emailBox">
-          <inputgit
+          <input
             className="emailInfo"
             placeholder="이메일"
             onChange={this.handleInput}
