@@ -33,7 +33,7 @@ class Login extends React.Component {
   render() {
     return (
       <div className="outBox">
-        <button class="close">X</button>
+        <button class="close"></button>
         <h1>LOGIN</h1>
         <div class="infoContainer">
           <input
@@ -60,15 +60,16 @@ class Login extends React.Component {
           <span class="slash">/</span>
           <a href=" # "> 비밀번호 찾기</a>
         </span>
-        <span className="saveBtn">아이디 저장</span>
-
+        <input type="checkbox" id="saveBtn" />
+        <label for="saveBtn" className>
+          아이디 저장
+        </label>
         <button
           className={`loginBtn ${this.state.isActive ? 'Active' : 'Disabled'}`}
           onClick={this.goTOMain}
         >
           LOGIN
         </button>
-
         <button class="signInBtn"> SIGN IN </button>
       </div>
     );

@@ -1,6 +1,5 @@
 import React from 'react';
 import './Signup.scss';
-//import './variable.scss';
 class Signup extends React.Component {
   constructor() {
     super();
@@ -10,7 +9,6 @@ class Signup extends React.Component {
       password: '',
       email: '',
       pwCheck: '',
-      usableId: false,
     };
   }
 
@@ -36,57 +34,54 @@ class Signup extends React.Component {
   render() {
     return (
       <div className="outContainer">
-        <button class="closeBtn">X</button>
-        <h1>SIGNIN</h1>
-        <div className="nameBox">
-          <input
-            className="nameInfo"
-            placeholder="이름"
-            onChange={this.handleInput}
-            name="name"
-          />
-        </div>
-        <div className="idBox">
-          <input
-            className="idInfo"
-            placeholder="아이디"
-            onChange={this.handleInput}
-            name="id"
-          />
-        </div>
+        <button class="closeBtn"></button>
+        <h1>SIGNUP</h1>
+
+        <input
+          className="nameInfo"
+          placeholder="Enter name"
+          onChange={this.handleInput}
+          name="name"
+        />
+
+        <input
+          className="idInfo"
+          placeholder="Enter user-id"
+          onChange={this.handleInput}
+          name="id"
+        />
+
         <button className="sameCheck" onclick={this.checkId}>
           중복확인
         </button>
-        <div className="numBox">
-          <input
-            className="secretNum"
-            type="password"
-            placeholder="비밀번호"
-            onChange={this.handleInput}
-            name="pw"
-          />
-        </div>
-        <div className="checkPw">
-          <input
-            className="checkNumber"
-            type="password"
-            placeholder="비밀번호 확인"
-            name="pwcheck"
-          />
-        </div>
-        <div className="emailBox">
-          <inputgit
-            className="emailInfo"
-            placeholder="이메일"
-            onChange={this.handleInput}
-            name="email"
-          />
-        </div>
+
+        <input
+          className="secretNum"
+          type="password"
+          placeholder="Enter password"
+          onChange={this.handleInput}
+          name="pw"
+        />
+
+        <input
+          className="checkNumber"
+          type="password"
+          placeholder="Confirm password"
+          name="pwcheck"
+        />
+
+        <input
+          className="emailInfo"
+          placeholder="Enter e-mail"
+          onChange={this.handleInput}
+          name="email"
+        />
+
         <input type="checkbox" className="agreeCheck" />
-        <p>회원약관에 동의하시면 체크해주세요.</p>
+        <p>약관을 모두 읽었으며 동의합니다.</p>
 
         <button className="join" onClick={this.goToMain}>
-          가입하기
+          등록
         </button>
       </div>
     );
