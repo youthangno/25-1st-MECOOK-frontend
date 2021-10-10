@@ -9,16 +9,20 @@
 
   .reviewTop {
     width: 100%;
+
     .reviewTitle {
       font-size: 30px;
+
       span {
         font-size: 15px;
       }
     }
+
     .textArea {
       display: flex;
       width: 100%;
-      border: 2px solid green;
+      padding-bottom: 30px;
+
       .textInputBox {
         display: flex;
         flex-direction: column;
@@ -27,10 +31,12 @@
         width: 100%;
         margin-right: 15px;
         border: 2px solid black;
+
         .textInput {
           width: 100%;
           height: 70px;
           margin-right: 15px;
+          padding: 10px;
           border: transparent;
           resize: none;
         }
@@ -40,10 +46,11 @@
           font-size: 10px;
         }
       }
+
       .textInputBtn {
         width: 90px;
         height: 90px;
-        color: gray;
+        color: white;
         background-color: black;
         cursor: pointer;
 
@@ -64,7 +71,7 @@
           display: flex;
           align-items: center;
           width: 80%;
-          font-weight: 300;
+          font-weight: 400;
         }
 
         .deleteReview {
@@ -91,9 +98,12 @@
           margin: auto;
 
           #userId {
+            padding-bottom: 5px;
           }
           #userDate {
-            font-weight: 300;
+            padding-top: 5px;
+            font-weight: 200;
+            color: gray;
           }
         }
       }

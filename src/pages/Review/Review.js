@@ -7,11 +7,6 @@ class Review extends Component {
   constructor() {
     super();
     this.state = {
-      // content: '',
-      // userName: '4.21ee',
-      // userDate: '2021/10/07',
-      // replList: [],
-      // id: this.cnt,
       review: '',
       product: '상품 id',
       replList: [],
@@ -160,13 +155,13 @@ class Review extends Component {
         <div className="reviewTop">
           <label className="reviewTitle">
             REVIEW
-            <span>(0)</span>
+            <span>({replList ? replList.length : 0})</span>
           </label>
           <div className="textArea">
             <div className="textInputBox">
               <textarea
                 className="textInput"
-                placeholder="통신예절에 어긋나는 글이나 상업적인 글. 타 사이트에 관련된 글은 관리자에 의해 사전 통보없이 삭제될 수 있습니다"
+                placeholder="통신예절에 어긋나는 글이나 상업적인 글, 타 사이트에 관련된 글은 관리자에 의해 사전 통보없이 삭제될 수 있습니다"
                 onChange={this.addRepl}
                 onKeyPress={this.enterBtn}
                 value={review}
