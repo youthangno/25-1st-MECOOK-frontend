@@ -5,32 +5,73 @@ class Signup extends React.Component {
     super();
     this.state = {
       name: '',
-      user_id: '',
+      account: '',
       password: '',
-      email: '',
       pwCheck: '',
+      email: '',
+      usableId: false,
     };
   }
 
-  goToMain = () => {
-    /*fetch('http://10.58.2.115:8000/user/signup', {
-      method: 'POST',
-      body: JSON.stringify({
-        account: this.state.id,
-        password: this.state.pw,
-        name: this.state.name,
-        email: this.state.email,
-      }),
-    })
-      .then(response => response.json())
-      .then(result => console.log('결과: ', result));
-    this.props.history.push('/');*/
+  idCheck = e => {
+    e.preventDefault();
+    const { usableId } = this.state;
+    fetch('http://10.58.2.115:8000/user/signup/check', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ account: this.state.account }),
+    }).then(response => {
+      if (response.status === 200) {
+        alert('사용 가능한 아이디 입니다.');
+        this.setState({ account: true });
+      } else if (response.status === 409) {
+        alert('이미 사용중인 아이디 입니다.');
+      } else {
+        alert('사용 불가한 아이디입니다');
+      }
+    });
+  };
+
+  clickSignup = e => {
+    e.preventDefault();
+    const { name, account, password, pwCheck, email, usableId } = this.state;
+    if (usableId === false) {
+      alert('아이디 중복확인을 해주세요');
+    } else if (!name || !account || !password || !pwCheck || !email) {
+      alert('필수 항목을 작성해주세요');
+    } else {
+      fetch('http://10.58.2.115:8000/user/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: this.state.name,
+          account: this.state.account,
+          password: this.state.password,
+          pwCheck: this.state.pwCheck,
+          email: this.state.email,
+        }),
+      }).then(res => {
+        if (res.status === 400) {
+          alert('다시 한 번 확인해주세요!');
+        } else {
+          alert('가입 완료 !');
+        }
+        this.props.history.push('/');
+      });
+    }
   };
 
   handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  inputId = e => {
+    this.setState({ user_id: e.targer.value });
+  };
   render() {
     return (
       <div className="outContainer">
@@ -51,7 +92,7 @@ class Signup extends React.Component {
           name="id"
         />
 
-        <button className="sameCheck" onclick={this.checkId}>
+        <button className="sameCheck" onChange={this.inputId}>
           중복확인
         </button>
         <span className="pwMenu">비밀번호</span>
@@ -80,7 +121,7 @@ class Signup extends React.Component {
         <input type="checkbox" className="agreeCheck" />
         <p>약관을 모두 읽었으며 동의합니다.</p>
 
-        <button className="join" onClick={this.goToMain}>
+        <button className="join" onClick={this.clickSignup}>
           등록
         </button>
       </div>
