@@ -12,8 +12,8 @@ class AddCartBtn extends React.Component {
             'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24',
         },
         body: JSON.stringify({
-          product: '8',
-          quantity: 1,
+          product: '11',
+          quantity: 3,
         }),
       })
         .then(res => res.json())
