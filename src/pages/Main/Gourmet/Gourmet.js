@@ -29,21 +29,6 @@ class Gourmet extends Component {
           <span>Recommend</span>
         </div>
 
-        {/* <div className="gourmetList">
-          <div className="gList1">
-            <p>맛집콜라보</p>
-            <img alt="matzip" src="/images/Main/matzip.jpg" />
-          </div>
-          <div className="gList2">
-            <p>만두 연구소</p>
-            <img alt="mandoo" src="/images/Main/dumpling.jpg" />
-          </div>
-          <div className="gList3">
-            <p>미쿡반점</p>
-            <img alt="joongsik" src="/images/Main/chinese.jpg" />
-          </div>
-        </div> */}
-
         <div className="imageSlide">
           <div className="slideBox">
             <div
