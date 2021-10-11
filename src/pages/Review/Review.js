@@ -7,6 +7,7 @@ class Review extends Component {
   constructor() {
     super();
     this.state = {
+      count: 0,
       review: '',
       product: '상품 id',
       replList: [],
@@ -26,7 +27,7 @@ class Review extends Component {
     const { review } = this.state;
     if (e.key === 'Enter' && review.trim()) {
       this.addComment();
-      e.target.value = '';
+      e.target.value = null;
     } else if (e.key === 'Enter' && !review.trim()) {
       alert('리뷰를 입력해주세요.');
       e.target.value = '';
@@ -83,16 +84,27 @@ class Review extends Component {
       }),
     })
       .then(res => res.json())
-      .then(
+      // .then(data =>
+      //   this.setState({
+      //     replList: data.result.sort((a, b) => b.review_id - a.review_id),
+      //   })
+      // );
+
+      .then(() => {
         fetch('https://f960-211-106-114-186.ngrok.io/review/list/1')
           .then(res => res.json())
           .then(data => {
             this.setState({
-              replList: data.result,
+              replList: data.result
+                .slice(
+                  data.result.length - 3 * (this.state.count + 1),
+                  data.result.length
+                )
+                .sort((a, b) => b.review_id - a.review_id),
             });
           })
-          .catch(err => console.log('feeds', err))
-      );
+          .catch(err => console.log('feeds', err));
+      });
   };
 
   clearInput = () => {
@@ -101,13 +113,17 @@ class Review extends Component {
     });
   };
 
-  componentDidMount() {
-    const token =
-      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s';
+  addReplCnt = () => {
+    if (this.state.count * 3 < this.state.replList.length) {
+      this.setState({
+        count: this.state.count + 1,
+      });
+      if (this.state.replList.length - 3 * (this.state.count + 1) < 0) {
+        return;
+      }
+    }
 
-    // 'https://f960-211-106-114-186.ngrok.io/review/list/1'
-
-    fetch('./data/reviewData.json', {
+    fetch('https://f960-211-106-114-186.ngrok.io/review/list/1', {
       method: 'GET',
       // headers: {
       //   'Content-type': 'application/json',
@@ -117,7 +133,38 @@ class Review extends Component {
       .then(res => res.json())
       .then(data => {
         this.setState({
-          replList: data.result,
+          replList: data.result
+            .slice(
+              data.result.length - 3 * (this.state.count + 1),
+              data.result.length
+            )
+            .sort((a, b) => b.review_id - a.review_id),
+        });
+      });
+  };
+
+  componentDidMount() {
+    // const token =
+    //   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s';
+
+    // 'https://f960-211-106-114-186.ngrok.io/review/list/1'
+
+    fetch('https://f960-211-106-114-186.ngrok.io/review/list/1', {
+      method: 'GET',
+      // headers: {
+      //   'Content-type': 'application/json',
+      //   Authorization: token,
+      // },
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          replList: data.result
+            .slice(
+              data.result.length - 3 * (this.state.count + 1),
+              data.result.length
+            )
+            .sort((a, b) => b.review_id - a.review_id),
         });
       });
   }
@@ -182,19 +229,28 @@ class Review extends Component {
             </li> */}
             {replList &&
               replList.map(repl => {
-                const { user, review, userDate, id } = repl;
+                const { user, review, userDate, review_id, product } = repl;
                 return (
                   <Repl
-                    key={id}
+                    key={review_id}
+                    review_id={review_id}
                     user={user}
                     review={review}
                     userDate={userDate}
+                    product={product}
                   />
                 );
               })}
           </ul>
         </div>
-        <ReviewBtn replList={replList} />
+        {/* <ReviewBtn replList={replList} /> */}
+        <div className="viewMore">
+          <button className="viewMoreBtn" onClick={this.addReplCnt}>
+            &nbsp;&nbsp;VIEW MORE&#8314;&nbsp;&nbsp;
+          </button>
+          <span>1</span>
+          <span>/10</span>
+        </div>
       </section>
     );
   }

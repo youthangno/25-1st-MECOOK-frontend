@@ -2,55 +2,68 @@ import React, { Component } from 'react';
 import './Repl.scss';
 
 class Repl extends Component {
+  state = {
+    test: '1',
+  };
   deleteR = () => {
     const token =
       'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s';
+    const { review_id } = this.props;
 
-    fetch('https://f960-211-106-114-186.ngrok.io/review/comment/2', {
+    fetch(`https://f960-211-106-114-186.ngrok.io/review/comment/${review_id}`, {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json',
         Authorization: token,
       },
     })
-      .then(res => res.json())
-      .then(
+      // .then(res => res.json())
+      .then(data => {
+        this.setState({
+          test: '2',
+        });
+      })
+      .then(() => {
         fetch('https://f960-211-106-114-186.ngrok.io/review/list/1')
-          .then(res => res.json())
+          .then(res => {
+            console.log(res);
+            res.json();
+          })
           .then(data => {
+            console.log(data);
             this.setState({
-              replList: data.result,
+              replList: data.result.sort((a, b) => b.review_id - a.review_id),
             });
           })
-          .catch(err => console.log('feeds', err))
-      );
+          .catch(err => console.log('feeds', err));
+      });
   };
 
   // 통신할때만
 
-  // componentDidMount() {
-  //   const token =
-  //     'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s';
+  componentDidMount() {
+    const token =
+      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s';
 
-  //   fetch('https://f960-211-106-114-186.ngrok.io/review/list/1', {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-type': 'application/json',
-  //       Authorization: token,
-  //     },
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       this.setState({
-  //         replList: data.result,
-  //       });
-  //     });
-  // }
+    fetch('https://f960-211-106-114-186.ngrok.io/review/list/1', {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: token,
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          replList: data.result.sort((a, b) => b.review_id - a.review_id),
+        });
+      });
+  }
 
   render() {
-    const { review_id, user, review, userDate } = this.props;
+    const { review_id, user, product, review, userDate } = this.props;
     return (
-      <li>
+      <li key={review_id}>
         <div className="reviewContent">{review}</div>
         <div className="deleteReview">
           <button className="deleteBtn" onClick={this.deleteR}>
