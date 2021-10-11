@@ -14,7 +14,7 @@ class Footer extends React.Component {
             <div className="botIntroduce">
               <div className="botIntroduceMenu">
                 <Link to="/n" className="footerBtn">
-                  피코크소개
+                  미쿠크소개
                 </Link>
                 <Link to="/n" className="footerBtn">
                   이용약관
@@ -36,7 +36,7 @@ class Footer extends React.Component {
               <p>
                 <span>(주)MECOOK</span>
                 <span>대표자:미쿡인</span>
-                <span>서울특별시 강남구 테헤란로 123</span>
+                <span>서울특별시 강남구 테헤란로 427</span>
                 <span>사업자등록번호:123-45-67890</span>
               </p>
               <p>
