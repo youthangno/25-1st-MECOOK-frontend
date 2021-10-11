@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import './Repl.scss';
 
 class Repl extends Component {
-  state = {
-    test: '1',
-  };
   deleteR = () => {
     const token =
       'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s';
@@ -17,12 +14,7 @@ class Repl extends Component {
         Authorization: token,
       },
     })
-      // .then(res => res.json())
-      .then(data => {
-        this.setState({
-          test: '2',
-        });
-      })
+      .then(res => res.json())
       .then(() => {
         fetch('https://f960-211-106-114-186.ngrok.io/review/list/1')
           .then(res => {
