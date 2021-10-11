@@ -10,51 +10,6 @@ class LikeBtn extends React.Component {
     };
   }
 
-  componentDidMount() {
-    fetch(
-      'https://f960-211-106-114-186.ngrok.io/product/menu/category/1/detail',
-      {
-        method: 'GET',
-      }
-    )
-      .then(res => res.json())
-      .then(likeData => {
-        this.setState({
-          likeCount: likeData.result[0].likes,
-        });
-      });
-  }
-
-  //   handleLikeBtn = () => {
-  //     this.setState(likeButton => ({
-  //       isToggleOn: !likeButton.isToggleOn,
-  //     }));
-
-  //     if (!this.state.isToggleOn) {
-  //       const TOKEN = localStorage.getItem('token');
-
-  //       fetch(
-  //         'https://f960-211-106-114-186.ngrok.io/product/menu/category/1/detail',
-  //         {
-  //           method: 'POST',
-  //           ...(TOKEN && {
-  //             headers: {
-  //               Authorization: TOKEN,
-  //             },
-  //           }),
-  //         }
-  //       )
-  //         .then(res => res.json())
-  //         .then(() => {
-  //           fetch(
-  //             'https://f960-211-106-114-186.ngrok.io/product/menu/category/1/detail',
-  //             {
-
-  //             }
-  //           )
-  //         }
-  //   };
-
   handleLikeBtn = () => {
     this.setState({
       isToggleOn: !this.state.isToggleOn,
@@ -65,6 +20,10 @@ class LikeBtn extends React.Component {
   };
 
   render() {
+    // localStorage.setItem(
+    //   'token',
+    //   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24'
+    // );
     const { likeCount, isToggleOn } = this.state;
     return (
       <button className="likeBtn" onClick={this.handleLikeBtn}>
@@ -75,5 +34,4 @@ class LikeBtn extends React.Component {
   }
 }
 
-// onMouseOver
 export default LikeBtn;

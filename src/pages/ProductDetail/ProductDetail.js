@@ -8,14 +8,17 @@ import DetailImageBottom from './DetailImageBottom/DetailImageBottom';
 import TagBottom from './TagBottom/TagBottom';
 import NutritionTable from './NutritionTable(영양성분)/NutritionTable';
 import './ProductDetail.scss';
+
 class ProductDetail extends React.Component {
-  state = {
-    productData: [],
-  };
+  constructor() {
+    super();
+    this.state = {
+      productData: [],
+    };
+  }
 
   componentDidMount() {
     const TOKEN = localStorage.getItem('token');
-
     fetch(
       'https://f960-211-106-114-186.ngrok.io/product/menu/category/1/detail',
       {
@@ -36,13 +39,11 @@ class ProductDetail extends React.Component {
   }
 
   render() {
-    console.log('state==>', this.state.productData);
     localStorage.setItem(
       'token',
       'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s'
     );
 
-    // console.log(this.state.productData);
     const { result, detail } = this.state.productData;
 
     return (
@@ -57,7 +58,6 @@ class ProductDetail extends React.Component {
           {/* <NutritionTable dataList={this.state.productData.detail} /> */}
           <TagBottom resultDataList={result} />
         </div>
-        )
       </>
     );
   }

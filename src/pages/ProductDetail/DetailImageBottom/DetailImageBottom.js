@@ -4,7 +4,6 @@ import './DetailImageBottom.scss';
 class DetailImageBottom extends React.Component {
   render() {
     const dataList = this.props.dataList;
-    // console.log(dataList);
 
     return (
       <div className="detailImageBottom">
