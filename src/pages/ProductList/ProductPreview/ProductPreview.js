@@ -3,28 +3,45 @@ import './ProductPreview.scss';
 
 class ProductPreview extends React.Component {
   state = {
-    isLiked: false,
+    isLiked: 0,
+    likeCount: 0,
   };
 
-  toggleBtnLike = () => {
-    this.setState({ isLiked: !this.state.isLiked });
+  componentDidMount() {
+    this.setState({
+      isLiked: this.props.userLike === 1 ? 1 : 0,
+      likeCount: this.props.like,
+    });
+  }
 
-    // btnLike click 시 유저의 해당 상품 좋아요 정보 POST
-    if (localStorage.getItem('token')) {
-      fetch(`api주소`, {
+  toggleBtnLike = () => {
+    if (this.state.isLiked === 1) {
+      this.setState({ likeCount: this.state.likeCount - 1 });
+    } else {
+      this.setState({ likeCount: this.state.likeCount + 1 });
+    }
+
+    const TOKEN = localStorage.getItem('token');
+
+    if (TOKEN) {
+      // 좋아요 눌렀을 때 / 취소했을 때 POST로 API 통신
+      this.setState({ isLiked: !this.state.isLiked });
+
+      fetch('http://192.168.0.11:8000/like/user', {
         method: 'POST',
         headers: {
-          Authorization: localStorage.getItem('token'),
+          Authorization:
+            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24',
         },
-        body: {
-          userId: this.props.productId,
-          productId: '',
-        },
+        body: JSON.stringify({
+          user: '1',
+          product: this.props.productId,
+        }),
       })
         .then(res => res.json())
         .then(data => console.log(data));
     } else {
-      alert('로그인을 해주세요');
+      alert('로그인한 사용자만 이용할 수 있는 서비스입니다.');
     }
   };
 
@@ -42,10 +59,10 @@ class ProductPreview extends React.Component {
           <i className="far fa-user"></i>
           <span>{serving}</span>
           <i
-            className={`btnLike fa-heart ${userLike ? 'fas' : 'far'}`}
+            className={`btnLike fa-heart ${this.state.isLiked ? 'fas' : 'far'}`}
             onClick={this.toggleBtnLike}
           ></i>
-          <span>{like}</span>
+          <span>{this.state.likeCount}</span>
         </div>
       </div>
     );
