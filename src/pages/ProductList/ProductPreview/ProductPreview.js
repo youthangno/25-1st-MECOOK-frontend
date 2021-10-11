@@ -14,8 +14,7 @@ class ProductPreview extends React.Component {
       fetch(`api주소`, {
         method: 'POST',
         headers: {
-          'Content-type': 'application/json',
-          Authorization: localStorage.getItem('userToken'),
+          Authorization: localStorage.getItem('token'),
         },
         body: {
           userId: this.props.productId,
