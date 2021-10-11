@@ -25,7 +25,7 @@ class Signup extends React.Component {
     }).then(response => {
       if (response.status === 200) {
         alert('사용 가능한 아이디 입니다.');
-        this.setState({ account: true });
+        this.setState({ usableId: true });
       } else if (response.status === 409) {
         alert('이미 사용중인 아이디 입니다.');
       } else {
