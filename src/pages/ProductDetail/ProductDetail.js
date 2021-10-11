@@ -36,12 +36,13 @@ class ProductDetail extends React.Component {
   }
 
   render() {
+    console.log('state==>', this.state.productData);
     localStorage.setItem(
       'token',
       'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s'
     );
 
-    console.log(this.state.productData);
+    // console.log(this.state.productData);
     const { result, detail } = this.state.productData;
 
     return (
@@ -54,8 +55,9 @@ class ProductDetail extends React.Component {
           <DetailImageRight dataList={detail} />
           <DetailImageBottom dataList={detail} />
           {/* <NutritionTable dataList={this.state.productData.detail} /> */}
-          <TagBottom dataList={result} />
+          <TagBottom resultDataList={result} />
         </div>
+        )
       </>
     );
   }

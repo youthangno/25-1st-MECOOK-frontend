@@ -4,7 +4,7 @@ import './DetailImageTop.scss';
 class DetailImageTop extends React.Component {
   render() {
     const dataList = this.props.dataList;
-    console.log(dataList);
+    // console.log(dataList);
 
     return (
       <div className="detailImageTop">
