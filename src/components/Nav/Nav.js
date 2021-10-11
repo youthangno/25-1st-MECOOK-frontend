@@ -7,11 +7,48 @@ class Nav extends Component {
     super();
     this.state = {
       scrollTop: 0,
+      isLogin: false,
+      // navList: [
+      //   {
+      //     title: 'DINING',
+      //     path: '/',
+      //   },
+      //   {
+      //     title: 'CAFE',
+      //     path: '/',
+      //   },
+      //   {
+      //     title: 'CUPBOARD',
+      //     path: '/',
+      //   },
+      //   {
+      //     title: 'GOURMET',
+      //     path: '/',
+      //   },
+      //   {
+      //     title: 'LIFE',
+      //     path: '/',
+      //   },
+      //   {
+      //     title: 'ARCHIVE',
+      //     path: '/',
+      //   },
+      // ],
     };
   }
 
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll);
+
+    if (!localStorage.getItem('userToken')) {
+      this.setState({
+        isLogin: false,
+      });
+    } else {
+      this.setState({
+        isLogin: true,
+      });
+    }
   };
 
   componentWillUnMount = () => {
@@ -25,8 +62,18 @@ class Nav extends Component {
     });
   };
 
+  handleLog = () => {
+    if (localStorage.getItem('userToken') && this.state.isLogin) {
+      this.setState({
+        isLogin: false,
+      });
+      localStorage.removeItem('userToken');
+    }
+  };
+
   render() {
     const { scrollTop } = this.state;
+    console.log(this.state);
     return (
       <>
         <nav
@@ -39,8 +86,16 @@ class Nav extends Component {
             </Link>
             MECOOK
           </div>
-          <div className="logo">MECOOK</div>
+          <div className="logo">
+            <Link to="/">MECOOK</Link>
+          </div>
           <div className="menu">
+            {/* {this.state.navList.map((p, i) => (
+              <Link to={p.path} key={i} className="menuBtn">
+                {p.title}
+              </Link>
+            ))} */}
+
             <Link to="/n" className="menuBtn">
               DINING
             </Link>
@@ -61,7 +116,9 @@ class Nav extends Component {
             </Link>
           </div>
           <div className="login">
-            <button>L O G I N</button>
+            <button className="loginBtn" onClick={this.handleLog}>
+              {this.state.isLogin ? 'L O G O U T' : 'L O G I N'}
+            </button>
             <Link to="/n">
               <i className="fas fa-search"></i>
             </Link>

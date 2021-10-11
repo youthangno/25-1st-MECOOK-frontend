@@ -1,0 +1,75 @@
+.review {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid black;
+
+  .reviewTop {
+    width: 100%;
+    .reviewTitle {
+      font-size: 30px;
+      span {
+        font-size: 15px;
+      }
+    }
+    .textArea {
+      display: flex;
+      width: 100%;
+      border: 2px solid green;
+      .textInputBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 90px;
+        width: 100%;
+        margin-right: 15px;
+        border: 2px solid black;
+        .textInput {
+          width: 100%;
+          height: 70px;
+          margin-right: 15px;
+          border: transparent;
+          resize: none;
+        }
+        .textInputLimit {
+          text-align: right;
+          padding: 10px;
+          font-size: 10px;
+        }
+      }
+      .textInputBtn {
+        width: 90px;
+        height: 90px;
+        color: gray;
+        background-color: black;
+      }
+    }
+
+    .reviewList {
+      li {
+        display: flex;
+        height: 70px;
+        width: 100%;
+        border-bottom: 1px solid black;
+        .reviewContent {
+          display: flex;
+          align-items: center;
+          width: 80%;
+          font-weight: 300;
+        }
+        .reviewInfo {
+          width: 20%;
+          margin: auto;
+          #userId {
+          }
+          #userDate {
+            font-weight: 300;
+          }
+        }
+      }
+    }
+  }
+}

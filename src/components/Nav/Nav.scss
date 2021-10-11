@@ -13,7 +13,8 @@
   align-items: center;
   padding: 0 20px;
   font-weight: 700;
-  background-color: transparent;
+  // background-color: transparent;
+  background-color: black;
 
   @media only screen and (min-width: 850px) {
     .threeLine {
@@ -50,7 +51,11 @@
 
     .logo {
       font-size: 20px;
-      color: white;
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
     }
   }
 
@@ -86,6 +91,7 @@
       font-size: 13px;
       font-weight: 800;
       background-color: transparent;
+      cursor: pointer;
     }
 
     a {
@@ -145,7 +151,11 @@
 
     .logo {
       font-size: 20px;
-      color: black;
+
+      a {
+        text-decoration: none;
+        color: black;
+      }
     }
   }
 
@@ -179,6 +189,7 @@
       font-size: 13px;
       font-weight: 800;
       background-color: transparent;
+      cursor: pointer;
     }
 
     a {
