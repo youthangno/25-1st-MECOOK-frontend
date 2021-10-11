@@ -2,9 +2,6 @@ import React from 'react';
 import ProductPreview from './ProductPreview/ProductPreview';
 import './ProductList.scss';
 
-const userToken =
-  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24';
-
 class ProductList extends React.Component {
   state = {
     productList: [],
@@ -15,7 +12,7 @@ class ProductList extends React.Component {
     const TOKEN = localStorage.getItem('token');
     if (this.props.listId !== prevProps.listId) {
       fetch(
-        `http://192.168.0.11:8000/product/menu/${this.props.listId}/navbar`,
+        `https://f960-211-106-114-186.ngrok.io/product/menu/${this.props.listId}/navbar`,
         {
           method: 'GET',
           ...(TOKEN && { headers: { Authorization: TOKEN } }),
@@ -29,7 +26,10 @@ class ProductList extends React.Component {
   }
 
   render() {
-    localStorage.setItem('token', userToken);
+    // localStorage.setItem(
+    //   'token',
+    //   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s'
+    // );
     const { isVisible, handleCloseProductList } = this.props;
     return (
       <div

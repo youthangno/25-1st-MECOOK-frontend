@@ -9,45 +9,26 @@ class ProductPreview extends React.Component {
 
   componentDidMount() {
     this.setState({
-      isLiked: this.props.userLike === 1 ? 1 : 0,
+      isLiked: this.props.userLike === 1 ? true : false,
       likeCount: this.props.like,
     });
   }
 
   toggleBtnLike = () => {
-    if (this.state.isLiked === 1) {
-      this.setState({ likeCount: this.state.likeCount - 1 });
+    if (localStorage.getItem('token')) {
+      this.setState({
+        isLiked: !this.state.isLiked,
+        likeCount: this.state.isLiked
+          ? this.state.likeCount - 1
+          : this.state.likeCount + 1,
+      });
     } else {
-      this.setState({ likeCount: this.state.likeCount + 1 });
-    }
-
-    const TOKEN = localStorage.getItem('token');
-
-    if (TOKEN) {
-      // 좋아요 눌렀을 때 / 취소했을 때 POST로 API 통신
-      this.setState({ isLiked: !this.state.isLiked });
-
-      fetch('http://192.168.0.11:8000/like/user', {
-        method: 'POST',
-        headers: {
-          Authorization:
-            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24',
-        },
-        body: JSON.stringify({
-          user: '1',
-          product: this.props.productId,
-        }),
-      })
-        .then(res => res.json())
-        .then(data => console.log(data));
-    } else {
-      alert('로그인한 사용자만 이용할 수 있는 서비스입니다.');
+      alert('로그인 해주십시오');
     }
   };
 
   render() {
-    const { mainImage, category, name, cookingTime, serving, like, userLike } =
-      this.props;
+    const { mainImage, category, name, cookingTime, serving } = this.props;
     return (
       <div className="productPreviewContainer">
         <img className="productPreviewImage" src={mainImage} alt="food" />
