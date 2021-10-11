@@ -7,19 +7,31 @@ class Login extends React.Component {
     this.state = { id: '', pw: '', isActive: false };
   }
 
-  goTOMain = () => {
-    this.props.history.push('/');
+  clickLogin = () => {
     fetch('http://10.58.2.115:8000/user/login', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+
       body: JSON.stringify({
         account: this.state.id,
         password: this.state.pw,
       }),
     })
       .then(response => response.json())
-      .then(result => {
-        console.log(result);
-        localStorage.setItem('token', result.TOKEN);
+      .then(response => {
+        if (response.TOKEN) {
+          console.log('로그인 성공');
+          localStorage.setItem('token', response.TOKEN);
+          this.props.history.push('/');
+        } else {
+          alert('아이디 또는 비밀번호가 다릅니다.');
+        }
+      })
+      .catch(err => {
+        alert('로그인 실패');
+        console.error(err);
       });
   };
 
@@ -75,7 +87,7 @@ class Login extends React.Component {
 
         <button
           className={`loginBtn ${this.state.isActive ? 'active' : 'disabled'}`}
-          onClick={this.goTOMain}
+          onClick={this.clickLogin}
         >
           LOGIN
         </button>
