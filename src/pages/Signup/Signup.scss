@@ -35,73 +35,135 @@
 
   h1 {
     position: relative;
-    top: 30px;
+    top: 20px;
     left: 50px;
     font-size: 44px;
     font-weight: 1700;
   }
 
-  .nameInfo {
+  .nameNotice {
     position: relative;
-    top: 56px;
-    width: 150px;
-    height: 30px;
-    font-size: 20px;
+    left: 40px;
+    top: 40px;
+    font-weight: bold;
   }
 
-  .sameCheck {
+  .nameInfo {
     position: relative;
-    top: -10px;
-    left: 345px;
-    border: 2px solid;
+    top: 70px;
+    left: 10px;
+    width: 320px;
+    height: 40px;
+    font-size: 20px;
+    background-color: #f3f5f7;
+    border-color: #eaebed;
+    border-radius: 5px;
+  }
+
+  .idGuide {
+    position: relative;
+    top: 120px;
+    left: -320px;
+    font-weight: bold;
   }
 
   .idInfo {
     position: relative;
-    top: 36px;
-    width: 301px;
-    height: 54px;
+    top: 110px;
+    left: 47px;
+    width: 320px;
+    height: 40px;
     font-size: 20px;
+    background-color: #f3f5f7;
+    border-color: #eaebed;
+    border-radius: 5px;
+  }
+
+  .sameCheck {
+    position: relative;
+    top: 110px;
+    left: 70px;
+    width: 70px;
+    height: 40px;
+    border: 2px solid rgb(192, 190, 190);
+    background-color: #f0f1f1;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+
+  .pwMenu {
+    position: relative;
+    top: 170px;
+    left: -350px;
+    font-weight: bold;
   }
 
   .secretNum {
     position: relative;
-    top: 36px;
-    width: 200px;
-    height: 54px;
+    top: 168px;
+    left: 40px;
+    width: 320px;
+    height: 40px;
     font-size: 20px;
+    background-color: #f3f5f7;
+    border-color: #eaebed;
+    border-radius: 5px;
+  }
+
+  .checkPwMenu {
+    position: relative;
+    top: 220px;
+    left: -280px;
+    font-weight: bold;
   }
 
   .checkNumber {
     position: relative;
-    top: 36px;
-    width: 301px;
-    height: 54px;
+    top: 210px;
+    left: 40px;
+    width: 320px;
+    height: 40px;
     font-size: 20px;
+    background-color: #f3f5f7;
+    border-color: #eaebed;
+    border-radius: 5px;
+  }
+
+  .emailMenu {
+    position: relative;
+    top: 270px;
+    left: -280px;
+    font-weight: bold;
   }
 
   .emailInfo {
     position: relative;
-    top: 36px;
-    width: 301px;
-    height: 54px;
+    top: 260px;
+    left: 40px;
+    width: 320px;
+    height: 40px;
     font-size: 20px;
+    background-color: #f3f5f7;
+    border-color: #eaebed;
+    border-radius: 5px;
   }
 
   .agreeCheck {
     position: relative;
-    top: 325px;
-    right: 260px;
+    top: 350px;
+    right: 270px;
   }
 
   p {
     position: relative;
-    top: 290px;
+    top: 320px;
     left: 70px;
+    font-weight: bold;
   }
+
   .join {
     position: relative;
-    top: 250px;
+    top: 290px;
     left: 330px;
     width: 100px;
     height: 50px;

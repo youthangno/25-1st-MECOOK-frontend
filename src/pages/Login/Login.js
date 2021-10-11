@@ -21,7 +21,7 @@ class Login extends React.Component {
       .then(result => console.log('결과: ', result));*/
   };
 
-  handleIdInput = event => {
+  handleIdPwInput = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
   changeButton = () => {
@@ -33,12 +33,12 @@ class Login extends React.Component {
   render() {
     return (
       <div className="outBox">
-        <button class="close"></button>
+        <button className="close"></button>
         <h1>LOGIN</h1>
-        <div class="infoContainer">
+        <div className="infoContainer">
           <input
             Class="myInfo"
-            onchage={this.handleIdInput}
+            onchage={this.handleIdPwInput}
             onKeyUp={this.changeButton}
             type="text"
             placeholder="아이디"
@@ -55,22 +55,20 @@ class Login extends React.Component {
             name="pw"
           ></input>
         </div>
-        <span class="searchBox">
+        <span className="searchBox">
           <a href=" # ">아이디 찾기</a>
-          <span class="slash">/</span>
+          <span className="slash">/</span>
           <a href=" # "> 비밀번호 찾기</a>
         </span>
         <input type="checkbox" id="saveBtn" />
-        <label for="saveBtn" className>
-          아이디 저장
-        </label>
+        <label for="saveBtn">아이디 저장</label>
         <button
-          className={`loginBtn ${this.state.isActive ? 'Active' : 'Disabled'}`}
+          className={`loginBtn ${this.state.isActive ? 'active' : 'disabled'}`}
           onClick={this.goTOMain}
         >
           LOGIN
         </button>
-        <button class="signInBtn"> SIGN IN </button>
+        <button className="signInBtn"> SIGN IN </button>
       </div>
     );
   }
