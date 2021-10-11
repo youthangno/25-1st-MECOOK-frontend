@@ -12,6 +12,7 @@
 
     h1 {
       font-size: 25px;
+
       &::before {
         display: block;
         position: absolute;
@@ -28,6 +29,7 @@
     float: right;
     width: 466px;
     padding: 30px;
+
     li {
       display: inline-block;
       font-size: 18px;

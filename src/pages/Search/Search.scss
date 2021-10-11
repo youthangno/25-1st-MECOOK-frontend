@@ -1,19 +1,21 @@
 .searchArea {
-  width: 960px;
-  height: 80vh;
   display: flex;
+  max-width: 960px;
+  height: 120vh;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+
   .searchBox {
     margin: 0 auto 40px auto;
 
     form {
-      border-bottom: 2px solid #1f695b;
       position: relative;
+      border-bottom: 2px solid #1f695b;
     }
+
     .searchInput {
-      width: 670px;
+      width: 500px;
       padding: 20px;
       border: none;
       font-size: 32px;
@@ -22,39 +24,46 @@
         outline: none;
       }
     }
+
     .fa-ban {
       position: absolute;
-      font-size: 22px;
       right: 55px;
       bottom: 27px;
       color: gray;
+      font-size: 22px;
     }
+
     .fa-search {
       position: absolute;
-      font-size: 30px;
-      color: #1f695b;
       right: 10px;
       bottom: 23px;
+      color: #1f695b;
+      font-size: 30px;
     }
+
     span {
       display: inline-block;
-      font-size: 24px;
       margin-left: 20px;
       margin-top: 30px;
-      // vertical-align: top;
-    }
-    .hashTag {
-      display: inline-block;
       vertical-align: top;
-      margin-left: 30px;
+      font-size: 22px;
+    }
+  }
 
-      li {
-        display: inline-block;
-        width: 30%;
-        margin-bottom: 20px;
-        margin-top: 30px;
-        font-size: 16px;
-      }
+  ul {
+    display: inline-block;
+    width: 300px;
+    margin-top: 30px;
+    margin-left: 90px;
+    padding: 0;
+    list-style: none;
+    font-size: 17px;
+
+    li {
+      display: inline-block;
+      width: 50%;
+      margin-bottom: 25px;
+      vertical-align: top;
     }
   }
 }

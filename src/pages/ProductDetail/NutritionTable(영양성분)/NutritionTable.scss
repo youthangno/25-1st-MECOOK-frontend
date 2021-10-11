@@ -4,6 +4,7 @@
   background: #f8f8f8;
   font-size: 20px;
   animation: nutritionTableFadeIn 2s ease-in-out;
+
   @keyframes nutritionTableFadeIn {
     from {
       opacity: 0;
@@ -12,6 +13,7 @@
       opacity: 1;
     }
   }
+
   .nutritionTableHead {
     display: flex;
     justify-content: space-around;
@@ -19,6 +21,7 @@
     border-top: 1px solid black;
     border-bottom: 1px solid black;
   }
+
   .nutritionTableinfo {
     padding: 20px;
 

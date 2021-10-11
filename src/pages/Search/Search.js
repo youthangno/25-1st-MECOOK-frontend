@@ -16,15 +16,15 @@ class Search extends Component {
               </button>
             </form>
             <span>당신의 맛있는 하루를 위한</span>
-            <ul className="hashTag">
-              <li># 샐러드</li>
+            <ul>
+              {/* <li># 샐러드</li>
               <li># 만두연구소</li>
               <li># 집밥</li>
               <li># 맛집</li>
               <li># 간식</li>
               <li># 보양식</li>
               <li># 홈파티</li>
-              <li># 곤드레</li>
+              <li># 곤드레</li> */}
             </ul>
           </div>
         </div>
