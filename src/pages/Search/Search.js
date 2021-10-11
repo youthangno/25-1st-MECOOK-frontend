@@ -24,9 +24,6 @@ class Search extends Component {
   }
   render() {
     const hashtagList = this.state.hashtagList;
-    hashtagList.map(list => {
-      return list;
-    });
 
     return (
       <>
@@ -43,15 +40,14 @@ class Search extends Component {
             </form>
             <span>당신의 맛있는 하루를 위한</span>
             <ul>
-              {<li><Link to=''>{hashtagList && {`#${hashtagList}`}}<Link/></li>}
-              {/* <li># 샐러드</li>
-              <li># 만두연구소</li>
-              <li># 집밥</li>
-              <li># 맛집</li>
-              <li># 간식</li>
-              <li># 보양식</li>
-              <li># 홈파티</li>
-              <li># 곤드레</li> */}
+              {hashtagList &&
+                hashtagList.map((tag, i) => {
+                  return (
+                    <li>
+                      <Link to="#">{`#${tag}`}</Link>
+                    </li>
+                  );
+                })}
             </ul>
           </div>
         </div>
