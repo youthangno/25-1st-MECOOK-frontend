@@ -10,11 +10,21 @@ class Search extends Component {
     };
   }
 
-  //   handleDelete = () => {
-  //     this.setState({
-  //       inputData:
-  //     })
-  //   };
+  handleSubmit = e => {
+    e.preventDefault();
+  };
+
+  handleInput = e => {
+    this.setState({
+      inputData: e.target.value,
+    });
+  };
+
+  handleReset = () => {
+    this.setState({
+      inputData: '',
+    });
+  };
 
   // // handleDelete 클릭하면 inputData값을 지워죠
 
@@ -23,13 +33,19 @@ class Search extends Component {
       <>
         <div className="searchArea">
           <div className="searchBox">
-            <form>
-              <input type="text" className="searchInput" placeholder="SEARCH" />
+            <form onSubmit={this.handleSubmit}>
+              <input
+                type="text"
+                className="searchInput"
+                placeholder="SEARCH"
+                onChange={this.handleInput}
+                value={this.state.inputData}
+              />
               <button>
-                <i className="fas fa-ban"></i>
+                <i className="fas fa-ban" onClick={this.handleReset}></i>
               </button>
               <button>
-                <i className="fas fa-search"></i>
+                <i className="fas fa-search" onClick={'#'}></i>
               </button>
             </form>
             <HashTag />
