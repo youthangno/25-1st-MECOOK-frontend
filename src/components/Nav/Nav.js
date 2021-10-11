@@ -8,32 +8,6 @@ class Nav extends Component {
     this.state = {
       scrollTop: 0,
       isLogin: false,
-      // navList: [
-      //   {
-      //     title: 'DINING',
-      //     path: '/',
-      //   },
-      //   {
-      //     title: 'CAFE',
-      //     path: '/',
-      //   },
-      //   {
-      //     title: 'CUPBOARD',
-      //     path: '/',
-      //   },
-      //   {
-      //     title: 'GOURMET',
-      //     path: '/',
-      //   },
-      //   {
-      //     title: 'LIFE',
-      //     path: '/',
-      //   },
-      //   {
-      //     title: 'ARCHIVE',
-      //     path: '/',
-      //   },
-      // ],
     };
   }
 
@@ -67,13 +41,25 @@ class Nav extends Component {
       this.setState({
         isLogin: false,
       });
+      alert('로그아웃 되었습니다.');
       localStorage.removeItem('userToken');
+    }
+  };
+
+  test = () => {
+    if (!localStorage.getItem('userToken')) {
+      localStorage.setItem('userToken', 'asd');
+      this.setState({
+        isLogin: true,
+      });
+      alert('로그인 되었습니다.');
     }
   };
 
   render() {
     const { scrollTop } = this.state;
     console.log(this.state);
+    console.log(localStorage);
     return (
       <>
         <nav
@@ -124,6 +110,9 @@ class Nav extends Component {
             </Link>
           </div>
         </nav>
+        <button className="test1" onClick={this.test}>
+          TOKEN IN
+        </button>
       </>
     );
   }
