@@ -18,14 +18,18 @@ class Cart extends React.Component {
   // 로그인한 유저의 장바구니 list GET
   componentDidMount() {
     if (TOKEN) {
-      fetch(`data/Cart/cartData.json`, {
+      fetch('http://192.168.0.11:8000/cart', {
         method: 'GET',
         headers: {
           Authorization: TOKEN,
         },
       })
         .then(res => res.json())
-        .then(data => this.setState({ cartList: data }));
+        .then(data => {
+          this.setState({ cartList: data.cart_info });
+        });
+    } else {
+      alert('로그인한 사용자만 이용할 수 있는 서비스입니다.');
     }
   }
 
@@ -33,16 +37,7 @@ class Cart extends React.Component {
   componentDidUpdate(prevProps) {
     // productDetail 페이지에서 상품 추가 버튼 눌렀을 때, 이 컴포넌트로 갱신된 productList를 props로 보내줌
     if (prevProps.productList !== this.props.productList) {
-      if (TOKEN) {
-        fetch(`data/Cart/cartData.json`, {
-          method: 'GET',
-          headers: {
-            Authorization: TOKEN,
-          },
-        })
-          .then(res => res.json())
-          .then(data => this.setState({ cartList: data }));
-      }
+      this.setState({ cartList: this.props.cartList });
     }
   }
 
@@ -100,14 +95,13 @@ class Cart extends React.Component {
 
     // 장바구니 삭제시 POST할 API
     // if (TOKEN) {
-    //   fetch(`data/Cart/cartData.json`, {
+    //   fetch(`http://192.168.0.11:8000/`, {
     //     method: 'POST',
     //     headers: {
     //       Authorization: TOKEN,
     //     },
     //     body: JSON.stringify({
-    //       user: '',
-    //       product: '',
+    //       id: itemId,
     //     }),
     //   });
     // }
@@ -119,15 +113,15 @@ class Cart extends React.Component {
       alert('주문이 완료되었습니다!');
 
       // 포인트 차감하고, 남은 포인트 서버에 보내는 API
-      // fetch('api', {
-      //   method: 'POST',
-      //   headers: {
-      //     Authorization: localStorage.getItem('token'),
-      //   },
-      //   body: JSON.stringify({
-      //     point: restPoint,
-      //   }),
-      // });
+      fetch('api', {
+        method: 'POST',
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        },
+        body: JSON.stringify({
+          point: restPoint,
+        }),
+      });
     } else {
       alert('로그인 해주세요.');
     }
@@ -141,14 +135,14 @@ class Cart extends React.Component {
           <ul className="cartList">
             {this.state.cartList
               ? this.state.cartList.map(cartItem => {
-                  const { id, image, category, name, price } = cartItem;
+                  const { id, image, category, product_name, price } = cartItem;
                   return (
                     <CartItem
                       key={id}
                       id={id}
                       image={image}
                       category={category}
-                      name={name}
+                      name={product_name}
                       price={price}
                       isChecked={this.state.checkedItemList.includes(id)}
                       handleItemCheck={this.handleItemCheck}

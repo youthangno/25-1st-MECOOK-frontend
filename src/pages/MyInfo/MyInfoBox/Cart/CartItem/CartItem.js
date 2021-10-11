@@ -29,7 +29,9 @@ class CartItem extends React.Component {
             <h4 className="itemName">{name}</h4>
             <h3 className="itemPrice">
               <i className="fas fa-won-sign"></i>
-              {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+              {price
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                .slice(0, price.length - 3)}
             </h3>
           </div>
           <i
