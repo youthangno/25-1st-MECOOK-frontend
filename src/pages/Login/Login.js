@@ -1,10 +1,10 @@
 import React from 'react';
 import './Login.scss';
-//import './variable.scss';
+
 class Login extends React.Component {
   constructor() {
     super();
-    this.state = { id: '', pw: '', isActive: false };
+    this.state = { id: '', pw: '', isActive: false, isModalOpen: false };
   }
 
   clickLogin = () => {
