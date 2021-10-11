@@ -10,15 +10,27 @@ import NutritionTable from './NutritionTable(영양성분)/NutritionTable';
 import './ProductDetail.scss';
 class ProductDetail extends React.Component {
   state = {
-    productData: [{ albumId: '', id: '', title: ' ', image: '', info: '' }],
+    productData: [],
   };
 
   componentDidMount() {
-    fetch('http://localhost:3000/data/data.json')
+    const TOKEN = localStorage.getItem('token');
+
+    fetch(
+      'https://f960-211-106-114-186.ngrok.io/product/menu/category/1/detail',
+      {
+        method: 'GET',
+        ...(TOKEN && {
+          headers: {
+            Authorization: TOKEN,
+          },
+        }),
+      }
+    )
       .then(res => res.json())
       .then(data => {
         this.setState({
-          productData: data.result,
+          productData: data,
         });
       });
   }
@@ -26,21 +38,23 @@ class ProductDetail extends React.Component {
   render() {
     localStorage.setItem(
       'token',
-      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24'
+      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s'
     );
 
-    const dataList = this.state.productData[0];
+    console.log(this.state.productData);
+    const { result, detail } = this.state.productData;
+
     return (
       <>
         <div className="productDetail">
-          <ProductExplan dataList={dataList} />
-          <ProductInfo dataList={dataList} />
-          <DetailImageTop dataList={dataList} />
-          <DetailImageLeft dataList={dataList} />
-          <DetailImageRight dataList={dataList} />
-          <DetailImageBottom dataList={dataList} />
-          <NutritionTable dataList={dataList} />
-          <TagBottom dataList={dataList} />
+          <ProductExplan productData={detail} />
+          <ProductInfo dataList={detail} />
+          <DetailImageTop dataList={detail} />
+          <DetailImageLeft dataList={detail} />
+          <DetailImageRight dataList={detail} />
+          <DetailImageBottom dataList={detail} />
+          {/* <NutritionTable dataList={this.state.productData.detail} /> */}
+          <TagBottom dataList={result} />
         </div>
       </>
     );

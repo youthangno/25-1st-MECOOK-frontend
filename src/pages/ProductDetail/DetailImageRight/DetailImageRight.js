@@ -3,14 +3,14 @@ import './DetailImageRight.scss';
 
 class DetailImageRight extends React.Component {
   render() {
-    const { image } = this.props.dataList;
+    const dataList = this.props.dataList;
 
     return (
       <div className="detailImageRight">
         <figure>
           {/* 이미지 데이터 값 */}
 
-          <img alt="케이크" src={image} />
+          <img alt="케이크" src={dataList && dataList[1].image_url} />
         </figure>
       </div>
     );
