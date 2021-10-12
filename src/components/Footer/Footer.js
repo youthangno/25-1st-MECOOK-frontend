@@ -12,13 +12,13 @@ class Footer extends React.Component {
         <div className="botDesc">
           <div className="botIntroduce">
             <div className="botIntroduceMenu">
-              <Link to="/n" className="footerBtn">
+              <Link to="/" className="footerBtn">
                 미쿠크소개
               </Link>
-              <Link to="/n" className="footerBtn">
+              <Link to="/" className="footerBtn">
                 이용약관
               </Link>
-              <Link to="/n" className="footerBtn">
+              <Link to="/" className="footerBtn">
                 개인정보처리방침
               </Link>
             </div>
