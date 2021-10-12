@@ -5,7 +5,7 @@ class AddCartBtn extends React.Component {
   clickCartBtn = () => {
     const TOKEN = localStorage.getItem('token');
     if (TOKEN) {
-      fetch('http://192.168.0.11:8000/cart', {
+      fetch('http://10.58.2.208:8000/cart', {
         method: 'POST',
         headers: {
           Authorization:

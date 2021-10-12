@@ -19,7 +19,24 @@ class LikeBtn extends React.Component {
     });
   };
 
+  componentDidMount() {
+    fetch(
+      'https://f960-211-106-114-186.ngrok.io/product/menu/category/1/detail',
+      {
+        method: 'GET',
+      }
+    )
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          likeCount: data.result[0].likes,
+        });
+      });
+  }
+
   render() {
+    console.log(this.state.likeCount);
+
     // localStorage.setItem(
     //   'token',
     //   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24'

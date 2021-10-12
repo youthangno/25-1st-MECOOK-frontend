@@ -6,9 +6,7 @@ class ProductInfo extends React.Component {
     const dataList = this.props.dataList;
     return (
       <div className="productInfoBox">
-        <h1>
-          {this.props.productData ? this.props.productData[1].text : null}
-        </h1>
+        <h1>{dataList ? dataList[1].text : null}</h1>
         <Btn />
       </div>
     );
