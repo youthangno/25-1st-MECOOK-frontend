@@ -10,6 +10,7 @@ class Signup extends React.Component {
       pwCheck: '',
       email: '',
       usableId: false,
+      checked: false,
     };
   }
 
@@ -18,9 +19,6 @@ class Signup extends React.Component {
     const { usableId } = this.state;
     fetch('http://10.58.2.115:8000/user/signup/check', {
       method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       body: JSON.stringify({ account: this.state.account }),
     }).then(response => {
       if (response.status === 200) {
@@ -44,9 +42,6 @@ class Signup extends React.Component {
     } else {
       fetch('http://10.58.2.115:8000/user/signup', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
         body: JSON.stringify({
           name: this.state.name,
           account: this.state.account,
@@ -69,25 +64,22 @@ class Signup extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  inputId = e => {
-    this.setState({ user_id: e.targer.value });
-  };
   render() {
     return (
       <div className="outContainer">
-        <button class="closeBtn"></button>
+        <button className="closeBtn"></button>
         <h1>SIGNUP</h1>
-        <span className="nameNotice"> 이름 </span>
+
         <input
           className="nameInfo"
-          placeholder="Enter name"
+          placeholder="이름"
           onChange={this.handleInput}
           name="name"
         />
-        <span className="idGuide">아이디</span>
+
         <input
           className="idInfo"
-          placeholder="Enter user-id"
+          placeholder="아이디"
           onChange={this.handleInput}
           name="id"
         />
@@ -95,30 +87,38 @@ class Signup extends React.Component {
         <button className="sameCheck" onChange={this.inputId}>
           중복확인
         </button>
-        <span className="pwMenu">비밀번호</span>
+
         <input
           className="secretNum"
           type="password"
-          placeholder="Enter password"
+          placeholder="비밀번호"
           onChange={this.handleInput}
           name="pw"
         />
-        <span className="checkPwMenu">비밀번호 확인</span>
+
         <input
           className="checkNumber"
           type="password"
-          placeholder="Confirm password"
+          placeholder="비밀번호 확인"
           name="pwcheck"
         />
-        <span className="emailMenu">이메일</span>
+
         <input
           className="emailInfo"
-          placeholder="Enter e-mail"
+          placeholder="이메일"
           onChange={this.handleInput}
           name="email"
         />
+        <label> 개인정보 이용 수집 </label>
+        <div className="privacyInfo">
+          개인정보 수집 및 이용 목적: 서비스 제공 및 서비스 사용에 따른 <br />
+          본인확인,가입연력 확인, 중복가입 및 부정이용 방지
+          <br />
+          항목:성명,이메일,가입확인정보
+          <br /> -보유 및 이용기간:회원탈퇴 후 5일까지
+        </div>
 
-        <input type="checkbox" className="agreeCheck" />
+        <input type="checkbox" className="agreeCheck" checked={false} />
         <p>약관을 모두 읽었으며 동의합니다.</p>
 
         <button className="join" onClick={this.clickSignup}>
