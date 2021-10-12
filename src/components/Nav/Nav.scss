@@ -3,7 +3,7 @@
   font-family: mecook;
 }
 
-.original_header {
+.original {
   position: fixed;
   width: 100%;
   font-family: mecook;
@@ -13,8 +13,7 @@
   align-items: center;
   padding: 0 20px;
   font-weight: 700;
-  // background-color: transparent;
-  background-color: black;
+  background-color: transparent;
 
   @media only screen and (min-width: 850px) {
     .threeLine {
@@ -104,104 +103,6 @@
   }
 }
 
-.change_header {
-  position: fixed;
-  width: 100%;
-  font-family: mecook;
-  display: flex;
-  height: 64px;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
-  font-weight: 700;
-  background-color: white;
-
-  @media only screen and (min-width: 850px) {
-    .threeLine {
-      display: none;
-    }
-
-    .menuBtn {
-      margin-right: 30px;
-      font-weight: 700;
-      font-size: 18px;
-      letter-spacing: 3px;
-      text-decoration: none;
-      display: inline-block;
-      text-transform: uppercase;
-      color: black;
-
-      &:hover {
-        color: #168c76;
-      }
-
-      &::after {
-        display: block;
-        content: '';
-        border-bottom: solid 2px #168c76;
-        transform: scaleX(0);
-        transition: transform 250ms ease-in-out;
-      }
-
-      &:hover::after {
-        transform: scaleX(1);
-      }
-    }
-
-    .logo {
-      font-size: 20px;
-
-      a {
-        text-decoration: none;
-        color: black;
-      }
-    }
-  }
-
-  @media only screen and (max-width: 849px) {
-    .threeLine {
-      font-size: 20px;
-
-      i {
-        padding-right: 10px;
-        color: black;
-      }
-    }
-
-    .logo,
-    .menu {
-      display: none;
-    }
-  }
-  .login {
-    display: flex;
-    align-items: center;
-
-    button {
-      font-family: mecook;
-      width: 80px;
-      height: 35px;
-      border-radius: 20px;
-      border-color: black;
-      border-style: solid;
-      color: black;
-      font-size: 13px;
-      font-weight: 800;
-      background-color: transparent;
-      cursor: pointer;
-    }
-
-    a {
-      margin-left: 20px;
-      margin-right: 30px;
-      font-size: 25px;
-      text-decoration: none;
-      color: black;
-    }
-  }
-}
-
 .test1 {
   color: blue;
   position: absolute;
@@ -210,4 +111,50 @@
   height: 100px;
   border: 3px solid black;
   cursor: pointer;
+}
+
+.change {
+  background-color: white;
+
+  @media only screen and (min-width: 850px) {
+    .menuBtn {
+      color: black;
+
+      &:hover {
+        color: #168c76;
+      }
+
+      &::after {
+        border-bottom: solid 2px #168c76;
+      }
+    }
+
+    .logo {
+      a {
+        color: black;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 849px) {
+    .threeLine {
+      font-size: 20px;
+      color: black;
+
+      i {
+        color: black;
+      }
+    }
+  }
+
+  .login {
+    button {
+      border-color: black;
+      color: black;
+    }
+
+    a {
+      color: black;
+    }
+  }
 }

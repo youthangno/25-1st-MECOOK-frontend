@@ -63,7 +63,7 @@ class Nav extends Component {
     return (
       <>
         <nav
-          className={!scrollTop ? 'original_header' : 'change_header'}
+          className={!scrollTop ? 'original' : 'original change'}
           onScroll={this.handleScroll}
         >
           <div className="threeLine">
