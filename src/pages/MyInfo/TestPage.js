@@ -8,6 +8,7 @@ class MyInfo extends React.Component {
       'token',
       'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24'
     );
+
     return (
       <div className="testPage">
         <h1>My Info Test Page</h1>

@@ -15,7 +15,7 @@ class MyInfoBox extends React.Component {
 
   componentDidMount() {
     if (TOKEN) {
-      fetch('http://192.168.0.11:8000/user/login', {
+      fetch('http://10.58.2.208:8000/user/login', {
         method: 'POST',
         headers: {
           Authorization: TOKEN,

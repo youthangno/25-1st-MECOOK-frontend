@@ -18,7 +18,7 @@ class Cart extends React.Component {
   // 로그인한 유저의 장바구니 list GET
   componentDidMount() {
     if (TOKEN) {
-      fetch('http://192.168.0.11:8000/cart', {
+      fetch('http://10.58.2.208:8000/cart', {
         method: 'GET',
         headers: {
           Authorization: TOKEN,
