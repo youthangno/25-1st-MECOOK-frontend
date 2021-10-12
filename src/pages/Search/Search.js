@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import HashTag from './HashTag/HashTag';
 import './Search.scss';
 class Search extends Component {
