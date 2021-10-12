@@ -11,6 +11,17 @@ class Nav extends Component {
     };
   }
 
+  handleScroll = e => {
+    const scrollTop = ('scroll', e.srcElement.scrollingElement.scrollTop);
+    this.setState({
+      scrollTop,
+    });
+  };
+
+  componentWillUnMount = () => {
+    window.removeEventListener('scroll', this.handleScroll);
+  };
+
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll);
 
@@ -23,17 +34,6 @@ class Nav extends Component {
         isLogin: true,
       });
     }
-  };
-
-  componentWillUnMount = () => {
-    window.removeEventListener('scroll', this.handleScroll);
-  };
-
-  handleScroll = e => {
-    const scrollTop = ('scroll', e.srcElement.scrollingElement.scrollTop);
-    this.setState({
-      scrollTop,
-    });
   };
 
   handleLog = () => {
@@ -76,12 +76,6 @@ class Nav extends Component {
             <Link to="/">MECOOK</Link>
           </div>
           <div className="menu">
-            {/* {this.state.navList.map((p, i) => (
-              <Link to={p.path} key={i} className="menuBtn">
-                {p.title}
-              </Link>
-            ))} */}
-
             <Link to="/n" className="menuBtn">
               DINING
             </Link>
