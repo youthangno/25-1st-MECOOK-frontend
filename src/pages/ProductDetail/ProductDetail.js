@@ -38,6 +38,7 @@ class ProductDetail extends React.Component {
   }
 
   render() {
+    console.log(this.productData);
     localStorage.setItem(
       'token',
       'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s'

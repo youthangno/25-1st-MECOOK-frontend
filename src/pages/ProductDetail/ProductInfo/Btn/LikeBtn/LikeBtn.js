@@ -6,7 +6,7 @@ class LikeBtn extends React.Component {
     super();
     this.state = {
       likeCount: '',
-      isToggleOn: false,
+      isToggleOn: true,
     };
   }
 
@@ -14,8 +14,8 @@ class LikeBtn extends React.Component {
     this.setState({
       isToggleOn: !this.state.isToggleOn,
       likeCount: this.state.isToggleOn
-        ? this.state.likeCount - 1
-        : this.state.likeCount + 1,
+        ? this.state.likeCount + 1
+        : this.state.likeCount - 1,
     });
   };
 
@@ -35,8 +35,6 @@ class LikeBtn extends React.Component {
   }
 
   render() {
-    console.log(this.state.likeCount);
-
     // localStorage.setItem(
     //   'token',
     //   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24'
@@ -44,7 +42,7 @@ class LikeBtn extends React.Component {
     const { likeCount, isToggleOn } = this.state;
     return (
       <button className="likeBtn" onClick={this.handleLikeBtn}>
-        <i className={`fas fa-heart ${isToggleOn ? 'colorIcon' : ''}`}></i>
+        <i className={`fas fa-heart ${isToggleOn ? '' : 'colorIcon'}`}></i>
         <span>{likeCount}</span>
       </button>
     );
