@@ -3,7 +3,8 @@ import './MyInfo.scss';
 
 class MyInfo extends React.Component {
   render() {
-    const { userName, point, grade } = this.props;
+    // const { userName, point, grade } = this.props;
+    const { userName, point } = this.props;
     return (
       <div className="myInfoContainer">
         <h1 className="myInfoTitle">My Info</h1>

@@ -37,7 +37,7 @@ class MyInfoBox extends React.Component {
   };
 
   render() {
-    const { userName, point, grade } = this.state.userInfo;
+    const { point, grade } = this.state.userInfo;
     return (
       <>
         <div
