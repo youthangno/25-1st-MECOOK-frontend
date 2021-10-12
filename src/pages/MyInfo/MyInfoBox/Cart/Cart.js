@@ -95,8 +95,8 @@ class Cart extends React.Component {
 
     // 장바구니 삭제시 POST할 API
     // if (TOKEN) {
-    //   fetch(`http://192.168.0.11:8000/`, {
-    //     method: 'POST',
+    //   fetch(`http://10.58.2.208:8000/${}`, {
+    //     method: 'DELETE',
     //     headers: {
     //       Authorization: TOKEN,
     //     },
@@ -111,17 +111,16 @@ class Cart extends React.Component {
     if (TOKEN) {
       const restPoint = this.props.point - this.state.totalPrice;
       alert(`${restPoint}원 차감되어 주문이 완료되었습니다!`);
-
       // 포인트 차감하고, 남은 포인트 서버에 보내는 API
-      fetch('api', {
-        method: 'POST',
-        headers: {
-          Authorization: localStorage.getItem('token'),
-        },
-        body: JSON.stringify({
-          point: restPoint,
-        }),
-      });
+      // fetch('api', {
+      //   method: 'POST',
+      //   headers: {
+      //     Authorization: localStorage.getItem('token'),
+      //   },
+      //   body: JSON.stringify({
+      //     point: restPoint,
+      //   }),
+      // });
     } else {
       alert('로그인 해주세요.');
     }
