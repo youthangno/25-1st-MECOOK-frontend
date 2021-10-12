@@ -28,9 +28,13 @@ class ProductPreview extends React.Component {
   };
 
   render() {
-    const { mainImage, category, name, cookingTime, serving } = this.props;
+    const { productId, mainImage, category, name, cookingTime, serving } =
+      this.props;
     return (
-      <div className="productPreviewContainer">
+      <div
+        className="productPreviewContainer"
+        onClick={() => this.props.goToDetail(productId)}
+      >
         <img className="productPreviewImage" src={mainImage} alt="food" />
         <h3 className="productType">{category}</h3>
         <p className="productName">{name}</p>

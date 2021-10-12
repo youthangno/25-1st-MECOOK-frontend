@@ -25,11 +25,12 @@ class ProductList extends React.Component {
     }
   }
 
+  goToDetail = productId => {
+    console.log(productId);
+    //this.props.history.push(`/product-detail/${productId}`);
+  };
+
   render() {
-    // localStorage.setItem(
-    //   'token',
-    //   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s'
-    // );
     const { isVisible, handleCloseProductList } = this.props;
     return (
       <div
@@ -49,31 +50,33 @@ class ProductList extends React.Component {
 
         <div className="productListContent">
           {/* mock data로 map 돌려서 구현 예정 */}
-          {this.state.productList.map(product => {
-            const {
-              id,
-              mainImage,
-              category,
-              name,
-              cookingTime,
-              serving,
-              like,
-              this_user_like,
-            } = product;
-            return (
-              <ProductPreview
-                key={id}
-                productId={id}
-                mainImage={mainImage}
-                category={category}
-                name={name}
-                cookingTime={cookingTime}
-                serving={serving}
-                like={like}
-                userLike={this_user_like}
-              />
-            );
-          })}
+          {this.state.productList &&
+            this.state.productList.map(product => {
+              const {
+                id,
+                mainImage,
+                category,
+                name,
+                cookingTime,
+                serving,
+                like,
+                this_user_like,
+              } = product;
+              return (
+                <ProductPreview
+                  key={id}
+                  productId={id}
+                  mainImage={mainImage}
+                  category={category}
+                  name={name}
+                  cookingTime={cookingTime}
+                  serving={serving}
+                  like={like}
+                  userLike={this_user_like}
+                  goToDetail={this.goToDetail}
+                />
+              );
+            })}
         </div>
       </div>
     );
