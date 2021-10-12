@@ -26,8 +26,6 @@ class Search extends Component {
     });
   };
 
-  // // handleDelete 클릭하면 inputData값을 지워죠
-
   render() {
     return (
       <>
