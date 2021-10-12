@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import './ReviewBtn.scss';
 
 class ReviewBtn extends Component {
+  state = {
+    limit: 100,
+    offset: 3,
+  };
   addRepl = () => {};
   render() {
+    console.log(this.props.location.search);
     return (
       <div className="viewMore">
         <button className="viewMoreBtn" onClick={this.addRepl}>

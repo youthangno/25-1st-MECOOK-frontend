@@ -11,6 +11,8 @@ class Review extends Component {
       review: '',
       product: '상품 id',
       replList: [],
+      limit: 100,
+      offset: 3,
     };
   }
 
@@ -72,7 +74,8 @@ class Review extends Component {
     const token =
       'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s';
 
-    fetch('https://f960-211-106-114-186.ngrok.io/review/comment', {
+    // fetch('https://f960-211-106-114-186.ngrok.io/review/comment', {
+    fetch('http://localhost:3000/data/reviewData.json', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -91,15 +94,16 @@ class Review extends Component {
       // );
 
       .then(() => {
-        fetch('https://f960-211-106-114-186.ngrok.io/review/list/1')
+        // fetch('https://f960-211-106-114-186.ngrok.io/review/list/1')
+        fetch('http://localhost:3000/data/reviewData.json')
           .then(res => res.json())
           .then(data => {
             this.setState({
               replList: data.result
-                .slice(
-                  data.result.length - 3 * (this.state.count + 1),
-                  data.result.length
-                )
+                // .slice(
+                //   data.result.length - 3 * (this.state.count + 1),
+                //   data.result.length
+                // )
                 .sort((a, b) => b.review_id - a.review_id),
             });
           })
@@ -123,7 +127,8 @@ class Review extends Component {
       }
     }
 
-    fetch('https://f960-211-106-114-186.ngrok.io/review/list/1', {
+    // fetch('https://f960-211-106-114-186.ngrok.io/review/list/1', {
+    fetch('http://localhost:3000/data/reviewData.json', {
       method: 'GET',
       // headers: {
       //   'Content-type': 'application/json',
@@ -134,10 +139,10 @@ class Review extends Component {
       .then(data => {
         this.setState({
           replList: data.result
-            .slice(
-              data.result.length - 3 * (this.state.count + 1),
-              data.result.length
-            )
+            // .slice(
+            //   data.result.length - 3 * (this.state.count + 1),
+            //   data.result.length
+            // )
             .sort((a, b) => b.review_id - a.review_id),
         });
       });
@@ -149,7 +154,8 @@ class Review extends Component {
 
     // 'https://f960-211-106-114-186.ngrok.io/review/list/1'
 
-    fetch('https://f960-211-106-114-186.ngrok.io/review/list/1', {
+    // fetch('https://f960-211-106-114-186.ngrok.io/review/list/1', {
+    fetch('http://localhost:3000/data/reviewData.json', {
       method: 'GET',
       // headers: {
       //   'Content-type': 'application/json',
@@ -160,10 +166,10 @@ class Review extends Component {
       .then(data => {
         this.setState({
           replList: data.result
-            .slice(
-              data.result.length - 3 * (this.state.count + 1),
-              data.result.length
-            )
+            // .slice(
+            //   data.result.length - 3 * (this.state.count + 1),
+            //   data.result.length
+            // )
             .sort((a, b) => b.review_id - a.review_id),
         });
       });
@@ -195,7 +201,7 @@ class Review extends Component {
   // }
 
   render() {
-    console.log(this.state);
+    console.log(this.props.location.search);
     const { review, replList } = this.state;
     return (
       <section className="review">

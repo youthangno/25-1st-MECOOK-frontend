@@ -6,8 +6,8 @@ class Repl extends Component {
     const token =
       'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s';
     const { review_id } = this.props;
-
-    fetch(`https://f960-211-106-114-186.ngrok.io/review/comment/${review_id}`, {
+    fetch('http://localhost:3000/data/reviewData.json', {
+      // fetch(`https://f960-211-106-114-186.ngrok.io/review/comment/${review_id}`, {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json',
@@ -16,7 +16,8 @@ class Repl extends Component {
     })
       .then(res => res.json())
       .then(() => {
-        fetch('https://f960-211-106-114-186.ngrok.io/review/list/1')
+        // fetch('https://f960-211-106-114-186.ngrok.io/review/list/1')
+        fetch('http://localhost:3000/data/reviewData.json')
           .then(res => {
             console.log(res);
             res.json();
@@ -37,7 +38,8 @@ class Repl extends Component {
     const token =
       'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s';
 
-    fetch('https://f960-211-106-114-186.ngrok.io/review/list/1', {
+    // fetch('https://f960-211-106-114-186.ngrok.io/review/list/1', {
+    fetch('http://localhost:3000/data/reviewData.json', {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
