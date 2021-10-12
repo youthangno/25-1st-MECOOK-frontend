@@ -41,19 +41,19 @@ class Nav extends Component {
           </div>
           <div className="logo">MECOOK</div>
           <div className="menu">
-            <Link to="/n" className="menuBtn">
+            <Link to="/" className="menuBtn">
               DINING
             </Link>
-            <Link to="/n" className="menuBtn">
+            <Link to="/" className="menuBtn">
               CAFE
             </Link>
-            <Link to="/n" className="menuBtn">
+            <Link to="/" className="menuBtn">
               CUPBOARD
             </Link>
-            <Link to="/n" className="menuBtn">
+            <Link to="/" className="menuBtn">
               GOURMET
             </Link>
-            <Link to="/n" className="menuBtn">
+            <Link to="/" className="menuBtn">
               LIFE&#8314;
             </Link>
             <Link to="/n" className="menuBtn">
