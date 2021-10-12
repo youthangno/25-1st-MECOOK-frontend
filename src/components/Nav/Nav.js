@@ -8,6 +8,7 @@ class Nav extends Component {
     this.state = {
       scrollTop: 0,
       isLogin: false,
+      category: ['DINING', 'CAFE', 'CUPBOARD'],
     };
   }
 
@@ -76,37 +77,30 @@ class Nav extends Component {
             <Link to="/">MECOOK</Link>
           </div>
           <div className="menu">
-            <Link to="/n" className="menuBtn">
-              DINING
+            {this.state.category.map(a => (
+              <Link
+                to={{ pathname: '/page', state: { category: a } }}
+                className="menuBtn"
+              >
+                {a}
+              </Link>
+            ))}
+            <Link to="/best" className="menuBtn">
+              BEST&#8314;
             </Link>
-            <Link to="/n" className="menuBtn">
-              CAFE
-            </Link>
-            <Link to="/n" className="menuBtn">
-              CUPBOARD
-            </Link>
-            <Link to="/n" className="menuBtn">
-              GOURMET
-            </Link>
-            <Link to="/n" className="menuBtn">
-              LIFE&#8314;
-            </Link>
-            <Link to="/n" className="menuBtn">
-              ARCHIVE
+            <Link to="/search" className="menuBtn">
+              SEARCH
             </Link>
           </div>
           <div className="login">
             <button className="loginBtn" onClick={this.handleLog}>
               {this.state.isLogin ? 'L O G O U T' : 'L O G I N'}
             </button>
-            <Link to="/n">
+            <Link to="/search">
               <i className="fas fa-search"></i>
             </Link>
           </div>
         </nav>
-        <button className="test1" onClick={this.test}>
-          TOKEN IN
-        </button>
       </>
     );
   }
