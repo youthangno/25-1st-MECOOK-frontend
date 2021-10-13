@@ -1,3 +1,5 @@
+@import '../../styles/variable.scss';
+
 @font-face {
   src: url('../../styles/fonts/DINCond-Medium\ Regular.otf');
   font-family: mecook;
@@ -11,9 +13,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  background-color: transparent;
+  background-color: $theme-color;
   font-family: mecook;
   font-weight: 700;
+  top: 0;
 
   @media only screen and (min-width: 850px) {
     .threeLine {

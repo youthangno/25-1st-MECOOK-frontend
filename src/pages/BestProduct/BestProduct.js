@@ -6,12 +6,22 @@ class BestProduct extends Component {
   constructor() {
     super();
     this.state = {
-      productList: [],
+      menuList: [],
     };
   }
 
   componentDidMount() {
-    fetch('https://f960-211-106-114-186.ngrok.io/product/main', {
+    // fetch('https://f960-211-106-114-186.ngrok.io/product/main', {
+    //   method: 'GET',
+    // })
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     this.setState({
+    //       menuList: data.result,
+    //     });
+    //   });
+
+    fetch('data/bestMenuData.json', {
       method: 'GET',
     })
       .then(res => res.json())
@@ -23,15 +33,12 @@ class BestProduct extends Component {
   }
 
   render() {
-    const { menuList } = this.state;
     return (
-      <div className="best">
-        <div className="bestHeader">
-          <span>MONTHLY BEST</span>
-        </div>
-        <ul className="bestList">
-          {menuList &&
-            menuList.map(menu => {
+      <div className="bestMenuContainer">
+        <h3 className="bestMenuTitle">MONTHLY BEST</h3>
+        <ul className="bestMenuList">
+          {this.state.menuList &&
+            this.state.menuList.map(menu => {
               const {
                 productId,
                 mainImage,

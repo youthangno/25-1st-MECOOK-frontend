@@ -80,7 +80,10 @@ class Nav extends Component {
           <div className="menu">
             {CATEGORY_LIST.map((categoryName, idx) => (
               <Link
-                to={{ pathname: '/page', state: { category: categoryName } }}
+                to={{
+                  pathname: '/product-category',
+                  state: { category: categoryName },
+                }}
                 className="menuBtn"
                 key={idx}
               >

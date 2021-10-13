@@ -1,11 +1,12 @@
 .myInfoBoxContainer {
-  background-color: white;
+  background-color: #f4f4f4;
   width: 500px;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   transition: right 0.5s ease-in-out;
   padding: 20px 30px;
+  z-index: 2;
 }
 
 .showBox {
