@@ -9,6 +9,7 @@ class CartItem extends React.Component {
       category,
       name,
       price,
+      quantity,
       isChecked,
       handleItemCheck,
       deleteCartItem,
@@ -34,6 +35,7 @@ class CartItem extends React.Component {
                 .slice(0, price.length - 3)}
             </h3>
           </div>
+          <h3 className="itemQuantity">수량: {quantity}개</h3>
           <i
             className="btnDeleteCartItem far fa-trash-alt"
             onClick={() => deleteCartItem(id)}

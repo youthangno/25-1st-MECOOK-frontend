@@ -15,8 +15,7 @@ class Cart extends React.Component {
     totalPrice: 0,
   };
 
-  // 로그인한 유저의 장바구니 list GET
-  componentDidMount() {
+  getCartList = () => {
     if (TOKEN) {
       fetch('http://10.58.2.208:8000/cart', {
         method: 'GET',
@@ -29,6 +28,11 @@ class Cart extends React.Component {
           this.setState({ cartList: data.cart_info });
         });
     }
+  };
+
+  // 로그인한 유저의 장바구니 list GET
+  componentDidMount() {
+    this.getCartList();
   }
 
   // 로그인한 유저가 장바구니에 추가했을 때 다시 list GET
@@ -46,7 +50,9 @@ class Cart extends React.Component {
       this.state.checkedItemList.includes(item.id)
     );
 
-    const orderPriceList = orderList.map(item => Number(item.price));
+    const orderPriceList = orderList.map(
+      item => Number(item.price) * item.quantity
+    );
     let totalPrice = 0;
     orderPriceList.map(item => (totalPrice += item));
 
@@ -104,7 +110,7 @@ class Cart extends React.Component {
       headers: {
         Authorization: TOKEN,
       },
-    }).then(data => console.log(data));
+    }).then(data => this.getCartList());
   };
 
   // 주문하기 버튼 클릭 시 포인트 차감
@@ -138,7 +144,8 @@ class Cart extends React.Component {
           <ul className="cartList">
             {this.state.cartList
               ? this.state.cartList.map(cartItem => {
-                  const { id, image, category, product_name, price } = cartItem;
+                  const { id, image, category, product_name, price, quantity } =
+                    cartItem;
                   return (
                     <CartItem
                       key={id}
@@ -147,6 +154,7 @@ class Cart extends React.Component {
                       category={category}
                       name={product_name}
                       price={price}
+                      quantity={quantity}
                       isChecked={this.state.checkedItemList.includes(id)}
                       handleItemCheck={this.handleItemCheck}
                       deleteCartItem={this.deleteCartItem}
