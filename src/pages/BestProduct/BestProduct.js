@@ -29,7 +29,7 @@ class BestProduct extends Component {
         <div className="bestHeader">
           <span>MONTHLY BEST</span>
         </div>
-        <ul className="BestList">
+        <ul className="bestList">
           {menuList &&
             menuList.map(m => {
               const {
