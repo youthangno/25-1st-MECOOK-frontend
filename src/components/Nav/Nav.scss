@@ -11,7 +11,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  background-color: transparent;
+  // background-color: transparent;
+  background-color: orange;
   font-family: mecook;
   font-weight: 700;
 
@@ -80,8 +81,7 @@
 
     button {
       font-family: mecook;
-      width: 90px;
-      height: 40px;
+      padding: 10px 25px;
       border-color: white;
       border-radius: 20px;
       border-style: solid;
@@ -93,8 +93,7 @@
     }
 
     a {
-      margin-left: 20px;
-      margin-right: 30px;
+      margin: 0 30px 0 20px;
       font-size: 28px;
       text-decoration: none;
       color: white;
