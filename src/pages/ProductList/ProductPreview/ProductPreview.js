@@ -53,7 +53,6 @@ class ProductPreview extends React.Component {
   };
 
   render() {
-    console.log(this.state.imageSrc);
     const {
       productId,
       mainImage,
