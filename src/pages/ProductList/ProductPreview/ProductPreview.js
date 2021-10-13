@@ -22,6 +22,16 @@ class ProductPreview extends React.Component {
           ? this.state.likeCount - 1
           : this.state.likeCount + 1,
       });
+
+      fetch('https://f960-211-106-114-186.ngrok.io/like/user', {
+        method: 'POST',
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        },
+        body: JSON.stringify({
+          product: this.props.productId,
+        }),
+      });
     } else {
       alert('로그인 해주십시오');
     }
