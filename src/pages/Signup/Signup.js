@@ -15,13 +15,12 @@ class Signup extends React.Component {
   }
 
   idCheck = e => {
-    e.preventDefault();
-    const { usableId, account } = this.state;
-    fetch('http://10.58.2.115:8000/user/signup/check', {
+    //e.preventDefault();
+    const { account } = this.state;
+    fetch('http://10.58.2.208:8000/user/signup', {
       method: 'POST',
       body: JSON.stringify({
         account: account,
-        usableId: usableId,
       }),
     }).then(response => {
       if (response.status === 200) {
@@ -36,18 +35,23 @@ class Signup extends React.Component {
   };
 
   clickSignup = e => {
-    e.preventDefault();
+    // e.preventDefault();
     const { name, account, password, pwCheck, email, usableId, isChecked } =
       this.state;
-    if (usableId === false) {
+
+    const ruleEmail = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
+    const rulePw = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}/;
+
+    if (usableId === true) {
       alert('아이디 중복확인을 해주세요');
-    } else if (isChecked === false) {
-      !name ||
-        !account ||
-        !password ||
-        !pwCheck ||
-        !email ||
-        alert('필수 항목을 작성해주세요');
+    } else if (!(name && account && password && pwCheck && email)) {
+      alert('필수 항목을 작성해주세요');
+    } else if (!rulePw.test(password)) {
+      alert('비밀번호를 입력해주세요');
+    } else if (password !== pwCheck) {
+      alert('비밀번호가 일치하지 않습니다.');
+    } else if (!ruleEmail.test(email)) {
+      alert('이메일을 입력해주세요.');
     } else if (isChecked === false) {
       alert('개인정보 약관에 동의해주세요 ');
     } else {
@@ -65,8 +69,10 @@ class Signup extends React.Component {
           alert('다시 한 번 확인해주세요!');
         } else {
           alert('가입 완료 !');
+          console.log(1);
           this.props.history.push('/');
         }
+        console.log(0);
       });
     }
   };
@@ -96,10 +102,10 @@ class Signup extends React.Component {
           className="idInfo"
           placeholder="아이디"
           onChange={this.handleInput}
-          name="id"
+          name="account"
         />
 
-        <button className="sameCheck" onChange={this.idCheck}>
+        <button className="sameCheck" onClick={this.idCheck}>
           중복확인
         </button>
 
@@ -108,14 +114,15 @@ class Signup extends React.Component {
           type="password"
           placeholder="비밀번호"
           onChange={this.handleInput}
-          name="pw"
+          name="password"
         />
 
         <input
           className="checkNumber"
           type="password"
           placeholder="비밀번호 확인"
-          name="pwcheck"
+          onChange={this.handleInput}
+          name="pwCheck"
         />
 
         <input
