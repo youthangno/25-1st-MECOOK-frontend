@@ -36,7 +36,7 @@ class Login extends React.Component {
   };
 
   render() {
-    const isvalid = this.state.id.includes('@') && this.state.pw.length >= 8;
+    const isvalid = this.state.id && this.state.pw.length >= 8;
 
     return (
       <div className="outBox">
