@@ -9,9 +9,7 @@ class Review2 extends Component {
       count: 0,
       review: '',
       product: '상품 id',
-      replList: [
-        { user: '', review: '', userDate: '', review_id: '', product: '' },
-      ],
+      replList: [],
       page: 1,
     };
   }
@@ -54,13 +52,17 @@ class Review2 extends Component {
     })
       .then(res => res.json())
       .then(() => {
-        fetch('http://10.58.2.208:8000/review/comment/1?offset=0', {
-          method: 'GET',
-        })
+        fetch(
+          `http://10.58.2.208:8000/review/comment/1?limit=1&offset=${this.state.replList[0].review_id}`,
+          {
+            method: 'GET',
+          }
+        )
           .then(res => res.json())
           .then(data => {
+            console.log('add data===>', data);
             this.setState({
-              replList: data,
+              replList: [...data.review_by_product, ...this.state.replList],
             });
           });
       });
@@ -77,31 +79,38 @@ class Review2 extends Component {
       page: this.state.page + 1,
     });
 
-    fetch('http://10.58.2.208:8000/review/comment/1?offset=0', {
-      method: 'GET',
-    })
+    fetch(
+      `http://10.58.2.208:8000/review/comment/1?limit=3&offset=${
+        this.state.page * 3
+      }`,
+      {
+        method: 'GET',
+      }
+    )
       .then(res => res.json())
       .then(data => {
         this.setState({
-          replList: data,
+          replList: [...this.state.replList, ...data.review_by_product],
         });
       });
   };
 
   componentDidMount() {
-    fetch('http://10.58.2.208:8000/review/comment/1?offset=0', {
+    fetch('http://10.58.2.208:8000/review/comment/1?limit=3&offset=0', {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
+        console.log('컴디마 data===>', data);
         this.setState({
-          replList: data,
+          replList: data.review_by_product,
         });
       });
   }
 
   render() {
-    console.log(this.props.location.search);
+    console.log('state-->', this.state);
+    console.log('props-->', this.props);
     const { review, replList } = this.state;
     return (
       <section className="review">

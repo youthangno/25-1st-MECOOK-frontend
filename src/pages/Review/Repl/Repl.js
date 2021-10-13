@@ -6,7 +6,7 @@ class Repl extends Component {
     const token =
       'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24';
     const { review_id } = this.props;
-    fetch(`http://10.58.2.208:8000/review/comment/${this.props.review_id}`, {
+    fetch(`http://10.58.2.208:8000/review/list/${review_id}`, {
       // fetch(`https://f960-211-106-114-186.ngrok.io/review/comment/${review_id}`, {
       method: 'DELETE',
       headers: {
@@ -19,17 +19,22 @@ class Repl extends Component {
         // fetch('https://f960-211-106-114-186.ngrok.io/review/list/1')
         fetch('http://10.58.2.208:8000/review/comment/1?offset=0')
           .then(res => {
-            console.log(res);
+            console.log('res===>', res);
             res.json();
           })
-          .then(data => {
-            console.log(data);
-            this.setState({
-              replList: data,
-            });
-          })
-          .catch(err => console.log('feeds', err));
+          .then(this.fetchData);
       });
+  };
+
+  fetchData = () => {
+    fetch('http://10.58.2.208:8000/review/comment/1?offset=0')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          feeds: data.results[0].feeds,
+        });
+      })
+      .catch(err => console.log('feeds', err));
   };
 
   // 통신할때만
@@ -49,7 +54,7 @@ class Repl extends Component {
       .then(res => res.json())
       .then(data => {
         this.setState({
-          replList: data,
+          replList: data.review_by_product,
         });
       });
   }
