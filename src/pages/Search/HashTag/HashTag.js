@@ -25,6 +25,7 @@ class HashTag extends Component {
   }
 
   handleSearch = hashTag => {
+    console.log(hashTag);
     fetch('https://f960-211-106-114-186.ngrok.io/product/search', {
       method: 'POST',
       body: JSON.stringify({
@@ -50,7 +51,7 @@ class HashTag extends Component {
               return (
                 <li className="li" key={tag}>
                   <Link
-                    to="/"
+                    to="#"
                     onClick={() => this.handleSearch(tag)}
                   >{`#${tag}`}</Link>
                 </li>
