@@ -58,6 +58,7 @@ class ProductList extends React.Component {
               const {
                 id,
                 mainImage,
+                subImage,
                 category,
                 name,
                 cookingTime,
@@ -70,6 +71,7 @@ class ProductList extends React.Component {
                   key={id}
                   productId={id}
                   mainImage={mainImage}
+                  subImage={subImage}
                   category={category}
                   name={name}
                   cookingTime={cookingTime}

@@ -5,12 +5,15 @@ class ProductPreview extends React.Component {
   state = {
     isLiked: 0,
     likeCount: 0,
+    imageSrc: '',
   };
 
   componentDidMount() {
+    const { userLike, like, mainImage } = this.props;
     this.setState({
-      isLiked: this.props.userLike === 1 ? true : false,
-      likeCount: this.props.like,
+      isLiked: userLike === 1 ? true : false,
+      likeCount: like,
+      imageSrc: mainImage,
     });
   }
 
@@ -37,15 +40,41 @@ class ProductPreview extends React.Component {
     }
   };
 
+  handleImageMouseOver = src => {
+    this.setState({
+      imageSrc: src,
+    });
+  };
+
+  handleImageMouseOut = src => {
+    this.setState({
+      imageSrc: src,
+    });
+  };
+
   render() {
-    const { productId, mainImage, category, name, cookingTime, serving } =
-      this.props;
+    console.log(this.state.imageSrc);
+    const {
+      productId,
+      mainImage,
+      subImage,
+      category,
+      name,
+      cookingTime,
+      serving,
+    } = this.props;
     return (
       <div
         className="productPreviewContainer"
         onClick={() => this.props.goToDetail(productId)}
       >
-        <img className="productPreviewImage" src={mainImage} alt="food" />
+        <img
+          className="productPreviewImage"
+          src={this.state.imageSrc}
+          alt="food"
+          onMouseOut={() => this.handleImageMouseOut(mainImage)}
+          onMouseOver={() => this.handleImageMouseOver(subImage)}
+        />
         <h3 className="productType">{category}</h3>
         <p className="productName">{name}</p>
         <div className="productInfo">
