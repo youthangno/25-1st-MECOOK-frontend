@@ -43,9 +43,6 @@ class Search extends Component {
       });
   };
 
-  // 인풋창에 엔터치면 -> 검색어 쓴것(e.target.value) -> 배열에 담아서
-  // ->post
-
   handleReset = () => {
     this.setState({
       inputData: '',
@@ -66,12 +63,8 @@ class Search extends Component {
                 value={this.state.inputData}
                 onKeyPress={this.inputKeyPress}
               />
-              <button>
-                <i className="fas fa-ban" onClick={this.handleReset}></i>
-              </button>
-              <button>
-                <i className="fas fa-search" onClick={this.handleReset}></i>
-              </button>
+              <i className="fas fa-ban" onClick={this.handleReset}></i>
+              <i className="fas fa-search" onClick={this.handleSearch}></i>
             </form>
             <HashTag />
           </div>
