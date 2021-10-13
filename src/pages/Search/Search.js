@@ -34,7 +34,7 @@ class Search extends Component {
   };
 
   handleSearch = () => {
-    fetch('https://f960-211-106-114-186.ngrok.io/product/search', {
+    fetch('https://f960-211-106-114-186.ngrok.io/{product}/search', {
       method: 'POST',
       body: JSON.stringify({
         keyword: this.state.inputData.split(' '),
