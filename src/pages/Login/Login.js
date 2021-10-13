@@ -10,9 +10,6 @@ class Login extends React.Component {
   clickLogin = () => {
     fetch('http://10.58.2.115:8000/user/login', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
 
       body: JSON.stringify({
         account: this.state.id,
