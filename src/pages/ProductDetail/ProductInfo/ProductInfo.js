@@ -7,7 +7,7 @@ class ProductInfo extends React.Component {
     return (
       <div className="productInfoBox">
         <h1>{dataList ? dataList[1].text : null}</h1>
-        <Btn />
+        <Btn dataList={dataList && dataList} />
       </div>
     );
   }

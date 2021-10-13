@@ -11,6 +11,16 @@ class LikeBtn extends React.Component {
   }
 
   handleLikeBtn = () => {
+    const TOKEN = localStorage.getItem('token');
+    fetch('', {
+      method: 'POST',
+      ...(TOKEN && {
+        headers: {
+          Authorization: TOKEN,
+        },
+      }),
+    });
+
     this.setState({
       isToggleOn: !this.state.isToggleOn,
       likeCount: this.state.isToggleOn
@@ -35,10 +45,10 @@ class LikeBtn extends React.Component {
   }
 
   render() {
-    // localStorage.setItem(
-    //   'token',
-    //   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24'
-    // );
+    localStorage.setItem(
+      'token',
+      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24'
+    );
     const { likeCount, isToggleOn } = this.state;
     return (
       <button className="likeBtn" onClick={this.handleLikeBtn}>

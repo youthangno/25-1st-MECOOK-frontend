@@ -24,6 +24,8 @@ class AddCartBtn extends React.Component {
   };
 
   render() {
+    const dataList = this.props.dataList;
+
     return (
       <button onClick={this.clickCartBtn} className="addCartBtn">
         ADD TO MY MENU
