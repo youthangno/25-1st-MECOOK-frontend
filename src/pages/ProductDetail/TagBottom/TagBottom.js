@@ -19,7 +19,6 @@ class TagBottom extends React.Component {
     })
       .then(response => response.json())
       .then(result => {
-        console.log(this.state.filteredList);
         this.setState({
           filteredList: result,
         });
