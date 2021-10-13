@@ -5,7 +5,7 @@ import './Login.scss';
 class Close extends React.Component {}
 render(){
  
-  return(
+  return()
    
-}
+};
 export default Close;

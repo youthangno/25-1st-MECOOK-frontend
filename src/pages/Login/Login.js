@@ -75,15 +75,9 @@ class Login extends React.Component {
             placeholder="비밀번호"
           />
         </div>
-        <span className="searchBox">
-          <a href=" #">아이디 찾기</a>
-          <span className="slash">/</span>
-          <a href=" #"> 비밀번호 찾기</a>
-        </span>
-        <input type="checkbox" id="saveBtn" />
-        <label for="saveBtn" className>
-          아이디 저장
-        </label>
+
+        <input type="checkbox" className="saveBtn" />
+        <label>아이디 저장</label>
 
         <button
           className={`loginBtn ${this.state.isActive ? 'active' : 'disabled'}`}
