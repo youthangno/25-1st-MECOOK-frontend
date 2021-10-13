@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
+import Login from '../../pages/Login/Login';
 
 class Nav extends Component {
   constructor() {
@@ -8,6 +9,7 @@ class Nav extends Component {
     this.state = {
       scrollTop: 0,
       isLogin: false,
+      isShowing: false,
       category: ['DINING', 'CAFE', 'CUPBOARD'],
     };
   }
@@ -44,6 +46,12 @@ class Nav extends Component {
       });
       alert('로그아웃 되었습니다.');
       localStorage.removeItem('userToken');
+    } else {
+      if (!this.state.isShowing) {
+        this.setState({
+          isShowing: true,
+        });
+      }
     }
   };
 
@@ -101,6 +109,7 @@ class Nav extends Component {
             </Link>
           </div>
         </nav>
+        <div>{this.state.isShowing && <Login />}</div>
       </>
     );
   }

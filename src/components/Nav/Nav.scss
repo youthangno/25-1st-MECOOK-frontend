@@ -1,7 +1,7 @@
-@font-face {
-  src: url('../../styles/fonts/DINCond-Medium\ Regular.otf');
-  font-family: mecook;
-}
+// @font-face {
+//   src: url('../../styles/fonts/DINCond-Medium\ Regular.otf');
+//   font-family: mecook;
+// }
 
 .original {
   position: fixed;
@@ -14,6 +14,7 @@
   padding: 0 20px;
   font-weight: 700;
   background-color: transparent;
+  background-color: Red;
 
   @media only screen and (min-width: 850px) {
     .threeLine {
