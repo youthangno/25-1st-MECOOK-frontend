@@ -26,7 +26,6 @@ class ProductList extends React.Component {
   }
 
   goToDetail = productId => {
-    console.log(productId);
     //this.props.history.push(`/product-detail/${productId}`);
   };
 
