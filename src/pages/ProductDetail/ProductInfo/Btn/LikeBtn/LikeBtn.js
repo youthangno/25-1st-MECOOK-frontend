@@ -12,12 +12,15 @@ class LikeBtn extends React.Component {
 
   handleLikeBtn = () => {
     const TOKEN = localStorage.getItem('token');
-    fetch('', {
+    fetch('https://f960-211-106-114-186.ngrok.io/like/user', {
       method: 'POST',
       ...(TOKEN && {
         headers: {
           Authorization: TOKEN,
         },
+        body: JSON.stringify({
+          product: this.props.productId,
+        }),
       }),
     });
 
