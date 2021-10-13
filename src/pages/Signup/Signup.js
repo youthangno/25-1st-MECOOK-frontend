@@ -10,8 +10,7 @@ class Signup extends React.Component {
       pwCheck: '',
       email: '',
       usableId: false,
-      checked: false,
-      agree: false,
+      isChecked: false,
     };
   }
 
@@ -19,7 +18,7 @@ class Signup extends React.Component {
     e.preventDefault();
     const { usableId, account } = this.state;
     fetch('http://10.58.2.115:8000/user/signup/check', {
-      method: 'post',
+      method: 'POST',
       body: JSON.stringify({
         account: account,
         usableId: usableId,
@@ -38,26 +37,18 @@ class Signup extends React.Component {
 
   clickSignup = e => {
     e.preventDefault();
-    const {
-      name,
-      account,
-      password,
-      pwCheck,
-      email,
-      usableId,
-      checked,
-      agree,
-    } = this.state;
+    const { name, account, password, pwCheck, email, usableId, isChecked } =
+      this.state;
     if (usableId === false) {
       alert('아이디 중복확인을 해주세요');
-    } else if (checked === false) {
+    } else if (isChecked === false) {
       !name ||
         !account ||
         !password ||
         !pwCheck ||
         !email ||
         alert('필수 항목을 작성해주세요');
-    } else if (agree === false) {
+    } else if (isChecked === false) {
       alert('개인정보 약관에 동의해주세요 ');
     } else {
       fetch('http://10.58.2.115:8000/user/signup', {
@@ -74,14 +65,18 @@ class Signup extends React.Component {
           alert('다시 한 번 확인해주세요!');
         } else {
           alert('가입 완료 !');
+          this.props.history.push('/');
         }
-        this.props.history.push('/');
       });
     }
   };
 
   handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleCheck = () => {
+    this.setState({ isChecked: !this.state.isChecked });
   };
 
   render() {
@@ -142,7 +137,12 @@ class Signup extends React.Component {
           </p>
         </div>
 
-        <input type="checkbox" className="agreeCheck" checked={true} />
+        <input
+          type="checkbox"
+          name="checked"
+          className="agreeCheck"
+          onChange={this.handleCheck}
+        />
         <p>약관을 모두 읽었으며 동의합니다.</p>
 
         <button className="join" onClick={this.clickSignup}>
