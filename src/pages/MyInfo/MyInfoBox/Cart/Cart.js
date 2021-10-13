@@ -129,7 +129,7 @@ class Cart extends React.Component {
   // 주문하기 버튼 클릭 시 포인트 차감
   orderProduct = () => {
     if (TOKEN) {
-      const restPoint = this.props.point - this.state.totalPrice;
+      // const restPoint = this.props.point - this.state.totalPrice;
       alert(`${this.state.totalPrice}원 차감되어 주문이 완료되었습니다!`);
 
       // 포인트 차감하고, 남은 포인트 서버에 보내는 API
