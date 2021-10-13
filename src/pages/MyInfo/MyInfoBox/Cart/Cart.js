@@ -38,7 +38,7 @@ class Cart extends React.Component {
     //     Authorization: TOKEN,
     //   },
     //   body: JSON.stringify({
-    //     product: '3',
+    //     product: '20',
     //     quantity: 1,
     //   }),
     // });
