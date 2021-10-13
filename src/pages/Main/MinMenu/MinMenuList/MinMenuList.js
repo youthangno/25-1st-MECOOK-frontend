@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './MinMenuList.scss';
 
 class MinMenuList extends Component {
@@ -10,7 +11,12 @@ class MinMenuList extends Component {
         onClick={handleShowProductList}
         onMouseOver={handleMouseOverList}
       >
-        &nbsp;{name}&nbsp;
+        <Link
+          to={{ pathname: '/product-category', state: { category: name } }}
+          key={id}
+        >
+          &nbsp;{name}&nbsp;
+        </Link>
       </li>
     );
   }

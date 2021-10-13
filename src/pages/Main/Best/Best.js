@@ -12,17 +12,17 @@ class Best extends Component {
   }
 
   // 통신 연결 안할때 fetch에러 방지
-  componentDidMount() {
-    fetch('https://f960-211-106-114-186.ngrok.io/product/main', {
-      method: 'GET',
-    })
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          menuList: data.result,
-        });
-      });
-  }
+  // componentDidMount() {
+  //   fetch('https://f960-211-106-114-186.ngrok.io/product/main', {
+  //     method: 'GET',
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       this.setState({
+  //         menuList: data.result,
+  //       });
+  //     });
+  // }
 
   render() {
     const { menuList } = this.state;
