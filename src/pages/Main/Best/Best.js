@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ProductPreview from '../../ProductList/ProductPreview/ProductPreview';
+import { Link } from 'react-router-dom';
 import '../Best/Best.scss';
 
 class Best extends Component {
@@ -40,8 +41,10 @@ class Best extends Component {
         </div>
         <div className="bestList">
           <p id="viewBest">
-            <i className="fas fa-award" />
-            &nbsp;BEST ITEMS
+            <Link to="/best">
+              <i className="fas fa-award" />
+              &nbsp;BEST ITEMS
+            </Link>
           </p>
           <ul className="listItems">
             {menuList &&
