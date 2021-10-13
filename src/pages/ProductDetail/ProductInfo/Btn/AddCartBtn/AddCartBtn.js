@@ -17,7 +17,7 @@ class AddCartBtn extends React.Component {
         }),
       })
         .then(res => res.json())
-        .then(data => console.log(data));
+        .then(data => data);
     } else {
       alert('로그인한 사용자만 이용할 수 있는 서비스입니다.');
     }
