@@ -31,25 +31,27 @@ class BestProduct extends Component {
         </div>
         <ul className="bestList">
           {menuList &&
-            menuList.map(m => {
+            menuList.map(menu => {
               const {
-                id,
+                productId,
                 mainImage,
+                subImage,
                 category,
                 name,
                 cookingTime,
                 serving,
                 like,
-              } = m;
+              } = menu;
               return (
                 <ProductPreview
-                  key={id}
-                  id={id}
-                  image={mainImage}
-                  type={category}
+                  key={productId}
+                  productId={productId}
+                  mainImage={mainImage}
+                  subImage={subImage}
+                  category={category}
                   name={name}
                   cookingTime={cookingTime}
-                  availPeople={serving}
+                  serving={serving}
                   like={like}
                 />
               );
