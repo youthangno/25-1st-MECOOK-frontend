@@ -43,14 +43,8 @@ class Login extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  changeButton = () => {
-    const { id, pw } = this.state;
-    id.includes('@') && pw.length >= 8
-      ? this.setState({ isActive: true })
-      : this.setState({ isActive: false });
-  };
-
   render() {
+    const isvalid = this.state.id.includes('@') && this.state.pw.length >= 8;
     return (
       <div className="outBox">
         <button className="close"></button>
@@ -59,7 +53,6 @@ class Login extends React.Component {
           <input
             className="myInfo"
             onChange={this.handleIdInput}
-            onKeyUp={this.changeButton}
             type="text"
             name="id"
             placeholder="아이디"
@@ -68,7 +61,6 @@ class Login extends React.Component {
         <div className="numContainer">
           <input
             onChange={this.handleIdInput}
-            onKeyUp={this.changeButton}
             className="secretNumber"
             type="password"
             name="pw"
@@ -80,7 +72,8 @@ class Login extends React.Component {
         <label>아이디 저장</label>
 
         <button
-          className={`loginBtn ${this.state.isActive ? 'active' : 'disabled'}`}
+          className={`loginBtn ${isvalid ? '' : 'normalBtn'}`}
+          disabled={!isvalid}
           onClick={this.clickLogin}
         >
           LOGIN
