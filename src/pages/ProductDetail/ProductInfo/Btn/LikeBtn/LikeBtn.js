@@ -6,7 +6,7 @@ class LikeBtn extends React.Component {
     super();
     this.state = {
       likeCount: '',
-      isToggleOn: true,
+      isToggleOn: 0,
     };
   }
 
@@ -14,21 +14,19 @@ class LikeBtn extends React.Component {
     const TOKEN = localStorage.getItem('token');
     fetch('https://f960-211-106-114-186.ngrok.io/like/user', {
       method: 'POST',
-      ...(TOKEN && {
-        headers: {
-          Authorization: TOKEN,
-        },
-        body: JSON.stringify({
-          product: this.props.productId,
-        }),
+      headers: {
+        Authorization: TOKEN,
+      },
+      body: JSON.stringify({
+        product: '1',
       }),
     });
 
     this.setState({
       isToggleOn: !this.state.isToggleOn,
       likeCount: this.state.isToggleOn
-        ? this.state.likeCount + 1
-        : this.state.likeCount - 1,
+        ? this.state.likeCount - 1
+        : this.state.likeCount + 1,
     });
   };
 
@@ -48,14 +46,15 @@ class LikeBtn extends React.Component {
   }
 
   render() {
-    localStorage.setItem(
-      'token',
-      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24'
-    );
+    console.log(this.state.likeCount);
+    // localStorage.setItem(
+    //   'token',
+    //   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24'
+    // );
     const { likeCount, isToggleOn } = this.state;
     return (
       <button className="likeBtn" onClick={this.handleLikeBtn}>
-        <i className={`fas fa-heart ${isToggleOn ? '' : 'colorIcon'}`}></i>
+        <i className={`fas fa-heart ${isToggleOn ? 'colorIcon' : ''}`}></i>
         <span>{likeCount}</span>
       </button>
     );

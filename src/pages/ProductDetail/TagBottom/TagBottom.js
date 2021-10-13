@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import './TagBottom.scss';
 
 class TagBottom extends React.Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
   handleClick = () => {
     fetch('https://f960-211-106-114-186.ngrok.io/product/search', {
       method: 'POST',
