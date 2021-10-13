@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Login from '../../pages/Login/Login';
+import Signup from '../../pages/Signup/Signup';
+
 import './Nav.scss';
 
 const CATEGORY_LIST = ['DINING', 'CAFE', 'CUPBOARD'];
@@ -11,7 +13,8 @@ class Nav extends Component {
     this.state = {
       scrollTop: 0,
       isLogin: false,
-      isShowing: false,
+      isVisible: false,
+      isSignVisible: false,
     };
   }
 
@@ -34,7 +37,7 @@ class Nav extends Component {
     });
   };
 
-  handleLog = () => {
+  handleLog = e => {
     if (localStorage.getItem('userToken') && this.state.isLogin) {
       this.setState({
         isLogin: false,
@@ -42,9 +45,14 @@ class Nav extends Component {
       alert('로그아웃 되었습니다.');
       localStorage.removeItem('userToken');
     } else {
-      if (!this.state.isShowing) {
+      if (e.target.name === 'signin') {
         this.setState({
-          isShowing: true,
+          isVisible: !this.state.isVisible,
+          isSignVisible: !this.state.isSignVisible,
+        });
+      } else {
+        this.setState({
+          isVisible: !this.state.isVisible,
         });
       }
     }
@@ -60,8 +68,15 @@ class Nav extends Component {
     }
   };
 
+  handleSign = () => {
+    this.setState({
+      isSignVisible: !this.state.isSignVisible,
+    });
+  };
+
   render() {
     const { scrollTop } = this.state;
+    console.log('state=========>', this.state);
     return (
       <>
         <nav
@@ -103,7 +118,20 @@ class Nav extends Component {
             </Link>
           </div>
         </nav>
-        <div>{this.state.isShowing && <Login />}</div>
+        <div>
+          {this.state.isVisible && (
+            <Login
+              isVisible={this.state.isVisible}
+              handleLog={this.handleLog}
+            />
+          )}
+          {this.state.isSignVisible && (
+            <Signup
+              isSignVisible={this.state.isSignVisible}
+              handleSign={this.handleSign}
+            />
+          )}
+        </div>
       </>
     );
   }
