@@ -11,19 +11,20 @@ class BestProduct extends Component {
 
   // API 주소 임의로 넣어놓음
 
-  // componentDidMount() {
-  //   fetch(
-  //     'https://f960-211-106-114-186.ngrok.io/product/menu/category/1/detail'
-  //   )
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       this.setState({
-  //         productList: data.result,
-  //       });
-  //     });
-  // }
+  componentDidMount() {
+    fetch('https://f960-211-106-114-186.ngrok.io/product/main', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          menuList: data.result,
+        });
+      });
+  }
 
   render() {
+    const { menuList } = this.state;
     // const {
     //   id,
     //   mainImage,
@@ -40,31 +41,30 @@ class BestProduct extends Component {
           <span>MONTHLY BEST</span>
         </div>
         <div className="BestList">
-          {/* {this.state.productList &&
-        this.state.productList.map(p => {
-          return (
-            <ProductPreview
-              key={p.id}
-              productId={p.id}
-              mainImage={p.mainImage}
-              category={p.category}
-              name={p.name}
-              cookingTime={p.cookingTime}
-              serving={p.serving}
-              like={p.like}
-              userLike={p.this_user_like}
-            />
-          );
-        })} */}
-          <div className="product">1</div>
-          <div className="product">2</div>
-          <div className="product">3</div>
-          <div className="product">4</div>
-          <div className="product">5</div>
-          <div className="product">6</div>
-          <div className="product">7</div>
-          <div className="product">8</div>
-          <div className="product">9</div>
+          {menuList &&
+            menuList.map(m => {
+              const {
+                id,
+                mainImage,
+                category,
+                name,
+                cookingTime,
+                serving,
+                like,
+              } = m;
+              return (
+                <ProductPreview
+                  key={id}
+                  id={id}
+                  image={mainImage}
+                  type={category}
+                  name={name}
+                  cookingTime={cookingTime}
+                  availPeople={serving}
+                  like={like}
+                />
+              );
+            })}
         </div>
       </div>
     );
