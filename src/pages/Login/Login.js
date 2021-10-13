@@ -68,8 +68,8 @@ class Login extends React.Component {
           />
         </div>
 
-        <input type="checkbox" className="saveBtn" />
-        <label>아이디 저장</label>
+        {/*<input type="checkbox" className="saveBtn" />
+         <label>아이디 저장</label>*/}
 
         <button
           className={`loginBtn ${isvalid ? '' : 'normalBtn'}`}
