@@ -5,13 +5,25 @@ import './TagBottom.scss';
 class TagBottom extends React.Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      filteredList: [],
+    };
   }
-  handleClick = () => {
+
+  handleClick = hashTag => {
     fetch('https://f960-211-106-114-186.ngrok.io/product/search', {
       method: 'POST',
-      body: JSON.stringify({}),
-    });
+      body: JSON.stringify({
+        keyword: [hashTag],
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(this.state.filteredList);
+        this.setState({
+          filteredList: result,
+        });
+      });
   };
 
   render() {
@@ -26,7 +38,12 @@ class TagBottom extends React.Component {
             resultDataList[0].hashtag.map((tag, i) => {
               return (
                 <li key={i}>
-                  <Link to="#">{`#${tag}`}</Link>
+                  <Link
+                    to="#"
+                    onClick={() => {
+                      this.handleClick(tag);
+                    }}
+                  >{`#${tag}`}</Link>
                 </li>
               );
             })}

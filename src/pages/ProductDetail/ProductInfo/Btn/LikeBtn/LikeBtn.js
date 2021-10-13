@@ -46,7 +46,6 @@ class LikeBtn extends React.Component {
   }
 
   render() {
-    console.log(this.state.likeCount);
     // localStorage.setItem(
     //   'token',
     //   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24'
