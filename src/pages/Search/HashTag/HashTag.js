@@ -6,6 +6,7 @@ class HashTag extends Component {
     super();
     this.state = {
       hashtagList: [],
+      filterdList: [],
     };
   }
   componentDidMount() {
@@ -23,17 +24,37 @@ class HashTag extends Component {
       });
   }
 
+  handleSearch = hashTag => {
+    fetch('https://f960-211-106-114-186.ngrok.io/product/search', {
+      method: 'POST',
+      body: JSON.stringify({
+        keyword: [hashTag],
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log('결과: ', result);
+        this.setState({
+          filteredList: result,
+        });
+      });
+  };
+
   render() {
     const hashtagList = this.state.hashtagList;
+    // console.log(hashtagList);
 
     return (
       <>
         <span>당신의 맛있는 하루를 위한</span>
         <ul>
-          {hashtagList.map((tag, i) => {
+          {hashtagList.map(tag => {
             return (
               <li>
-                <Link to="#">{`#${tag}`}</Link>
+                <Link
+                  to="/"
+                  onClick={() => this.handleSearch(tag)}
+                >{`#${tag}`}</Link>
               </li>
             );
           })}
