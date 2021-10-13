@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Nav from './components/Nav/Nav';
-import MyInfo from './pages/';
 import ProductCategory from './pages/ProductCategory/ProductCategory';
 import Main from './pages/Main/Main';
 import Login from './pages/Login/Login';
