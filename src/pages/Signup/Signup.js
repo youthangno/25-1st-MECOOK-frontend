@@ -104,7 +104,7 @@ class Signup extends React.Component {
           name="id"
         />
 
-        <button className="sameCheck" onChange={this.inputId}>
+        <button className="sameCheck" onChange={this.idCheck}>
           중복확인
         </button>
 
