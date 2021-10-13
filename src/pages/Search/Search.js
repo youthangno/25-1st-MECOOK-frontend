@@ -24,12 +24,10 @@ class Search extends Component {
     if (e.key === 'Enter') {
       this.handleReset();
       this.handleSearch();
-      console.log(this.state.inputData);
     }
   };
 
   handleSearch = searchResult => {
-    console.log(this.state.inputData);
     fetch('https://f960-211-106-114-186.ngrok.io/product/search', {
       method: 'POST',
       body: JSON.stringify({
@@ -55,9 +53,6 @@ class Search extends Component {
   };
 
   render() {
-    // let arr = '사과 쥬스';
-    // let arr2 = arr.split(' ');
-    // console.log(arr2);
     return (
       <>
         <div className="searchArea">
