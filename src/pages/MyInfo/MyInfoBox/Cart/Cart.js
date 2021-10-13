@@ -104,9 +104,7 @@ class Cart extends React.Component {
       headers: {
         Authorization: TOKEN,
       },
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
+    }).then(data => console.log(data));
   };
 
   // 주문하기 버튼 클릭 시 포인트 차감
@@ -171,6 +169,7 @@ class Cart extends React.Component {
           <p className="totalCount">
             TOTAL<span>{this.state.cartList.length}</span>
           </p>
+          3
           <p className="totalPrice">
             <i className="fas fa-won-sign"></i>
             {this.state.totalPrice
