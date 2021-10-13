@@ -17,15 +17,17 @@ class Routes extends React.Component {
   render() {
     return (
       <Router>
+        <Nav />
         <Switch>
           <Route exact path="/product-category" component={ProductCategory} />
-          <Route exact path="/search" component={Search} />
-          <Route exact path="/minmenu" component={MinMenu} />
-          <Nav />
           <Route exact path="/" component={Main} />
-          <Route exact path="/product-detail" component={ProductDetail} />
-          <Route exact path="/best" component={BestProduct} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/minmenu" component={MinMenu} />
           <Route exact path="/review" component={Review} />
+          <Route exact path="/best" component={BestProduct} />
+          <Route exact path="/productdetail" component={ProductDetail} />
+          <Route exact path="/search" component={Search} />
+          <Route exact path="/signup" component={Signup} />
         </Switch>
         <Footer />
       </Router>
