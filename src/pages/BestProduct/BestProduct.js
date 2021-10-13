@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './BestProduct.scss';
+import ProductPreview from '../ProductList/ProductPreview/ProductPreview';
 
 class BestProduct extends Component {
   constructor() {
@@ -25,22 +26,12 @@ class BestProduct extends Component {
 
   render() {
     const { menuList } = this.state;
-    // const {
-    //   id,
-    //   mainImage,
-    //   category,
-    //   name,
-    //   cookingTime,
-    //   serving,
-    //   like,
-    //   this_user_like,
-    // } = this.state.productList;
     return (
       <div className="best">
         <div className="bestHeader">
           <span>MONTHLY BEST</span>
         </div>
-        <div className="BestList">
+        <ul className="BestList">
           {menuList &&
             menuList.map(m => {
               const {
@@ -65,7 +56,7 @@ class BestProduct extends Component {
                 />
               );
             })}
-        </div>
+        </ul>
       </div>
     );
   }
