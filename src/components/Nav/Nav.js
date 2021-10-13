@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import './Nav.scss';
 import Login from '../../pages/Login/Login';
 
+const category = ['DINING', 'CAFE', 'CUPBOARD'];
+
 class Nav extends Component {
   constructor() {
     super();
@@ -10,7 +12,6 @@ class Nav extends Component {
       scrollTop: 0,
       isLogin: false,
       isShowing: false,
-      category: ['DINING', 'CAFE', 'CUPBOARD'],
     };
   }
 
@@ -28,15 +29,9 @@ class Nav extends Component {
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll);
 
-    if (!localStorage.getItem('userToken')) {
-      this.setState({
-        isLogin: false,
-      });
-    } else {
-      this.setState({
-        isLogin: true,
-      });
-    }
+    this.setState({
+      isLogin: localStorage.getItem('userToken') ? true : false,
+    });
   };
 
   handleLog = () => {
@@ -67,12 +62,10 @@ class Nav extends Component {
 
   render() {
     const { scrollTop } = this.state;
-    console.log(this.state);
-    console.log(localStorage);
     return (
       <>
         <nav
-          className={!scrollTop ? 'original' : 'original change'}
+          className={`original ${scrollTop ? 'change' : ''}`}
           onScroll={this.handleScroll}
         >
           <div className="threeLine">
@@ -85,12 +78,13 @@ class Nav extends Component {
             <Link to="/">MECOOK</Link>
           </div>
           <div className="menu">
-            {this.state.category.map(a => (
+            {category.map((categoryName, idx) => (
               <Link
-                to={{ pathname: '/page', state: { category: a } }}
+                to={{ pathname: '/page', state: { category: categoryName } }}
                 className="menuBtn"
+                key={idx}
               >
-                {a}
+                {categoryName}
               </Link>
             ))}
             <Link to="/best" className="menuBtn">
