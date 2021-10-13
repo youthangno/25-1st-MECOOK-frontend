@@ -39,7 +39,7 @@ class MyInfoBox extends React.Component {
   };
 
   render() {
-    const { point, grade } = this.state.userInfo;
+    const { grade } = this.state.userInfo;
     return (
       <>
         <div
@@ -56,7 +56,7 @@ class MyInfoBox extends React.Component {
           ) : (
             <NonMemberInfo />
           )}
-          <Cart point={point} cartList={this.state.cartList} />
+          <Cart point={this.state.userInfo[1]} cartList={this.state.cartList} />
           <BtnMyInfo handleShowBtnClick={this.handleShowBtnClick} />
         </div>
       </>

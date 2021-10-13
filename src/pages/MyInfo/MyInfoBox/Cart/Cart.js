@@ -32,6 +32,16 @@ class Cart extends React.Component {
 
   // 로그인한 유저의 장바구니 list GET
   componentDidMount() {
+    // fetch('http://10.58.2.208:8000/cart', {
+    //   method: 'POST',
+    //   headers: {
+    //     Authorization: TOKEN,
+    //   },
+    //   body: JSON.stringify({
+    //     product: '3',
+    //     quantity: 1,
+    //   }),
+    // });
     this.getCartList();
   }
 
@@ -110,27 +120,27 @@ class Cart extends React.Component {
       headers: {
         Authorization: TOKEN,
       },
-    }).then(data => this.getCartList());
+    });
+
+    this.getCartList();
+    this.getTotalPrice();
   };
 
   // 주문하기 버튼 클릭 시 포인트 차감
   orderProduct = () => {
     if (TOKEN) {
       const restPoint = this.props.point - this.state.totalPrice;
-      alert(`${restPoint}원 차감되어 주문이 완료되었습니다!`);
+      alert(`${this.state.totalPrice}원 차감되어 주문이 완료되었습니다!`);
 
       // 포인트 차감하고, 남은 포인트 서버에 보내는 API
-      fetch(`http://10.58.2.208:8000/cart`, {
-        method: 'POST',
+      fetch(`http://10.58.2.208:8000/order`, {
+        method: 'GET',
         headers: {
           Authorization: localStorage.getItem('token'),
         },
-        body: JSON.stringify({
-          checkedItemList: this.state.checkedItemList,
-        }),
-      });
-
-      this.setState({ checkedItemList: [] });
+      })
+        .then(res => res.json())
+        .then(data => this.setState({ cartList: [] }));
     } else {
       alert('로그인한 사용자만 이용할 수 있는 서비스입니다.');
     }
