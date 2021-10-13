@@ -4,13 +4,12 @@ import './Login.scss';
 class Login extends React.Component {
   constructor() {
     super();
-    this.state = { id: '', pw: '', isActive: false, isModalOpen: false };
+    this.state = { id: '', pw: '' };
   }
 
   clickLogin = () => {
     fetch('http://10.58.2.115:8000/user/login', {
       method: 'POST',
-
       body: JSON.stringify({
         account: this.state.id,
         password: this.state.pw,
@@ -19,16 +18,12 @@ class Login extends React.Component {
       .then(response => response.json())
       .then(response => {
         if (response.TOKEN) {
-          console.log('로그인 성공');
+          alert('로그인 성공');
           localStorage.setItem('token', response.TOKEN);
           this.props.history.push('/');
         } else {
           alert('아이디 또는 비밀번호가 다릅니다.');
         }
-      })
-      .catch(err => {
-        alert('로그인 실패');
-        console.error(err);
       });
   };
 
@@ -36,20 +31,21 @@ class Login extends React.Component {
     this.props.history.push('/signin');
   };
 
-  handleIdInput = event => {
+  handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
   render() {
     const isvalid = this.state.id.includes('@') && this.state.pw.length >= 8;
+
     return (
       <div className="outBox">
-        <button className="close"></button>
+        <button className="close" />
         <h1>LOGIN</h1>
         <div className="infoContainer">
           <input
             className="myInfo"
-            onChange={this.handleIdInput}
+            onChange={this.handleInput}
             type="text"
             name="id"
             placeholder="아이디"
@@ -57,7 +53,7 @@ class Login extends React.Component {
         </div>
         <div className="numContainer">
           <input
-            onChange={this.handleIdInput}
+            onChange={this.handleInput}
             className="secretNumber"
             type="password"
             name="pw"
