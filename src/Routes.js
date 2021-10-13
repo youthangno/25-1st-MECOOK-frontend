@@ -9,6 +9,7 @@ import Main from './pages/Main/Main';
 import MinMenu from './pages/Main/MinMenu/MinMenu';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import BestProduct from './pages/BestProduct/BestProduct';
+import SearchResult from './pages/SearchResult/SearchResult';
 import Footer from './components/Footer/Footer';
 
 class Routes extends React.Component {
@@ -25,6 +26,7 @@ class Routes extends React.Component {
             <Route exact path="/minmenu" component={MinMenu} />
             <Route exact path="/product-detail" component={ProductDetail} />
             <Route exact path="/best" component={BestProduct} />
+            <Route exact path="/search-result" component={SearchResult} />
             <Footer />
           </div>
         </Switch>
