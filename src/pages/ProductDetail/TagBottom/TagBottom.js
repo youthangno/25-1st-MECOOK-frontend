@@ -4,7 +4,10 @@ import './TagBottom.scss';
 
 class TagBottom extends React.Component {
   handleClick = () => {
-    fetch('https://f960-211-106-114-186.ngrok.io/product/search', {});
+    fetch('https://f960-211-106-114-186.ngrok.io/product/search', {
+      method: 'POST',
+      body: JSON.stringify({}),
+    });
   };
 
   render() {
@@ -18,7 +21,7 @@ class TagBottom extends React.Component {
           {resultDataList &&
             resultDataList[0].hashtag.map((tag, i) => {
               return (
-                <li onClick={handleClick} key={i}>
+                <li key={i}>
                   <Link to="#">{`#${tag}`}</Link>
                 </li>
               );
