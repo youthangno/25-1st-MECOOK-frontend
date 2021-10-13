@@ -74,7 +74,7 @@
     left: 70px;
     width: 70px;
     height: 40px;
-    color: white;
+    color: rgb(211, 190, 190);
     background-color: #1f695b;
     font-weight: bold;
   }
@@ -124,24 +124,23 @@
   label {
     position: relative;
     top: 208px;
-    left: -255px;
+    left: -275px;
     font-weight: bold;
   }
 
   .privacyInfo {
     position: relative;
+    top: 400px;
+    left: 10px;
     height: 100px;
-    top: 205px;
+
     font-size: 13px;
-    border-top: 1px solid rgb(61, 61, 61);
-    border-bottom: 1px solid rgb(228, 225, 225);
-    border-left: 1px solid rgb(228, 225, 225);
-    border-right: 1px solid rgb(228, 225, 225);
   }
 
   .privacySentence {
     position: relative;
-    top: 5px;
+    top: -190px;
+    left: 40px;
   }
 
   .agreeCheck {
@@ -163,7 +162,7 @@
     left: 50px;
     width: 320px;
     height: 40px;
-    color: white;
+    color: rgb(211, 190, 190);
     background-color: #1f695b;
     font-family: 'dincond-boldregular', sans-serif;
     font-weight: bold;
