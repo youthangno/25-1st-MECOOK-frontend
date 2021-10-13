@@ -4,36 +4,84 @@
   justify-content: center;
   align-items: center;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  ul {
+    list-style: none;
   }
-
-  a {
+  .wrapper {
+    /*     height:700px; */
+    /* background-color: lightgray; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container {
+    width: 600px;
+    height: 400px;
+    position: relative;
+    background-color: antiquewhite;
+    overflow: hidden;
+  }
+  .slider {
+    display: flex;
     position: absolute;
-    font-family: mecook;
-    font-size: 30px;
-    letter-spacing: 5px;
-    color: white;
-    text-decoration: none;
+    top: 0;
+    left: 0;
+  }
+  .item {
+    width: 100%;
+    height: 400px;
+    background-color: yellow;
+    font-size: 35px;
+    text-align: center;
+
+    .mySlides {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .item:nth-child(2) {
+    background-color: green;
+  }
+  .item:nth-child(3) {
+    background-color: blue;
   }
 
-  // p {
+  .container ul {
+    -webkit-transition: all 0.25s cubic-bezier(1, 0.01, 0.32, 1);
+    -o-transition: all 0.25s cubic-bezier(1, 0.01, 0.32, 1);
+    transition: all 0.25s cubic-bezier(1, 0.01, 0.32, 1);
+  }
+
+  // img {
+  //   width: 100%;
+  //   height: 100%;
+  //   object-fit: cover;
+  // }
+
+  // a {
   //   position: absolute;
   //   font-family: mecook;
   //   font-size: 30px;
   //   letter-spacing: 5px;
   //   color: white;
+  //   text-decoration: none;
   // }
 
-  animation: nutritionTableFadeIn 0.5s ease-in-out;
-  @keyframes nutritionTableFadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+  // // p {
+  // //   position: absolute;
+  // //   font-family: mecook;
+  // //   font-size: 30px;
+  // //   letter-spacing: 5px;
+  // //   color: white;
+  // // }
+
+  // animation: nutritionTableFadeIn 0.5s ease-in-out;
+  // @keyframes nutritionTableFadeIn {
+  //   from {
+  //     opacity: 0;
+  //   }
+  //   to {
+  //     opacity: 1;
+  //   }
+  // }
 }

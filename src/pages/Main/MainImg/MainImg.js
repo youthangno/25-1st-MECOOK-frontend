@@ -2,12 +2,60 @@ import React, { Component } from 'react';
 import '../MainImg/MainImg.scss';
 
 class MainImg extends Component {
-  render() {
-    this.carousel();
+  showSlides() {
+    let slideWrapper = document.querySelector('.container');
+    console.log(slideWrapper);
+    let slides = document.querySelectorAll('.item');
+    let totalSlides = slides.length; // item의 갯수
 
+    let sliderWidth = slideWrapper.clientWidth; // container의 width
+    let slideIndex = 0;
+    let slider = document.querySelector('.slider');
+
+    slider.style.width = sliderWidth * totalSlides + 'px';
+    for (let i = 0; i < slides.length; i++) {
+      slider.style.left = -(sliderWidth * slideIndex) + 'px';
+    }
+    slideIndex++;
+    if (slideIndex === totalSlides) {
+      slideIndex = 0;
+    }
+    setTimeout(this.showSlides, 100);
+  }
+  componentDidMount() {
+    this.showSlides();
+  }
+  render() {
     return (
       <section className="mainImg">
-        <img
+        <div className="wrapper">
+          <div className="container">
+            <ul className="slider">
+              <li className="item">
+                <img
+                  className="mySlides"
+                  alt="hamburger"
+                  src="/images/Main/hamburger.jpg"
+                />
+              </li>
+              <li className="item">
+                <img
+                  className="mySlides"
+                  alt="hamburger"
+                  src="/images/Main/hamburger.jpg"
+                />
+              </li>
+              <li className="item">
+                <img
+                  className="mySlides"
+                  alt="hamburger"
+                  src="/images/Main/hamburger.jpg"
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+        {/* <img
           className="mySlides"
           alt="hamburger"
           src="/images/Main/hamburger.jpg"
@@ -16,7 +64,7 @@ class MainImg extends Component {
           <p>
             PRINCESSMAKER&nbsp;<i className="far fa-play-circle"></i>
           </p>
-        </a>
+        </a> */}
       </section>
     );
   }
