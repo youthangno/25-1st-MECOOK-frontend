@@ -74,8 +74,8 @@ class Review extends Component {
     const token =
       'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s';
 
-    // fetch('https://f960-211-106-114-186.ngrok.io/review/comment', {
-    fetch('http://localhost:3000/data/reviewData.json', {
+    // fetch('http://10.58.2.208:8000/review/comment', {
+      fetch('http://localhost:3000/data/reviewData.json', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -95,7 +95,7 @@ class Review extends Component {
 
       .then(() => {
         // fetch('https://f960-211-106-114-186.ngrok.io/review/list/1')
-        fetch('http://localhost:3000/data/reviewData.json')
+          // fetch('http://localhost:3000/data/reviewData.json')
           .then(res => res.json())
           .then(data => {
             this.setState({

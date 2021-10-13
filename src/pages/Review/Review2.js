@@ -9,7 +9,9 @@ class Review2 extends Component {
       count: 0,
       review: '',
       product: '상품 id',
-      replList: [],
+      replList: [
+        { user: '', review: '', userDate: '', review_id: '', product: '' },
+      ],
       page: 1,
     };
   }
@@ -37,9 +39,9 @@ class Review2 extends Component {
 
   addComment = () => {
     const token =
-      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s';
+      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24';
 
-    fetch('http://localhost:3000/data/reviewData.json', {
+    fetch('http://10.58.2.208:8000/review/comment', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -52,14 +54,15 @@ class Review2 extends Component {
     })
       .then(res => res.json())
       .then(() => {
-        fetch('http://localhost:3000/data/reviewData.json')
+        fetch('http://10.58.2.208:8000/review/comment/1?offset=0', {
+          method: 'GET',
+        })
           .then(res => res.json())
           .then(data => {
             this.setState({
-              replList: data.result.sort((a, b) => b.review_id - a.review_id),
+              replList: data,
             });
-          })
-          .catch(err => console.log('feeds', err));
+          });
       });
   };
 
@@ -74,27 +77,25 @@ class Review2 extends Component {
       page: this.state.page + 1,
     });
 
-    fetch(`http://localhost:3000/data/reviewData.json/?${this.state.page}`, {
+    fetch('http://10.58.2.208:8000/review/comment/1?offset=0', {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
         this.setState({
-          replList: [...this.state.replList, data.result].sort(
-            (a, b) => b.review_id - a.review_id
-          ),
+          replList: data,
         });
       });
   };
 
   componentDidMount() {
-    fetch('http://localhost:3000/data/reviewData.json', {
+    fetch('http://10.58.2.208:8000/review/comment/1?offset=0', {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
         this.setState({
-          replList: data.result.sort((a, b) => b.review_id - a.review_id),
+          replList: data,
         });
       });
   }
