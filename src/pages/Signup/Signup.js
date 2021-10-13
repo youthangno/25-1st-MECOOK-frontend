@@ -11,15 +11,19 @@ class Signup extends React.Component {
       email: '',
       usableId: false,
       checked: false,
+      agree: false,
     };
   }
 
   idCheck = e => {
     e.preventDefault();
-    const { usableId } = this.state;
+    const { usableId, account } = this.state;
     fetch('http://10.58.2.115:8000/user/signup/check', {
       method: 'post',
-      body: JSON.stringify({ account: this.state.account }),
+      body: JSON.stringify({
+        account: account,
+        usableId: usableId,
+      }),
     }).then(response => {
       if (response.status === 200) {
         alert('사용 가능한 아이디 입니다.');
@@ -34,11 +38,27 @@ class Signup extends React.Component {
 
   clickSignup = e => {
     e.preventDefault();
-    const { name, account, password, pwCheck, email, usableId } = this.state;
+    const {
+      name,
+      account,
+      password,
+      pwCheck,
+      email,
+      usableId,
+      checked,
+      agree,
+    } = this.state;
     if (usableId === false) {
       alert('아이디 중복확인을 해주세요');
-    } else if (!name || !account || !password || !pwCheck || !email) {
-      alert('필수 항목을 작성해주세요');
+    } else if (checked === false) {
+      !name ||
+        !account ||
+        !password ||
+        !pwCheck ||
+        !email ||
+        alert('필수 항목을 작성해주세요');
+    } else if (agree === false) {
+      alert('개인정보 약관에 동의해주세요 ');
     } else {
       fetch('http://10.58.2.115:8000/user/signup', {
         method: 'POST',
@@ -111,14 +131,18 @@ class Signup extends React.Component {
         />
         <label> 개인정보 이용 수집 </label>
         <div className="privacyInfo">
-          개인정보 수집 및 이용 목적: 서비스 제공 및 서비스 사용에 따른 <br />
-          본인확인,가입연력 확인, 중복가입 및 부정이용 방지
-          <br />
-          항목:성명,이메일,가입확인정보
-          <br /> -보유 및 이용기간:회원탈퇴 후 5일까지
+          <p className="privacySentence">
+            목적: 서비스 제공 및 서비스 사용에 따른 <br />
+            <br />
+            본인확인,가입연력 확인, 중복가입 및 부정이용 방지
+            <br />
+            <br />
+            -항목:성명,이메일,가입확인정보
+            <br /> -보유 및 이용기간:회원탈퇴 후 5일까지
+          </p>
         </div>
 
-        <input type="checkbox" className="agreeCheck" checked={false} />
+        <input type="checkbox" className="agreeCheck" checked={true} />
         <p>약관을 모두 읽었으며 동의합니다.</p>
 
         <button className="join" onClick={this.clickSignup}>
