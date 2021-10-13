@@ -4,7 +4,7 @@ import './TagBottom.scss';
 
 class TagBottom extends React.Component {
   handleClick = () => {
-    fetch();
+    fetch('https://f960-211-106-114-186.ngrok.io/product/search', {});
   };
 
   render() {
