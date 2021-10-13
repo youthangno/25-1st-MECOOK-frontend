@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './Nav.scss';
 import Login from '../../pages/Login/Login';
+import './Nav.scss';
 
-const category = ['DINING', 'CAFE', 'CUPBOARD'];
+const CATEGORY_LIST = ['DINING', 'CAFE', 'CUPBOARD'];
 
 class Nav extends Component {
   constructor() {
@@ -78,7 +78,7 @@ class Nav extends Component {
             <Link to="/">MECOOK</Link>
           </div>
           <div className="menu">
-            {category.map((categoryName, idx) => (
+            {CATEGORY_LIST.map((categoryName, idx) => (
               <Link
                 to={{ pathname: '/page', state: { category: categoryName } }}
                 className="menuBtn"
