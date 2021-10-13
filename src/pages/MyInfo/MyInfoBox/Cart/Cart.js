@@ -169,7 +169,6 @@ class Cart extends React.Component {
           <p className="totalCount">
             TOTAL<span>{this.state.cartList.length}</span>
           </p>
-          3
           <p className="totalPrice">
             <i className="fas fa-won-sign"></i>
             {this.state.totalPrice
