@@ -10,8 +10,6 @@ class BestProduct extends Component {
     };
   }
 
-  // API 주소 임의로 넣어놓음
-
   componentDidMount() {
     fetch('https://f960-211-106-114-186.ngrok.io/product/main', {
       method: 'GET',
