@@ -1,15 +1,14 @@
 .searchArea {
   display: flex;
+  align-items: center;
   max-width: 960px;
   height: 120vh;
-  align-items: center;
-  justify-content: center;
   margin: 0 auto;
 
   .searchBox {
-    margin: 0 auto 40px auto;
+    margin: 0 auto 40px;
 
-    form {
+    .form {
       position: relative;
       border-bottom: 2px solid #1f695b;
     }
@@ -43,7 +42,7 @@
       cursor: pointer;
     }
 
-    span {
+    .span {
       display: inline-block;
       margin-left: 20px;
       margin-top: 30px;
@@ -52,7 +51,7 @@
     }
   }
 
-  ul {
+  .ul {
     display: inline-block;
     width: 300px;
     margin-top: 30px;
@@ -61,7 +60,7 @@
     list-style: none;
     font-size: 17px;
 
-    li {
+    .li {
       display: inline-block;
       width: 50%;
       margin-bottom: 25px;

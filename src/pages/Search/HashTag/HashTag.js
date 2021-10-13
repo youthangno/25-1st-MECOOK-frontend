@@ -25,7 +25,6 @@ class HashTag extends Component {
   }
 
   handleSearch = hashTag => {
-    console.log(hashTag);
     fetch('https://f960-211-106-114-186.ngrok.io/product/search', {
       method: 'POST',
       body: JSON.stringify({
@@ -34,7 +33,6 @@ class HashTag extends Component {
     })
       .then(response => response.json())
       .then(result => {
-        console.log('결과: ', result);
         this.setState({
           filteredList: result,
         });
@@ -42,22 +40,22 @@ class HashTag extends Component {
   };
 
   render() {
-    const hashtagList = this.state.hashtagList;
-
+    const { hashtagList } = this.state;
     return (
       <>
-        <span>당신의 맛있는 하루를 위한</span>
-        <ul>
-          {hashtagList.map(tag => {
-            return (
-              <li>
-                <Link
-                  to="/"
-                  onClick={() => this.handleSearch(tag)}
-                >{`#${tag}`}</Link>
-              </li>
-            );
-          })}
+        <span className="span">당신의 맛있는 하루를 위한</span>
+        <ul className="ul">
+          {hashtagList &&
+            hashtagList.map(tag => {
+              return (
+                <li className="li" key={tag}>
+                  <Link
+                    to="/"
+                    onClick={() => this.handleSearch(tag)}
+                  >{`#${tag}`}</Link>
+                </li>
+              );
+            })}
         </ul>
       </>
     );
