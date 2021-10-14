@@ -36,7 +36,7 @@ class TagBottom extends React.Component {
           {resultDataList &&
             resultDataList[0].hashtag.map((tag, i) => {
               return (
-                <li key={i}>
+                <li className="li" key={i}>
                   <Link
                     to="#"
                     onClick={() => {

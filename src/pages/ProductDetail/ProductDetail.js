@@ -17,18 +17,9 @@ class ProductDetail extends React.Component {
   }
 
   componentDidMount() {
-    const TOKEN = localStorage.getItem('token');
-    fetch(
-      'https://f960-211-106-114-186.ngrok.io/product/menu/category/1/detail',
-      {
-        method: 'GET',
-        ...(TOKEN && {
-          headers: {
-            Authorization: TOKEN,
-          },
-        }),
-      }
-    )
+    fetch('https://f960-211-106-114-186.ngrok.io/product/?product=1&detail=1', {
+      method: 'GET',
+    })
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -38,10 +29,11 @@ class ProductDetail extends React.Component {
   }
 
   render() {
-    localStorage.setItem(
-      'token',
-      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s'
-    );
+    console.log(this.props);
+    // localStorage.setItem(
+    //   'token',
+    //   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s'
+    // );
 
     const { result, detail } = this.state.productData;
 
