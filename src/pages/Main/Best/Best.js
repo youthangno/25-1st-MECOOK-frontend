@@ -27,7 +27,7 @@ class Best extends Component {
   render() {
     const { menuList } = this.state;
     return (
-      <section className="best">
+      <section className="bestBox">
         <div className="bestTitle">
           <img alt="dish" src="/images/Main/dish.png" />
           <div className="topTitle">
