@@ -24,9 +24,10 @@ class Login extends React.Component {
       .then(response => {
         console.log(response);
         if (response.message[2]) {
-          alert(`${this.state.account}님 환영합니다!`);
           localStorage.setItem('token', response.message[2]);
           this.props.history.push('/');
+          alert(`${this.state.account}님 환영합니다!`);
+          window.location.reload();
         } else {
           alert('아이디 또는 비밀번호가 다릅니다.');
         }

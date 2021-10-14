@@ -44,6 +44,7 @@ class Nav extends Component {
       });
       alert('로그아웃 되었습니다.');
       localStorage.removeItem('token');
+      window.location.reload();
     } else {
       if (e.target.name === 'signin') {
         this.setState({
