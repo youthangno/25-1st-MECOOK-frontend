@@ -1,5 +1,4 @@
 import React from 'react';
-import Nav from '../../components/Nav/Nav';
 import MainImg from './MainImg/MainImg';
 import Best from './Best/Best';
 import Brand from './Brand/Brand';
