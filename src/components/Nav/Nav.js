@@ -33,17 +33,17 @@ class Nav extends Component {
     window.addEventListener('scroll', this.handleScroll);
 
     this.setState({
-      isLogin: localStorage.getItem('userToken') ? true : false,
+      isLogin: localStorage.getItem('token') ? true : false,
     });
   };
 
   handleLog = e => {
-    if (localStorage.getItem('userToken') && this.state.isLogin) {
+    if (localStorage.getItem('token') && this.state.isLogin) {
       this.setState({
         isLogin: false,
       });
       alert('로그아웃 되었습니다.');
-      localStorage.removeItem('userToken');
+      localStorage.removeItem('token');
     } else {
       if (e.target.name === 'signin') {
         this.setState({

@@ -1,5 +1,6 @@
 import React from 'react';
 import './Signup.scss';
+import { withRouter } from 'react-router-dom';
 class Signup extends React.Component {
   constructor() {
     super();
@@ -17,13 +18,14 @@ class Signup extends React.Component {
   idCheck = e => {
     e.preventDefault();
     const { account } = this.state;
-    fetch('http://10.58.2.208:8000/user/signup', {
+    fetch('http://10.58.2.208:8000/user/signup/check', {
       method: 'POST',
       body: JSON.stringify({
         account: account,
       }),
     }).then(response => {
-      if (response.status === 200) {
+      console.log(response);
+      if (response.status === 201) {
         alert('사용 가능한 아이디 입니다.');
         this.setState({ usableId: true });
       } else if (response.status === 409) {
@@ -54,7 +56,7 @@ class Signup extends React.Component {
     } else if (isChecked === false) {
       alert('개인정보 약관에 동의해주세요 ');
     } else {
-      fetch('http://10.58.2.115:8000/user/signup', {
+      fetch('http://10.58.2.208:8000/user/signup', {
         method: 'POST',
         body: JSON.stringify({
           name: this.state.name,
@@ -83,8 +85,6 @@ class Signup extends React.Component {
   };
 
   render() {
-    console.log(this.state);
-
     const isValid = this.state.pwCheck === this.state.password;
     return (
       <div className={`Signup ${this.props.isSignVisible ? ' ' : 'X'}`}>
@@ -162,4 +162,4 @@ class Signup extends React.Component {
   }
 }
 
-export default Signup;
+export default withRouter(Signup);

@@ -13,7 +13,8 @@ class Login extends React.Component {
   }
 
   clickLogin = () => {
-    fetch('http://10.58.2.115:8000/user/login', {
+    console.log('LoginState-->', this.state);
+    fetch('http://10.58.2.208:8000/user/login', {
       method: 'POST',
       body: JSON.stringify({
         account: this.state.account,
@@ -22,9 +23,10 @@ class Login extends React.Component {
     })
       .then(response => response.json())
       .then(response => {
-        if (response.TOKEN) {
+        console.log(response);
+        if (response.message[2]) {
           alert(`${this.state.account}님 환영합니다!`);
-          localStorage.setItem('token', response.TOKEN);
+          localStorage.setItem('token', response.message[2]);
           this.props.history.push('/');
         } else {
           alert('아이디 또는 비밀번호가 다릅니다.');
@@ -41,9 +43,7 @@ class Login extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     const isvalid = this.state.account && this.state.password.length >= 8;
-    console.log(isvalid);
     return (
       <div className={`Login ${this.props.isVisible ? ' ' : 'X'}`}>
         <div className="outBox" onClick={e => e.stopPropagation()}>
