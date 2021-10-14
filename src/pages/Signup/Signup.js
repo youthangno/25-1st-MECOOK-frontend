@@ -10,7 +10,7 @@ class Signup extends React.Component {
       password: '',
       pwCheck: '',
       email: '',
-      usableId: true,
+      usableId: false,
       isChecked: false,
     };
   }
@@ -71,6 +71,7 @@ class Signup extends React.Component {
         } else {
           alert(`${this.state.name}님 가입을 환영합니다.`);
           this.props.history.push('/');
+          window.location.reload();
         }
       });
     }

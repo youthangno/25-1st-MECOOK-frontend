@@ -63,13 +63,12 @@ class Review extends Component {
   };
 
   componentDidMount() {
-    // const token =
-    //   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24';
+    const TOKEN = localStorage.getItem('token');
+
     fetch('./data/reviewData.json', {
       method: 'GET',
       headers: {
-        'Content-type': 'application/json',
-        Authorization: localStorage.getItem('userToken'),
+        Authorization: TOKEN,
       },
       // body: JSON.stringify({
       //   user: '1',
@@ -86,7 +85,6 @@ class Review extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <section className="review">
         <div className="reviewTop">
