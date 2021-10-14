@@ -20,7 +20,7 @@
     position: absolute;
     margin: 0 auto;
     padding-top: 50px;
-    width: 480px;
+    width: 430px;
     height: 770px;
     background: radial-gradient(
         circle at 0 100%,
@@ -39,7 +39,7 @@
     .closeBtn {
       position: relative;
       top: 10px;
-      left: 400px;
+      left: 360px;
       width: 26px;
       height: 26px;
       background: url('https://stimg.emart.com:448/peacock/img/button-popup-close.jpg')
@@ -91,9 +91,9 @@
     }
 
     .sameCheck {
-      position: relative;
-      top: 89px;
-      left: 70px;
+      position: absolute;
+      top: 224px;
+      left: 300px;
       width: 70px;
       height: 40px;
       color: white;
