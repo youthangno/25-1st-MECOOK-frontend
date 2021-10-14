@@ -15,18 +15,16 @@ class MyInfoBox extends React.Component {
 
   componentDidMount() {
     if (TOKEN) {
-      fetch('http://10.58.2.208:8000/user/login', {
+      fetch('http://18.117.185.247:8000/user/login', {
         method: 'POST',
-        headers: {
-          Authorization: TOKEN,
-        },
         body: JSON.stringify({
-          account: 'cheesepuff90',
-          password: 'Cheesepuff90@',
+          account: 'aaaaaa',
+          password: 'Aa123456!',
         }),
       })
         .then(res => res.json())
         .then(data => {
+          console.log(data);
           this.setState({
             userInfo: data.message,
           });
@@ -39,7 +37,6 @@ class MyInfoBox extends React.Component {
   };
 
   render() {
-    const { grade } = this.state.userInfo;
     return (
       <>
         <div
@@ -49,14 +46,17 @@ class MyInfoBox extends React.Component {
         >
           {TOKEN ? (
             <MyInfo
-              userName={this.state.userInfo[0]}
-              point={this.state.userInfo[1]}
-              grade={grade}
+              userName={this.state.userInfo && this.state.userInfo[0]}
+              point={this.state.userInfo && this.state.userInfo[1]}
+              grade={'VIP'}
             />
           ) : (
             <NonMemberInfo />
           )}
-          <Cart point={this.state.userInfo[1]} cartList={this.state.cartList} />
+          <Cart
+            point={this.state.userInfo && this.state.userInfo[1]}
+            cartList={this.state.cartList}
+          />
           <BtnMyInfo handleShowBtnClick={this.handleShowBtnClick} />
         </div>
       </>

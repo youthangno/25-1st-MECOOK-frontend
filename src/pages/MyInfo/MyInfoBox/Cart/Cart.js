@@ -28,26 +28,37 @@ class Cart extends React.Component {
   };
 
   // 로그인한 유저의 장바구니 list GET
-  // componentDidMount() {
-  //   // fetch('http://10.58.2.208:8000/cart', {
-  //   //   method: 'POST',
-  //   //   headers: {
-  //   //     Authorization: TOKEN,
-  //   //   },
-  //   //   body: JSON.stringify({
-  //   //     product: '20',
-  //   //     quantity: 1,
-  //   //   }),
-  //   // });
-  //   this.getCartList();
-  // }
+  componentDidMount() {
+    fetch('http://18.117.185.247:8000/cart', {
+      method: 'POST',
+      headers: {
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTB9.dGGBB6a5tL-ZKovnfH-OV1W7tvgMhozGluag6Pqt6ww',
+      },
+      body: JSON.stringify({
+        product: '2',
+        quantity: 1,
+      }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        this.setState({ cartList: data.cart_info });
+      });
 
-  // 로그인한 유저가 장바구니에 추가했을 때 다시 list GET
-  componentDidUpdate(prevProps) {
-    // productDetail 페이지에서 상품 추가 버튼 눌렀을 때, 이 컴포넌트로 갱신된 productList를 props로 보내줌
-    if (prevProps.productList !== this.props.productList) {
-      this.setState({ cartList: this.props.cartList });
-    }
+    // if (TOKEN) {
+    //   fetch('http://18.117.185.247:8000/cart', {
+    //     method: 'GET',
+    //     headers: {
+    //       Authorization: localStorage.getItem('token'),
+    //     },
+    //   })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //       console.log(data);
+    //       this.setState({ cartList: data.cart_info });
+    //     });
+    // }
   }
 
   // 총 상품 가격 계산하는 함수

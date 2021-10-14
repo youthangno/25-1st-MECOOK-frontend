@@ -18,6 +18,7 @@ class ProductDetail extends React.Component {
 
   componentDidMount() {
     const productId = this.props.match.params.id;
+
     fetch(
       `https://f960-211-106-114-186.ngrok.io/product/?product=${productId}&detail=1`,
       {

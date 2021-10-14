@@ -62,8 +62,8 @@ class ProductList extends React.Component {
                 <ProductPreview
                   key={id}
                   productId={id}
-                  mainImage={thumbImg}
-                  subImage={thumbImgHover}
+                  thumbImg={thumbImg}
+                  thumbImgHover={thumbImgHover}
                   category={category}
                   name={name}
                   cookingTime={cookingTime}
