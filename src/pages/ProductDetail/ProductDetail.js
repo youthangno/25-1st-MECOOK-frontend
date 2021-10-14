@@ -36,10 +36,60 @@ class ProductDetail extends React.Component {
   render() {
     return (
       <>
-        <div className="productDetail"></div>
+        {
+          <div className="productDetail">
+            <ProductExplan
+              dataDetail={
+                this.state.productData.result &&
+                this.state.productData.result[0].detail
+              }
+            />
+            <ProductInfo
+              productResult={
+                this.state.productData.result &&
+                this.state.productData.result[0]
+              }
+              productId={
+                this.state.productData.result &&
+                this.state.productData.result[0].id
+              }
+            />
+
+            <DetailImageTop
+              dataDetail={
+                this.state.productData.result &&
+                this.state.productData.result[0].detail
+              }
+            />
+            <DetailImageLeft
+              dataDetail={
+                this.state.productData.result &&
+                this.state.productData.result[0].detail
+              }
+            />
+            <DetailImageRight
+              dataDetail={
+                this.state.productData.result &&
+                this.state.productData.result[0].detail
+              }
+            />
+            <DetailImageBottom
+              dataDetail={
+                this.state.productData.result &&
+                this.state.productData.result[0].detail
+              }
+            />
+            <TagBottom
+              // productId={this.props.match.params.id}
+              dataResult={this.state && this.state.productData}
+            />
+          </div>
+        }
       </>
     );
   }
 }
+
+//.result[0].hashtag
 
 export default ProductDetail;

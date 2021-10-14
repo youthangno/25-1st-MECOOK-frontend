@@ -6,10 +6,12 @@ class ProductInfo extends React.Component {
     return (
       <div className="productInfoBox">
         <h1>{this.props.productData && this.props.productData.text}</h1>
-        <Btn productId={this.props.productId} />
+        <Btn
+          productId={this.props.productId}
+          productResult={this.props.productResult}
+        />
       </div>
     );
   }
 }
-
 export default ProductInfo;

@@ -19,7 +19,6 @@ class TagBottom extends React.Component {
     )
       .then(response => response.json())
       .then(result => {
-        console.log(result);
         this.setState({
           filteredList: result,
         });
@@ -27,19 +26,18 @@ class TagBottom extends React.Component {
   };
 
   render() {
-    const { resultDataList } = this.props;
     return (
       <div className="tagBottom">
         <div className="recommandTag">
           <h1>당신을 위한 추천 태그</h1>
         </div>
         <ul className="tagList">
-          {resultDataList &&
-            resultDataList[0].hashtag.map((tag, i) => {
+          {this.props.dataResult.result &&
+            this.props.dataResult.result[0].hashtag.map((tag, i) => {
               return (
                 <li className="li" key={i}>
                   <Link
-                    to="#"
+                    to="/search-result"
                     onClick={() => {
                       this.handleClick(tag);
                     }}

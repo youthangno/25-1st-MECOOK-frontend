@@ -10,7 +10,9 @@ class DetailImageRight extends React.Component {
 
           <img
             alt="케이크"
-            src={this.props.productData && this.props.productData[4].image_url}
+            src={
+              this.props.dataDetail ? this.props.dataDetail[1].imgDetail : null
+            }
           />
         </figure>
       </div>

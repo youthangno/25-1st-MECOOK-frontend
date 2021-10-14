@@ -1,4 +1,5 @@
 import React from 'react';
+import AddCartBtn from '../AddCartBtn/AddCartBtn';
 import './ProductCountBtn.scss';
 
 class ProductCountBtn extends React.Component {
@@ -25,25 +26,28 @@ class ProductCountBtn extends React.Component {
   render() {
     const { quantity } = this.state;
     return (
-      <div className="productCountBtn">
-        수량선택
-        <div className="inputBox">
-          <input
-            className="quantity"
-            type="text"
-            placeholder={quantity}
-            disabled
-          />
+      <>
+        <div className="productCountBtn">
+          수량선택
+          <div className="inputBox">
+            <input
+              className="quantity"
+              type="text"
+              placeholder={quantity}
+              disabled
+            />
+          </div>
+          <div className="button">
+            <button onClick={this.quantityIncrease}>
+              <i className="fas fa-plus-square"></i>
+            </button>
+            <button onClick={this.quantityDecrease}>
+              <i className="fas fa-minus-square"></i>
+            </button>
+          </div>
         </div>
-        <div className="button">
-          <button onClick={this.quantityIncrease}>
-            <i className="fas fa-plus-square"></i>
-          </button>
-          <button onClick={this.quantityDecrease}>
-            <i className="fas fa-minus-square"></i>
-          </button>
-        </div>
-      </div>
+        <AddCartBtn quantity={quantity} />
+      </>
     );
   }
 }

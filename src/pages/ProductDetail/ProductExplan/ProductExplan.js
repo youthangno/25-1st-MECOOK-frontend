@@ -7,7 +7,9 @@ class ProductExplan extends React.Component {
       <div className="productImage">
         <img
           alt="물만두"
-          src={this.props.productData && this.props.productData}
+          src={
+            this.props.dataDetail ? this.props.dataDetail[0].imgDetail : null
+          }
         />
       </div>
     );
