@@ -1,8 +1,10 @@
+@import '../../styles/variable.scss';
+
 .searchArea {
   display: flex;
   align-items: center;
   max-width: 960px;
-  height: 120vh;
+  height: 100vh;
   margin: 0 auto;
 
   .searchBox {
@@ -10,7 +12,7 @@
 
     .form {
       position: relative;
-      border-bottom: 2px solid #1f695b;
+      border-bottom: 2px solid $theme-color;
     }
 
     .searchInput {
@@ -37,7 +39,7 @@
       position: absolute;
       right: 10px;
       bottom: 23px;
-      color: #1f695b;
+      color: $theme-color;
       font-size: 30px;
       cursor: pointer;
     }

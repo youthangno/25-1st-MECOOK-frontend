@@ -5,7 +5,6 @@
   height: 100%;
   overflow: hidden;
   background-size: cover;
-  background-image: url('../MinMenu/MinMenuList/minmenubg.jpg');
 
   .cover {
     display: flex;
@@ -64,5 +63,13 @@
         padding: 4px 0 4px 10px;
       }
     }
+  }
+}
+
+$images: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+
+@each $number in $images {
+  .image#{$number} {
+    background-image: url('../../../assets/images/' + $number + '.jpg');
   }
 }

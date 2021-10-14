@@ -9,11 +9,12 @@ class ProductPreview extends React.Component {
   };
 
   componentDidMount() {
-    const { userLike, like, mainImage } = this.props;
+    console.log(this.props.thumbImg);
+    const { userLike, like, thumbImg } = this.props;
     this.setState({
       isLiked: userLike === 1 ? true : false,
       likeCount: like,
-      imageSrc: mainImage,
+      imageSrc: thumbImg,
     });
   }
 
@@ -55,24 +56,23 @@ class ProductPreview extends React.Component {
   render() {
     const {
       productId,
-      mainImage,
-      subImage,
+      thumbImg,
+      thumbImgHover,
       category,
       name,
       cookingTime,
       serving,
+      goToDetail,
     } = this.props;
     return (
-      <div
-        className="productPreviewContainer"
-        onClick={() => this.props.goToDetail(productId)}
-      >
+      <div className="productPreviewContainer">
         <img
           className="productPreviewImage"
           src={this.state.imageSrc}
           alt="food"
-          onMouseOut={() => this.handleImageMouseOut(mainImage)}
-          onMouseOver={() => this.handleImageMouseOver(subImage)}
+          onClick={() => goToDetail(productId)}
+          onMouseOut={() => this.handleImageMouseOut(thumbImg)}
+          onMouseOver={() => this.handleImageMouseOver(thumbImgHover)}
         />
         <h3 className="productType">{category}</h3>
         <p className="productName">{name}</p>

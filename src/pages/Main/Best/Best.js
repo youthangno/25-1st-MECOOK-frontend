@@ -12,17 +12,20 @@ class Best extends Component {
   }
 
   // 통신 연결 안할때 fetch에러 방지
-  // componentDidMount() {
-  //   fetch('https://f960-211-106-114-186.ngrok.io/product/main', {
-  //     method: 'GET',
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       this.setState({
-  //         menuList: data.result,
-  //       });
-  //     });
-  // }
+  componentDidMount() {
+    fetch(
+      'https://f960-211-106-114-186.ngrok.io/product/?limit=6&sort=priority',
+      {
+        method: 'GET',
+      }
+    )
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          menuList: data.result,
+        });
+      });
+  }
 
   render() {
     const { menuList } = this.state;
@@ -48,26 +51,28 @@ class Best extends Component {
           </p>
           <ul className="listItems">
             {menuList &&
-              menuList.map(m => {
+              menuList.map(list => {
                 const {
                   id,
-                  mainImage,
-                  category,
                   name,
+                  like,
+                  category,
+                  thumbImg,
+                  thumbImgHover,
                   cookingTime,
                   serving,
-                  like,
-                } = m;
+                } = this.props;
                 return (
                   <ProductPreview
                     key={id}
-                    id={id}
-                    image={mainImage}
-                    type={category}
+                    productId={id}
                     name={name}
-                    cookingTime={cookingTime}
-                    availPeople={serving}
                     like={like}
+                    thumbImg={thumbImg}
+                    thumbImgHover={thumbImgHover}
+                    cookingTime={cookingTime}
+                    category={category}
+                    serving={serving}
                   />
                 );
               })}
