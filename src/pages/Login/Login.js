@@ -8,7 +8,11 @@ class Login extends React.Component {
   }
 
   clickLogin = () => {
-    fetch('http://10.58.2.208:8000/user/login', {
+    fetch('http://10.58.2.115:8000/user/login');
+  };
+
+  clickLogin = () => {
+    fetch('http://10.58.2.115:8000/user/login', {
       method: 'POST',
       body: JSON.stringify({
         account: this.state.account,
