@@ -12,7 +12,7 @@ class Login extends React.Component {
     };
   }
 
-  clickLogin = () => {
+  clickLogin = e => {
     fetch('http://10.58.2.208:8000/user/login', {
       method: 'POST',
       body: JSON.stringify({
@@ -23,11 +23,11 @@ class Login extends React.Component {
       .then(response => response.json())
       .then(response => {
         console.log(response);
-        if (response.message[2]) {
+        if (response.message?.[2]) {
           localStorage.setItem('token', response.message[2]);
-          this.props.history.push('/');
           alert(`${this.state.account}님 환영합니다!`);
-          window.location.reload();
+          this.props.handleLog(e);
+          this.props.history.push('/');
         } else {
           alert('아이디 또는 비밀번호가 다릅니다.');
         }
@@ -73,6 +73,7 @@ class Login extends React.Component {
 
           <button
             className={`loginBtn ${isvalid ? '' : 'normalBtn'}`}
+            name="login"
             disabled={!isvalid}
             onClick={this.clickLogin}
           >

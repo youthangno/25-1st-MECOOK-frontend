@@ -40,16 +40,20 @@ class Nav extends Component {
   handleLog = e => {
     if (localStorage.getItem('token') && this.state.isLogin) {
       this.setState({
-        isLogin: false,
+        isLogin: !this.state.isLogin,
       });
       alert('로그아웃 되었습니다.');
       localStorage.removeItem('token');
-      window.location.reload();
     } else {
       if (e.target.name === 'signin') {
         this.setState({
           isVisible: !this.state.isVisible,
           isSignVisible: !this.state.isSignVisible,
+        });
+      } else if (e.target.name === 'login') {
+        this.setState({
+          isVisible: !this.state.isVisible,
+          isLogin: !this.state.isLogin,
         });
       } else {
         this.setState({
@@ -66,6 +70,7 @@ class Nav extends Component {
   };
 
   render() {
+    console.log(this.state.isLogin);
     const { scrollTop } = this.state;
     return (
       <>
