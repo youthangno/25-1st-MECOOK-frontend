@@ -71,15 +71,14 @@ class Review extends Component {
     // product : 상품 id
     // usesr :
 
-    const token =
-      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s';
+    const TOKEN = localStorage.getItem('token');
 
     // fetch('http://10.58.2.208:8000/review/comment', {
       fetch('http://localhost:3000/data/reviewData.json', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
-        Authorization: token,
+        Authorization: TOKEN,
       },
       body: JSON.stringify({
         product: 1,
