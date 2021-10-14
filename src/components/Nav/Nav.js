@@ -58,16 +58,6 @@ class Nav extends Component {
     }
   };
 
-  test = () => {
-    if (!localStorage.getItem('userToken')) {
-      localStorage.setItem('userToken', 'asd');
-      this.setState({
-        isLogin: true,
-      });
-      alert('로그인 되었습니다.');
-    }
-  };
-
   handleSign = () => {
     this.setState({
       isSignVisible: !this.state.isSignVisible,
