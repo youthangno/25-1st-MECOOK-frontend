@@ -1,3 +1,9 @@
+@import '../../styles/variable.scss';
+@font-face {
+  src: url('../../styles/fonts/DINCond-Medium\ Regular.otf');
+  font-family: mecook;
+}
+
 .Signup {
   display: flex;
   justify-content: center;
@@ -15,7 +21,7 @@
     margin: 0 auto;
     padding-top: 50px;
     width: 480px;
-    height: 721px;
+    height: 770px;
     background: radial-gradient(
         circle at 0 100%,
         rgba(204, 0, 0, 0) 19px,
@@ -48,6 +54,8 @@
       top: 20px;
       left: 50px;
       font-size: 44px;
+      font-weight: 500;
+      letter-spacing: 5px;
     }
 
     .nameInfo {
@@ -60,6 +68,10 @@
       border-color: #eaebed;
       border: 0;
       border-bottom: 2px solid #1f695b;
+
+      &:focus {
+        outline: none;
+      }
     }
 
     .idInfo {
@@ -72,6 +84,10 @@
       border-color: #eaebed;
       border: 0;
       border-bottom: 2px solid #1f695b;
+
+      &:focus {
+        outline: none;
+      }
     }
 
     .sameCheck {
@@ -83,6 +99,11 @@
       color: white;
       background-color: #1f695b;
       font-weight: bold;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
     }
 
     .secretNum {
@@ -95,6 +116,10 @@
       border-color: #eaebed;
       border: 0;
       border-bottom: 2px solid #1f695b;
+
+      &:focus {
+        outline: none;
+      }
     }
 
     .checkNumber {
@@ -109,6 +134,12 @@
       border-bottom: 2px solid #1f695b;
     }
 
+    .fail {
+      background-color: red;
+      color: gray;
+      opacity: 0.7;
+    }
+
     .emailInfo {
       position: relative;
       top: 160px;
@@ -119,13 +150,18 @@
       border-color: #eaebed;
       border: 0;
       border-bottom: 2px solid #1f695b;
+
+      &:focus {
+        outline: none;
+      }
     }
 
     label {
       position: relative;
       top: 208px;
-      left: -275px;
-      font-weight: bold;
+      left: -273px;
+      color: gray;
+      font-weight: 400;
     }
 
     .privacyInfo {
@@ -140,18 +176,21 @@
       position: relative;
       top: -190px;
       left: 40px;
+      color: gray;
+      font-weight: 400;
     }
 
     .agreeCheck {
       position: relative;
       top: 217px;
       right: -50px;
+      cursor: pointer;
     }
 
     p {
       position: relative;
       top: 200px;
-      left: 70px;
+      left: 75px;
       font-weight: bold;
     }
 
@@ -166,7 +205,9 @@
       font-family: 'dincond-boldregular', sans-serif;
       font-weight: bold;
       font-size: 16px;
+      letter-spacing: 3px;
       text-align: center;
+      cursor: pointer;
     }
   }
 }

@@ -76,7 +76,6 @@ class Nav extends Component {
 
   render() {
     const { scrollTop } = this.state;
-    console.log('state=========>', this.state);
     return (
       <>
         <nav

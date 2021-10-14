@@ -23,7 +23,7 @@ class Login extends React.Component {
   //     .then(response => response.json())
   //     .then(response => {
   //       if (response.TOKEN) {
-  //         alert('로그인 성공');
+  //         alert(`${this.state.id}님 환영합니다!`);
   //         localStorage.setItem('token', response.TOKEN);
   //         this.props.history.push('/');
   //       } else {
@@ -41,6 +41,7 @@ class Login extends React.Component {
   };
 
   render() {
+    console.log(this.state);
     const isvalid = this.state.id.includes('@') && this.state.pw.length >= 8;
     return (
       <div className={`Login ${this.props.isVisible ? ' ' : 'X'}`}>
@@ -53,7 +54,7 @@ class Login extends React.Component {
               onChange={this.handleInput}
               type="text"
               name="id"
-              placeholder="아이디"
+              placeholder="아이디 ( @포함 )"
             />
           </div>
           <div className="numContainer">
@@ -62,7 +63,7 @@ class Login extends React.Component {
               className="secretNumber"
               type="password"
               name="pw"
-              placeholder="비밀번호"
+              placeholder="비밀번호 ( 8자 이상 )"
             />
           </div>
 

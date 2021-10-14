@@ -41,15 +41,10 @@ class Signup extends React.Component {
   //     this.state;
   //   if (usableId === false) {
   //     alert('아이디 중복확인을 해주세요');
-  //   } else if (isChecked === false) {
-  //     !name ||
-  //       !account ||
-  //       !password ||
-  //       !pwCheck ||
-  //       !email ||
-  //       alert('필수 항목을 작성해주세요');
-  //   } else if (isChecked === false) {
-  //     alert('개인정보 약관에 동의해주세요 ');
+  //   } else if (!name || !account || !password || !pwCheck || !email) {
+  //     alert('필수 항목을 작성해주세요');
+  //   } else if (!isChecked) {
+  //     alert('개인정보 약관에 동의해주세요');
   //   } else {
   //     fetch('http://10.58.2.115:8000/user/signup', {
   //       method: 'POST',
@@ -62,9 +57,9 @@ class Signup extends React.Component {
   //       }),
   //     }).then(res => {
   //       if (res.status === 400) {
-  //         alert('다시 한 번 확인해주세요!');
+  //         alert('입력한 정보를 다시 한 번 확인해주세요.');
   //       } else {
-  //         alert('가입 완료 !');
+  //         alert(`${this.state.name}님 가입을 환영합니다.`);
   //         this.props.history.push('/');
   //       }
   //     });
@@ -80,6 +75,9 @@ class Signup extends React.Component {
   };
 
   render() {
+    console.log(this.state);
+
+    const isValid = this.state.pwCheck === this.state.password;
     return (
       <div className={`Signup ${this.props.isSignVisible ? ' ' : 'X'}`}>
         <div className="outContainer" onClick={e => e.stopPropagation()}>
@@ -88,16 +86,16 @@ class Signup extends React.Component {
 
           <input
             className="nameInfo"
-            placeholder="이름"
+            placeholder=" 이름"
             onChange={this.handleInput}
             name="name"
           />
 
           <input
             className="idInfo"
-            placeholder="아이디"
+            placeholder=" 아이디"
             onChange={this.handleInput}
-            name="id"
+            name="account"
           />
 
           <button className="sameCheck" onChange={this.idCheck}>
@@ -107,21 +105,22 @@ class Signup extends React.Component {
           <input
             className="secretNum"
             type="password"
-            placeholder="비밀번호"
+            placeholder=" 비밀번호"
             onChange={this.handleInput}
-            name="pw"
+            name="password"
           />
 
           <input
-            className="checkNumber"
+            className={`checkNumber ${isValid ? '' : 'fail'}`}
             type="password"
-            placeholder="비밀번호 확인"
-            name="pwcheck"
+            placeholder=" 비밀번호 확인"
+            onChange={this.handleInput}
+            name="pwCheck"
           />
 
           <input
             className="emailInfo"
-            placeholder="이메일"
+            placeholder=" 이메일"
             onChange={this.handleInput}
             name="email"
           />
