@@ -10,7 +10,6 @@ class Main extends React.Component {
   render() {
     return (
       <>
-        <Nav />
         <MainImg />
         <Best />
         <Brand />

@@ -12,7 +12,22 @@ class Cart extends React.Component {
     totalPrice: 0,
   };
 
-  //로그인한 유저의 장바구니 list GET
+  getCartList = () => {
+    if (TOKEN) {
+      fetch('http://10.58.2.208:8000/cart', {
+        method: 'GET',
+        headers: {
+          Authorization: TOKEN,
+        },
+      })
+        .then(res => res.json())
+        .then(data => {
+          this.setState({ cartList: data.cart_info });
+        });
+    }
+  };
+
+  // 로그인한 유저의 장바구니 list GET
   componentDidMount() {
     fetch('http://18.117.185.247:8000/cart', {
       method: 'POST',
@@ -129,7 +144,7 @@ class Cart extends React.Component {
       fetch(`http://10.58.2.208:8000/order`, {
         method: 'GET',
         headers: {
-          Authorization: localStorage.getItem('token'),
+          Authorization: TOKEN,
         },
       })
         .then(res => res.json())
