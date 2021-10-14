@@ -100,7 +100,6 @@ class Review extends Component {
     })
       .then(res => res.json())
       .then(data => {
-        console.log('컴디마 data===>', data);
         this.setState({
           replList: data.review_by_product,
         });
