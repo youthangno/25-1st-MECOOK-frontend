@@ -149,18 +149,18 @@ class Review extends Component {
   };
 
   componentDidMount() {
-    // const token =
-    //   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s';
+    const TOKEN = localStorage.getItem('token');
 
-    // 'https://f960-211-106-114-186.ngrok.io/review/list/1'
-
-    // fetch('https://f960-211-106-114-186.ngrok.io/review/list/1', {
-    fetch('http://localhost:3000/data/reviewData.json', {
+    fetch('./data/reviewData.json', {
       method: 'GET',
-      // headers: {
-      //   'Content-type': 'application/json',
-      //   Authorization: token,
-      // },
+      headers: {
+        Authorization: TOKEN,
+      },
+      // body: JSON.stringify({
+      //   user: '1',
+      //   product: '1',
+      //   review: 'sdfsdf',
+      // }),
     })
       .then(res => res.json())
       .then(data => {
@@ -201,7 +201,6 @@ class Review extends Component {
   // }
 
   render() {
-    console.log(this.props.location.search);
     const { review, replList } = this.state;
     return (
       <section className="review">

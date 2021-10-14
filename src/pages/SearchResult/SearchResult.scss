@@ -1,0 +1,36 @@
+@import '../../styles/variable.scss';
+
+.result {
+  display: block;
+  max-width: 960px;
+  margin: 0 auto;
+
+  .resultHeader {
+    margin-top: 187px;
+    display: flex;
+    justify-content: center;
+
+    .resultHeaderBox {
+      margin-bottom: 60px;
+
+      p {
+        width: 675px;
+        margin: 40px 0 15px;
+        text-align: center;
+        font-size: 25px;
+        font-weight: 300;
+
+        .resultContent {
+          color: $theme-color;
+        }
+      }
+    }
+  }
+
+  .resultList {
+    display: flex;
+    justify-content: center;
+    max-width: 960px;
+    flex-wrap: wrap;
+  }
+}

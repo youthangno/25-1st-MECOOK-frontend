@@ -1,6 +1,3 @@
-//font
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
-
 * {
   box-sizing: border-box;
 }
@@ -10,10 +7,14 @@ body,
 #root {
   width: 100%;
   height: 100%;
-  font-family: 'Roboto Condensed', sans-serif;
   -ms-overflow-style: none;
 }
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+@font-face {
+  src: url('../styles/fonts/DINCond-Medium\ Regular.otf');
+  font-family: mecook;
 }

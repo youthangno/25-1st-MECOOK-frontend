@@ -1,0 +1,58 @@
+{
+  "result": [
+    {
+      "productId": 1,
+      "mainImage": "images/Main/chinese.jpg",
+      "category": "ddddd",
+      "name": "진한 우보탕",
+      "cookingTime": "5분",
+      "serving": "1~2인분",
+      "like": 134
+    },
+    {
+      "productId": 2,
+      "mainImage": "images/Main/chinese.jpg",
+      "category": "국/찌개/육수",
+      "name": "진한 얼큰 육개장",
+      "cookingTime": "5분",
+      "serving": "1~2인분",
+      "like": 158
+    },
+    {
+      "productId": 3,
+      "mainImage": "images/Main/chinese.jpg",
+      "category": "국/찌개/육수",
+      "name": "전복반계탕",
+      "cookingTime": "5분",
+      "serving": "1~2인분",
+      "like": 103
+    },
+    {
+      "productId": 4,
+      "mainImage": "images/Main/chinese.jpg",
+      "category": "국/찌개/육수",
+      "name": "녹두삼계탕",
+      "cookingTime": "5분",
+      "serving": "1~2인분",
+      "like": 87
+    },
+    {
+      "productId": 5,
+      "mainImage": "images/Main/chinese.jpg",
+      "category": "국/찌개/육수",
+      "name": "진한 추어탕",
+      "cookingTime": "5분",
+      "serving": "1~2인분",
+      "like": 72
+    },
+    {
+      "productId": 6,
+      "mainImage": "images/Main/chinese.jpg",
+      "category": "국/찌개/육수",
+      "name": "시골 장터국",
+      "cookingTime": "5분",
+      "serving": "1~2인분",
+      "like": 72
+    }
+  ]
+}

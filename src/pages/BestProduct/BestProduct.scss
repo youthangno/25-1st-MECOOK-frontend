@@ -1,0 +1,20 @@
+.bestMenuContainer {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .bestMenuTitle {
+    display: block;
+    font-size: 40px;
+    margin: 30px;
+  }
+
+  .bestMenuList {
+    width: 1000px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

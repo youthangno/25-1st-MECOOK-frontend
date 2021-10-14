@@ -1,0 +1,237 @@
+@import '../../styles/variable.scss';
+@font-face {
+  src: url('../../styles/fonts/DINCond-Medium\ Regular.otf');
+  font-family: mecook;
+}
+
+.Signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #00000080;
+  z-index: 10000;
+
+  .outContainer {
+    position: absolute;
+    margin: 0 auto;
+    padding-top: 50px;
+    width: 430px;
+    height: 770px;
+    background: radial-gradient(
+        circle at 0 100%,
+        rgba(204, 0, 0, 0) 19px,
+        white 20px
+      ),
+      radial-gradient(circle at 100% 100%, rgba(204, 0, 0, 0) 19px, white 20px),
+      radial-gradient(circle at 100% 0, rgba(204, 0, 0, 0) 19px, white 20px),
+      radial-gradient(circle at 0 0, rgba(204, 0, 0, 0) 19px, white 20px);
+    background-position: bottom left, bottom right, top right, top left;
+    background-size: 51% 51%;
+    padding: 32px 0 20px;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+
+    .closeBtn {
+      position: relative;
+      top: 10px;
+      left: 360px;
+      width: 26px;
+      height: 26px;
+      background: url('https://stimg.emart.com:448/peacock/img/button-popup-close.jpg')
+        no-repeat;
+      cursor: pointer;
+      -webkit-appearance: button;
+      border: none;
+    }
+
+    h1 {
+      position: relative;
+      top: 20px;
+      left: 50px;
+      font-size: 44px;
+      font-weight: 500;
+      letter-spacing: 5px;
+    }
+
+    .nameInfo {
+      position: relative;
+      top: 70px;
+      left: 50px;
+      height: 40px;
+      width: 320px;
+      font-size: 20px;
+      border-color: #eaebed;
+      border: 0;
+      border-bottom: 2px solid #1f695b;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        font-size: 15px;
+      }
+    }
+
+    .idInfo {
+      position: relative;
+      top: 90px;
+      left: 50px;
+      width: 320px;
+      height: 40px;
+      font-size: 20px;
+      border-color: #eaebed;
+      border: 0;
+      border-bottom: 2px solid #1f695b;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        font-size: 15px;
+      }
+    }
+
+    .sameCheck {
+      position: absolute;
+      top: 224px;
+      left: 300px;
+      width: 70px;
+      height: 40px;
+      color: white;
+      background-color: #1f695b;
+      font-weight: bold;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .secretNum {
+      position: relative;
+      top: 110px;
+      left: 49px;
+      width: 320px;
+      height: 40px;
+      font-size: 20px;
+      border-color: #eaebed;
+      border: 0;
+      border-bottom: 2px solid #1f695b;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        font-size: 15px;
+      }
+    }
+
+    .checkNumber {
+      position: relative;
+      top: 135px;
+      left: 48px;
+      width: 320px;
+      height: 40px;
+      font-size: 20px;
+      border-color: #eaebed;
+      border: 0;
+      border-bottom: 2px solid #1f695b;
+
+      &::placeholder {
+        font-size: 15px;
+      }
+    }
+
+    .fail {
+      background-color: red;
+      color: gray;
+      opacity: 0.7;
+    }
+
+    .emailInfo {
+      position: relative;
+      top: 160px;
+      left: 48px;
+      width: 320px;
+      height: 40px;
+      font-size: 20px;
+      border-color: #eaebed;
+      border: 0;
+      border-bottom: 2px solid #1f695b;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        font-size: 15px;
+      }
+    }
+
+    label {
+      position: relative;
+      top: 208px;
+      left: -273px;
+      color: gray;
+      font-weight: 400;
+    }
+
+    .privacyInfo {
+      position: relative;
+      top: 400px;
+      left: 10px;
+      height: 100px;
+      font-size: 13px;
+    }
+
+    .privacySentence {
+      position: relative;
+      top: -190px;
+      left: 40px;
+      color: gray;
+      font-weight: 400;
+    }
+
+    .agreeCheck {
+      position: relative;
+      top: 217px;
+      right: -50px;
+      cursor: pointer;
+    }
+
+    p {
+      position: relative;
+      top: 200px;
+      left: 75px;
+      font-weight: bold;
+    }
+
+    .join {
+      position: relative;
+      top: 220px;
+      left: 50px;
+      width: 320px;
+      height: 40px;
+      color: white;
+      background-color: #1f695b;
+      font-family: 'dincond-boldregular', sans-serif;
+      font-weight: bold;
+      font-size: 16px;
+      letter-spacing: 3px;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+}
+
+.X {
+  display: none;
+}
