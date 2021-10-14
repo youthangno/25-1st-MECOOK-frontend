@@ -17,8 +17,7 @@ class Cart extends React.Component {
       fetch('http://10.58.2.208:8000/cart', {
         method: 'GET',
         headers: {
-          Authorization:
-            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24',
+          Authorization: TOKEN,
         },
       })
         .then(res => res.json())
@@ -134,7 +133,7 @@ class Cart extends React.Component {
       fetch(`http://10.58.2.208:8000/order`, {
         method: 'GET',
         headers: {
-          Authorization: localStorage.getItem('token'),
+          Authorization: TOKEN,
         },
       })
         .then(res => res.json())

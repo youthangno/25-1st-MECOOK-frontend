@@ -36,14 +36,12 @@ class Nreview extends Component {
   };
 
   addComment = () => {
-    const token =
-      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24';
-
+    const TOKEN = localStorage.getItem('token');
     fetch('http://10.58.2.208:8000/review/comment', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
-        Authorization: token,
+        Authorization: TOKEN,
       },
       body: JSON.stringify({
         product: 1,
