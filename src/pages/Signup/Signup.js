@@ -9,62 +9,70 @@ class Signup extends React.Component {
       password: '',
       pwCheck: '',
       email: '',
-      usableId: false,
+      usableId: true,
       isChecked: false,
     };
   }
 
-  // idCheck = e => {
-  //   e.preventDefault();
-  //   const { usableId, account } = this.state;
-  //   fetch('http://10.58.2.115:8000/user/signup/check', {
-  //     method: 'POST',
-  //     body: JSON.stringify({
-  //       account: account,
-  //       usableId: usableId,
-  //     }),
-  //   }).then(response => {
-  //     if (response.status === 200) {
-  //       alert('사용 가능한 아이디 입니다.');
-  //       this.setState({ usableId: true });
-  //     } else if (response.status === 409) {
-  //       alert('이미 사용중인 아이디 입니다.');
-  //     } else {
-  //       alert('사용 불가한 아이디입니다');
-  //     }
-  //   });
-  // };
+  idCheck = e => {
+    e.preventDefault();
+    const { account } = this.state;
+    fetch('http://10.58.2.208:8000/user/signup', {
+      method: 'POST',
+      body: JSON.stringify({
+        account: account,
+      }),
+    }).then(response => {
+      if (response.status === 200) {
+        alert('사용 가능한 아이디 입니다.');
+        this.setState({ usableId: true });
+      } else if (response.status === 409) {
+        alert('이미 사용중인 아이디 입니다.');
+      } else {
+        alert('사용 불가한 아이디입니다');
+      }
+    });
+  };
 
-  // clickSignup = e => {
-  //   e.preventDefault();
-  //   const { name, account, password, pwCheck, email, usableId, isChecked } =
-  //     this.state;
-  //   if (usableId === false) {
-  //     alert('아이디 중복확인을 해주세요');
-  //   } else if (!name || !account || !password || !pwCheck || !email) {
-  //     alert('필수 항목을 작성해주세요');
-  //   } else if (!isChecked) {
-  //     alert('개인정보 약관에 동의해주세요');
-  //   } else {
-  //     fetch('http://10.58.2.115:8000/user/signup', {
-  //       method: 'POST',
-  //       body: JSON.stringify({
-  //         name: this.state.name,
-  //         account: this.state.account,
-  //         password: this.state.password,
-  //         pwCheck: this.state.pwCheck,
-  //         email: this.state.email,
-  //       }),
-  //     }).then(res => {
-  //       if (res.status === 400) {
-  //         alert('입력한 정보를 다시 한 번 확인해주세요.');
-  //       } else {
-  //         alert(`${this.state.name}님 가입을 환영합니다.`);
-  //         this.props.history.push('/');
-  //       }
-  //     });
-  //   }
-  // };
+  clickSignup = e => {
+    e.preventDefault();
+    const { name, account, password, pwCheck, email, usableId, isChecked } =
+      this.state;
+    const ruleEmail = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
+    const rulePw = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}/;
+
+    if (usableId !== true) {
+      alert('아이디 중복확인을 해주세요');
+    } else if (!(name && account && password && pwCheck && email)) {
+      alert('필수 항목을 작성해주세요');
+    } else if (!rulePw.test(password)) {
+      alert('비밀번호를 다시 입력해주세요');
+    } else if (password !== pwCheck) {
+      alert('비밀번호가 일치하지 않습니다.');
+    } else if (!ruleEmail.test(email)) {
+      alert('이메일을 다시 입력해주세요.');
+    } else if (isChecked === false) {
+      alert('개인정보 약관에 동의해주세요 ');
+    } else {
+      fetch('http://10.58.2.115:8000/user/signup', {
+        method: 'POST',
+        body: JSON.stringify({
+          name: this.state.name,
+          account: this.state.account,
+          password: this.state.password,
+          pwCheck: this.state.pwCheck,
+          email: this.state.email,
+        }),
+      }).then(res => {
+        if (res.status === 400) {
+          alert('입력한 정보를 다시 한 번 확인해주세요.');
+        } else {
+          alert(`${this.state.name}님 가입을 환영합니다.`);
+          this.props.history.push('/');
+        }
+      });
+    }
+  };
 
   handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -98,14 +106,14 @@ class Signup extends React.Component {
             name="account"
           />
 
-          <button className="sameCheck" onChange={this.idCheck}>
+          <button className="sameCheck" onClick={this.idCheck}>
             중복확인
           </button>
 
           <input
             className="secretNum"
             type="password"
-            placeholder=" 비밀번호"
+            placeholder=" 비밀번호(알파벳 대,소문자,숫자,특수문자 포함)"
             onChange={this.handleInput}
             name="password"
           />

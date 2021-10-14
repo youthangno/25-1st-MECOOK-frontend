@@ -6,31 +6,31 @@ class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      id: '',
-      pw: '',
+      account: '',
+      password: '',
       isSignVisible: false,
     };
   }
 
-  // clickLogin = () => {
-  //   fetch('http://10.58.2.115:8000/user/login', {
-  //     method: 'POST',
-  //     body: JSON.stringify({
-  //       account: this.state.id,
-  //       password: this.state.pw,
-  //     }),
-  //   })
-  //     .then(response => response.json())
-  //     .then(response => {
-  //       if (response.TOKEN) {
-  //         alert(`${this.state.id}님 환영합니다!`);
-  //         localStorage.setItem('token', response.TOKEN);
-  //         this.props.history.push('/');
-  //       } else {
-  //         alert('아이디 또는 비밀번호가 다릅니다.');
-  //       }
-  //     });
-  // };
+  clickLogin = () => {
+    fetch('http://10.58.2.115:8000/user/login', {
+      method: 'POST',
+      body: JSON.stringify({
+        account: this.state.account,
+        password: this.state.password,
+      }),
+    })
+      .then(response => response.json())
+      .then(response => {
+        if (response.TOKEN) {
+          alert(`${this.state.account}님 환영합니다!`);
+          localStorage.setItem('token', response.TOKEN);
+          this.props.history.push('/');
+        } else {
+          alert('아이디 또는 비밀번호가 다릅니다.');
+        }
+      });
+  };
 
   goToSignin = () => {
     this.props.history.push('/signin');
@@ -42,7 +42,8 @@ class Login extends React.Component {
 
   render() {
     console.log(this.state);
-    const isvalid = this.state.id.includes('@') && this.state.pw.length >= 8;
+    const isvalid = this.state.account && this.state.password.length >= 8;
+    console.log(isvalid);
     return (
       <div className={`Login ${this.props.isVisible ? ' ' : 'X'}`}>
         <div className="outBox" onClick={e => e.stopPropagation()}>
@@ -53,8 +54,8 @@ class Login extends React.Component {
               className="myInfo"
               onChange={this.handleInput}
               type="text"
-              name="id"
-              placeholder="아이디 ( @포함 )"
+              name="account"
+              placeholder="아이디"
             />
           </div>
           <div className="numContainer">
@@ -62,7 +63,7 @@ class Login extends React.Component {
               onChange={this.handleInput}
               className="secretNumber"
               type="password"
-              name="pw"
+              name="password"
               placeholder="비밀번호 ( 8자 이상 )"
             />
           </div>

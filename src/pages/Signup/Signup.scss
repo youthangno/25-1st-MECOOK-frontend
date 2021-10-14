@@ -72,6 +72,10 @@
       &:focus {
         outline: none;
       }
+
+      &::placeholder {
+        font-size: 15px;
+      }
     }
 
     .idInfo {
@@ -87,6 +91,10 @@
 
       &:focus {
         outline: none;
+      }
+
+      &::placeholder {
+        font-size: 15px;
       }
     }
 
@@ -120,6 +128,10 @@
       &:focus {
         outline: none;
       }
+
+      &::placeholder {
+        font-size: 15px;
+      }
     }
 
     .checkNumber {
@@ -132,6 +144,10 @@
       border-color: #eaebed;
       border: 0;
       border-bottom: 2px solid #1f695b;
+
+      &::placeholder {
+        font-size: 15px;
+      }
     }
 
     .fail {
@@ -153,6 +169,10 @@
 
       &:focus {
         outline: none;
+      }
+
+      &::placeholder {
+        font-size: 15px;
       }
     }
 
