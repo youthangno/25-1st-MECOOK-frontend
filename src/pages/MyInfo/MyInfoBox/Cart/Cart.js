@@ -133,7 +133,7 @@ class Cart extends React.Component {
       fetch(`http://10.58.2.208:8000/order`, {
         method: 'GET',
         headers: {
-          Authorization: localStorage.getItem('token'),
+          Authorization: TOKEN,
         },
       })
         .then(res => res.json())

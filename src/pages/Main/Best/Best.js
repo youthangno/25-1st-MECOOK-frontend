@@ -61,7 +61,7 @@ class Best extends Component {
                   thumbImgHover,
                   cookingTime,
                   serving,
-                } = this.props;
+                } = list;
                 return (
                   <ProductPreview
                     key={id}

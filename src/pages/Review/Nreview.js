@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Review.scss';
 import Repl from './Repl/Repl';
 
-class Review extends Component {
+class Nreview extends Component {
   constructor() {
     super();
     this.state = {
@@ -37,7 +37,6 @@ class Review extends Component {
 
   addComment = () => {
     const TOKEN = localStorage.getItem('token');
-
     fetch('http://10.58.2.208:8000/review/comment', {
       method: 'POST',
       headers: {
@@ -162,4 +161,4 @@ class Review extends Component {
   }
 }
 
-export default Review;
+export default Nreview;
