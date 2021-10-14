@@ -7,16 +7,9 @@ import Nav from './components/Nav/Nav';
 import MyInfo from './pages/MyInfo/MyInfoBox/MyInfoBox';
 import Main from './pages/Main/Main';
 import MinMenu from './pages/Main/MinMenu/MinMenu';
-<<<<<<< HEAD
-import Nreview from './pages/Review/Nreview';
-import BestProduct from './pages/BestProduct/BestProduct';
-import ProductDetail from './pages/ProductDetail/ProductDetail';
-import Search from './pages/Search/Search';
-=======
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import BestProduct from './pages/BestProduct/BestProduct';
 import SearchResult from './pages/SearchResult/SearchResult';
->>>>>>> master
 import Footer from './components/Footer/Footer';
 
 class Routes extends React.Component {
