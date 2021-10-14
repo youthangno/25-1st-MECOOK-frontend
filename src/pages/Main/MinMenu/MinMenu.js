@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import './MinMenu.scss';
 import MINMENU_DATA from './MinMenuData';
 import MinMenuList from './MinMenuList/MinMenuList';
@@ -26,9 +25,6 @@ class MinMenu extends Component {
     return (
       <div className="categoryContainer">
         <div className="cover">
-          <Link to="/">
-            <button className="btnClose"></button>
-          </Link>
           <p className="categoryListTitle">
             <span>MENU</span>
           </p>

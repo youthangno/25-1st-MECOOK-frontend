@@ -11,14 +11,15 @@ class TagBottom extends React.Component {
   }
 
   handleClick = hashTag => {
-    fetch('https://f960-211-106-114-186.ngrok.io/product/search', {
-      method: 'POST',
-      body: JSON.stringify({
-        keyword: [hashTag],
-      }),
-    })
+    fetch(
+      `https://f960-211-106-114-186.ngrok.io/product/?search="진한"&search="우보탕"`,
+      {
+        method: 'GET',
+      }
+    )
       .then(response => response.json())
       .then(result => {
+        console.log(result);
         this.setState({
           filteredList: result,
         });

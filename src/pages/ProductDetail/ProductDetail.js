@@ -17,9 +17,13 @@ class ProductDetail extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://f960-211-106-114-186.ngrok.io/product/?product=1&detail=1', {
-      method: 'GET',
-    })
+    const productId = this.props.match.params.id;
+    fetch(
+      `https://f960-211-106-114-186.ngrok.io/product/?product=${productId}&detail=1`,
+      {
+        method: 'GET',
+      }
+    )
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -29,24 +33,24 @@ class ProductDetail extends React.Component {
   }
 
   render() {
-    console.log(this.props);
-    // localStorage.setItem(
-    //   'token',
-    //   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s'
-    // );
-
     const { result, detail } = this.state.productData;
 
     return (
       <>
         <div className="productDetail">
           <ProductExplan productData={detail} />
-          <ProductInfo dataList={detail} />
+          <ProductInfo
+            dataList={detail}
+            productId={this.props.match.params.id}
+          />
           <DetailImageTop dataList={detail} />
           <DetailImageLeft dataList={detail} />
           <DetailImageRight dataList={detail} />
           <DetailImageBottom dataList={detail} />
-          <TagBottom resultDataList={result} />
+          <TagBottom
+            productId={this.props.match.params.id}
+            resultDataList={result}
+          />
         </div>
       </>
     );

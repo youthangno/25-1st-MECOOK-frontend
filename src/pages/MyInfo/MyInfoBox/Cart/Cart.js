@@ -3,9 +3,6 @@ import CartItem from './CartItem/CartItem';
 import EmptyCart from './EmptyCart/EmptyCart';
 import './Cart.scss';
 
-// detail page에서 this.props.productId로 받을 부분
-//const productList = [];
-
 const TOKEN = localStorage.getItem('token');
 
 class Cart extends React.Component {
@@ -20,7 +17,8 @@ class Cart extends React.Component {
       fetch('http://10.58.2.208:8000/cart', {
         method: 'GET',
         headers: {
-          Authorization: TOKEN,
+          Authorization:
+            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24',
         },
       })
         .then(res => res.json())

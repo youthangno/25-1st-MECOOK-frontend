@@ -12,7 +12,7 @@ class ProductList extends React.Component {
     const TOKEN = localStorage.getItem('token');
     if (this.props.listId !== prevProps.listId) {
       fetch(
-        `https://f960-211-106-114-186.ngrok.io/product/menu/${this.props.listId}/navbar`,
+        `https://f960-211-106-114-186.ngrok.io/product/?category=${this.props.listId}`,
         {
           method: 'GET',
           ...(TOKEN && { headers: { Authorization: TOKEN } }),
@@ -24,10 +24,6 @@ class ProductList extends React.Component {
         });
     }
   }
-
-  goToDetail = productId => {
-    this.props.history.push(`/product-detail/${productId}`);
-  };
 
   render() {
     localStorage.setItem(
@@ -57,8 +53,8 @@ class ProductList extends React.Component {
             this.state.productList.map(product => {
               const {
                 id,
-                mainImage,
-                subImage,
+                thumbImg,
+                thumbImgHover,
                 category,
                 name,
                 cookingTime,
@@ -70,15 +66,15 @@ class ProductList extends React.Component {
                 <ProductPreview
                   key={id}
                   productId={id}
-                  mainImage={mainImage}
-                  subImage={subImage}
+                  mainImage={thumbImg}
+                  subImage={thumbImgHover}
                   category={category}
                   name={name}
                   cookingTime={cookingTime}
                   serving={serving}
                   like={like}
                   userLike={this_user_like}
-                  goToDetail={this.goToDetail}
+                  goToDetail={this.props.goToDetail}
                 />
               );
             })}

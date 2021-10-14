@@ -80,7 +80,10 @@ class Nav extends Component {
           <div className="menu">
             {CATEGORY_LIST.map((categoryName, idx) => (
               <Link
-                to={{ pathname: '/page', state: { category: categoryName } }}
+                to={{
+                  pathname: '/product-category',
+                  state: { category: categoryName },
+                }}
                 className="menuBtn"
                 key={idx}
               >
@@ -98,9 +101,6 @@ class Nav extends Component {
             <button className="loginBtn" onClick={this.handleLog}>
               {this.state.isLogin ? 'L O G O U T' : 'L O G I N'}
             </button>
-            <Link to="/search">
-              <i className="fas fa-search"></i>
-            </Link>
           </div>
         </nav>
         <div>{this.state.isShowing && <Login />}</div>
