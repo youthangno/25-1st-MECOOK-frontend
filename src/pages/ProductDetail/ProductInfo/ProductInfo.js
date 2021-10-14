@@ -3,11 +3,10 @@ import './ProductInfo.scss';
 import Btn from './Btn/Btn';
 class ProductInfo extends React.Component {
   render() {
-    const dataList = this.props.dataList;
     return (
       <div className="productInfoBox">
-        <h1>{dataList ? dataList[1].text : null}</h1>
-        <Btn productId={this.props.productId} dataList={dataList && dataList} />
+        <h1>{this.props.productData && this.props.productData.text}</h1>
+        <Btn productId={this.props.productId} />
       </div>
     );
   }

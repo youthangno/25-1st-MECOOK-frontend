@@ -11,21 +11,12 @@ class BestProduct extends Component {
   }
 
   componentDidMount() {
-    // fetch('https://f960-211-106-114-186.ngrok.io/product/main', {
-    //   method: 'GET',
-    // })
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     this.setState({
-    //       menuList: data.result,
-    //     });
-    //   });
-
-    fetch('data/bestMenuData.json', {
+    fetch('http://18.117.185.247:8000/product/?limit=6&sort=priority', {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
+        console.log(data);
         this.setState({
           menuList: data.result,
         });

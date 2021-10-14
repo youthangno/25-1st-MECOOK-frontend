@@ -9,7 +9,6 @@ class ProductPreview extends React.Component {
   };
 
   componentDidMount() {
-    console.log(this.props.thumbImg);
     const { userLike, like, thumbImg } = this.props;
     this.setState({
       isLiked: userLike === 1 ? true : false,

@@ -70,9 +70,9 @@
 
     .listItems {
       width: 100%;
-      height: 380px;
-      white-space: nowrap;
-      overflow-x: auto;
+      display: flex;
+      flex-direction: row;
+      overflow: scroll;
 
       .food {
         display: inline-block;

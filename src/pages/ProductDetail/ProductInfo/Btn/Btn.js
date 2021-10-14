@@ -6,13 +6,11 @@ import ProductCountBtn from './ProductCountBtn/ProductCountBtn';
 
 class Btn extends React.Component {
   render() {
-    const dataList = this.props.dataList;
-
     return (
       <div className="btn">
         <LikeBtn productId={this.props.productId} />
         <ProductCountBtn />
-        <AddCartBtn dataList={dataList} />
+        <AddCartBtn />
       </div>
     );
   }

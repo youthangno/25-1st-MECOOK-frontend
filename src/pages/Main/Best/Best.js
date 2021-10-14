@@ -11,16 +11,13 @@ class Best extends Component {
     };
   }
 
-  // 통신 연결 안할때 fetch에러 방지
   componentDidMount() {
-    fetch(
-      'https://f960-211-106-114-186.ngrok.io/product/?limit=6&sort=priority',
-      {
-        method: 'GET',
-      }
-    )
+    fetch('http://18.117.185.247:8000/product/?limit=6&sort=priority', {
+      method: 'GET',
+    })
       .then(res => res.json())
       .then(data => {
+        console.log(data);
         this.setState({
           menuList: data.result,
         });
@@ -28,6 +25,10 @@ class Best extends Component {
   }
 
   render() {
+    localStorage.setItem(
+      'token',
+      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24'
+    );
     const { menuList } = this.state;
     return (
       <section className="bestBox">
@@ -61,7 +62,7 @@ class Best extends Component {
                   thumbImgHover,
                   cookingTime,
                   serving,
-                } = this.props;
+                } = list;
                 return (
                   <ProductPreview
                     key={id}

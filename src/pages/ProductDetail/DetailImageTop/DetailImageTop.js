@@ -3,15 +3,23 @@ import './DetailImageTop.scss';
 
 class DetailImageTop extends React.Component {
   render() {
-    const dataList = this.props.dataList;
-
+    console.log();
     return (
       <div className="detailImageTop">
         <div className="imageTopInfo">
-          <p>{dataList ? dataList[2].text : null}</p>
+          <p>
+            {this.props.productData ? this.props.productData[2].text : null}
+          </p>
         </div>
         <figure>
-          <img alt="케이크" src={dataList ? dataList[2].image_url : null} />
+          <img
+            alt="케이크"
+            src={
+              this.props.productData
+                ? this.props.productData[2].image_url
+                : null
+            }
+          />
         </figure>
       </div>
     );

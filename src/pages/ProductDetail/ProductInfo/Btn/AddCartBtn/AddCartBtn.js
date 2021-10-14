@@ -8,8 +8,7 @@ class AddCartBtn extends React.Component {
       fetch('http://10.58.2.208:8000/cart', {
         method: 'POST',
         headers: {
-          Authorization:
-            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24',
+          Authorization: localStorage.getItem('token'),
         },
         body: JSON.stringify({
           product: '11',

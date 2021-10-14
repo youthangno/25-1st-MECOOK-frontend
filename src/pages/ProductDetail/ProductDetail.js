@@ -18,6 +18,7 @@ class ProductDetail extends React.Component {
 
   componentDidMount() {
     const productId = this.props.match.params.id;
+
     fetch(
       `https://f960-211-106-114-186.ngrok.io/product/?product=${productId}&detail=1`,
       {
@@ -33,25 +34,9 @@ class ProductDetail extends React.Component {
   }
 
   render() {
-    const { result, detail } = this.state.productData;
-
     return (
       <>
-        <div className="productDetail">
-          <ProductExplan productData={detail} />
-          <ProductInfo
-            dataList={detail}
-            productId={this.props.match.params.id}
-          />
-          <DetailImageTop dataList={detail} />
-          <DetailImageLeft dataList={detail} />
-          <DetailImageRight dataList={detail} />
-          <DetailImageBottom dataList={detail} />
-          <TagBottom
-            productId={this.props.match.params.id}
-            resultDataList={result}
-          />
-        </div>
+        <div className="productDetail"></div>
       </>
     );
   }

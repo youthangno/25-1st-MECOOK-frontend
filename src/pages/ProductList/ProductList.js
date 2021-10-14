@@ -26,10 +26,6 @@ class ProductList extends React.Component {
   }
 
   render() {
-    localStorage.setItem(
-      'token',
-      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s'
-    );
     const { isVisible, handleCloseProductList } = this.props;
     return (
       <div
@@ -66,8 +62,8 @@ class ProductList extends React.Component {
                 <ProductPreview
                   key={id}
                   productId={id}
-                  mainImage={thumbImg}
-                  subImage={thumbImgHover}
+                  thumbImg={thumbImg}
+                  thumbImgHover={thumbImgHover}
                   category={category}
                   name={name}
                   cookingTime={cookingTime}
