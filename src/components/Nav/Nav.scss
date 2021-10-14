@@ -1,3 +1,5 @@
+@import '../../styles/variable.scss';
+
 @font-face {
   src: url('../../styles/fonts/DINCond-Medium\ Regular.otf');
   font-family: mecook;
@@ -7,13 +9,21 @@
   position: fixed;
   display: flex;
   width: 100%;
-  height: 72px;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
-  background-color: transparent;
+  padding: 0 30px;
+  background-color: $theme-color;
   font-family: mecook;
   font-weight: 700;
+  top: 0;
+  z-index: 1;
+  padding: 10px 80px;
+
+  .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   @media only screen and (min-width: 850px) {
     .threeLine {
@@ -21,7 +31,7 @@
     }
 
     .menuBtn {
-      margin-right: 30px;
+      margin: 0 50px;
       font-weight: 800;
       font-size: 22px;
       letter-spacing: 3px;
@@ -108,11 +118,11 @@
       color: black;
 
       &:hover {
-        color: #168c76;
+        color: $theme-color;
       }
 
       &::after {
-        border-bottom: solid 2px #168c76;
+        border-bottom: solid 2px $theme-color;
       }
     }
 

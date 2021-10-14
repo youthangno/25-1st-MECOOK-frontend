@@ -13,7 +13,6 @@ class Login extends React.Component {
   }
 
   clickLogin = () => {
-    console.log('LoginState-->', this.state);
     fetch('http://10.58.2.208:8000/user/login', {
       method: 'POST',
       body: JSON.stringify({

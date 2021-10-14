@@ -9,7 +9,7 @@ const TOKEN = localStorage.getItem('token');
 
 class MyInfoBox extends React.Component {
   state = {
-    isBoxVisible: true,
+    isBoxVisible: false,
     userInfo: '',
   };
 

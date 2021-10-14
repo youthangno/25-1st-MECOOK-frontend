@@ -17,16 +17,11 @@ class ProductDetail extends React.Component {
   }
 
   componentDidMount() {
-    const TOKEN = localStorage.getItem('token');
+    const productId = this.props.match.params.id;
     fetch(
-      'https://f960-211-106-114-186.ngrok.io/product/menu/category/1/detail',
+      `https://f960-211-106-114-186.ngrok.io/product/?product=${productId}&detail=1`,
       {
         method: 'GET',
-        ...(TOKEN && {
-          headers: {
-            Authorization: TOKEN,
-          },
-        }),
       }
     )
       .then(res => res.json())
@@ -38,23 +33,24 @@ class ProductDetail extends React.Component {
   }
 
   render() {
-    localStorage.setItem(
-      'token',
-      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s'
-    );
-
     const { result, detail } = this.state.productData;
 
     return (
       <>
         <div className="productDetail">
           <ProductExplan productData={detail} />
-          <ProductInfo dataList={detail} />
+          <ProductInfo
+            dataList={detail}
+            productId={this.props.match.params.id}
+          />
           <DetailImageTop dataList={detail} />
           <DetailImageLeft dataList={detail} />
           <DetailImageRight dataList={detail} />
           <DetailImageBottom dataList={detail} />
-          <TagBottom resultDataList={result} />
+          <TagBottom
+            productId={this.props.match.params.id}
+            resultDataList={result}
+          />
         </div>
       </>
     );
