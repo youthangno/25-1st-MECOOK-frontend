@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import './Repl.scss';
 
-const TOKEN = localStorage.getItem('token');
-
 class Repl extends Component {
   deleteR = () => {
+    const TOKEN = localStorage.getItem('token');
     const { review_id } = this.props;
     fetch(`http://10.58.2.208:8000/review/list/${review_id}`, {
       // fetch(`https://f960-211-106-114-186.ngrok.io/review/comment/${review_id}`, {
@@ -40,6 +39,8 @@ class Repl extends Component {
   // 통신할때만
 
   componentDidMount() {
+    const TOKEN = localStorage.getItem('token');
+
     // fetch('https://f960-211-106-114-186.ngrok.io/review/list/1', {
     fetch('http://10.58.2.208:8000/review/comment/1?offset=0', {
       method: 'GET',

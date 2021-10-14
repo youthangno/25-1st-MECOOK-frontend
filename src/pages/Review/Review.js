@@ -1,127 +1,162 @@
 import React, { Component } from 'react';
 import './Review.scss';
 import Repl from './Repl/Repl';
-import ReviewBtn from './ReviewBtn/ReviewBtn';
 
 class Review extends Component {
   constructor() {
     super();
     this.state = {
-      content: '',
-      userName: '4.21ee',
-      userDate: '2021/10/07',
+      count: 0,
+      review: '',
+      product: '상품 id',
       replList: [],
-      id: this.cnt,
+      page: 1,
     };
   }
 
   addRepl = e => {
+    if (e.target.value.length > 100) {
+      return e.target.value.substring(0, 100);
+    }
     this.setState({
-      content: e.target.value,
+      review: e.target.value,
     });
   };
 
   enterBtn = e => {
-    const { content } = this.state;
-    if (e.key === 'Enter' && content.trim()) {
+    const { review } = this.state;
+    if (e.key === 'Enter' && review.trim()) {
       this.addComment();
-      e.target.value = '';
-    } else if (e.key === 'Enter' && !content.trim()) {
+      e.target.value = null;
+    } else if (e.key === 'Enter' && !review.trim()) {
       alert('리뷰를 입력해주세요.');
+      e.target.value = '';
+      e.target.focus();
     }
   };
 
   addComment = () => {
-    const { content, replList, userName } = this.state;
-    let today = new Date();
-    let time = {
-      year: today.getFullYear(),
-      month: today.getMonth() + 1,
-      date: today.getDate(),
-    };
-    const cnt = replList.length + 1;
-    let timestring = `${time.year}/${time.month}/${time.date}`;
-    if (content.trim() === '' || content === '') {
-      alert('리뷰를 입력해주세요.');
-      return;
-    }
-    this.setState({
-      replList: replList.concat({
-        id: cnt,
-        userName: userName,
-        userDate: timestring,
-        content: content.trim(),
+    const TOKEN = localStorage.getItem('token');
+
+    fetch('http://10.58.2.208:8000/review/comment', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: TOKEN,
+      },
+      body: JSON.stringify({
+        product: 1,
+        review: this.state.review,
       }),
-      content: '',
-    });
+    })
+      .then(res => res.json())
+      .then(() => {
+        fetch(
+          `http://10.58.2.208:8000/review/comment/1?limit=1&offset=${this.state.replList[0].review_id}`,
+          {
+            method: 'GET',
+          }
+        )
+          .then(res => res.json())
+          .then(data => {
+            console.log('add data===>', data);
+            this.setState({
+              replList: [...data.review_by_product, ...this.state.replList],
+            });
+          });
+      });
   };
 
   clearInput = () => {
     this.setState({
-      content: '',
+      review: '',
     });
   };
 
-  componentDidMount() {
-    const TOKEN = localStorage.getItem('token');
+  addReplCnt = () => {
+    this.setState({
+      page: this.state.page + 1,
+    });
 
-    fetch('./data/reviewData.json', {
-      method: 'GET',
-      headers: {
-        Authorization: TOKEN,
-      },
-      // body: JSON.stringify({
-      //   user: '1',
-      //   product: '1',
-      //   review: 'sdfsdf',
-      // }),
-    })
+    fetch(
+      `http://10.58.2.208:8000/review/comment/1?limit=3&offset=${
+        this.state.page * 3
+      }`,
+      {
+        method: 'GET',
+      }
+    )
       .then(res => res.json())
       .then(data => {
         this.setState({
-          replList: data.result,
+          replList: [...this.state.replList, ...data.review_by_product],
+        });
+      });
+  };
+
+  componentDidMount() {
+    fetch('http://10.58.2.208:8000/review/comment/1?limit=3&offset=0', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log('컴디마 data===>', data);
+        this.setState({
+          replList: data.review_by_product,
         });
       });
   }
 
   render() {
+    console.log('state-->', this.state);
+    console.log('props-->', this.props);
+    const { review, replList } = this.state;
     return (
       <section className="review">
         <div className="reviewTop">
           <label className="reviewTitle">
-            REVIEW<span>(200)</span>
+            REVIEW
+            <span>({replList ? replList.length : 0})</span>
           </label>
           <div className="textArea">
             <div className="textInputBox">
               <textarea
                 className="textInput"
-                placeholder="통신예절에 어긋나는 글이나 상업적인 글. 타 사이트에 관련된 글은 관리자에 의해 사전 통보없이 삭제될 수 있습니다"
+                placeholder="통신예절에 어긋나는 글이나 상업적인 글, 타 사이트에 관련된 글은 관리자에 의해 사전 통보없이 삭제될 수 있습니다"
                 onChange={this.addRepl}
                 onKeyPress={this.enterBtn}
-                value={this.state.content}
+                value={review}
               />
-              <div className="textInputLimit">0/100</div>
+              <div className="textInputLimit">{review.length}/100</div>
             </div>
             <button className="textInputBtn" onClick={this.addComment}>
               등록
             </button>
           </div>
           <ul className="reviewList">
-            {this.state.replList &&
-              this.state.replList.map(repl => {
-                const { userName, content, userDate, id } = repl;
+            {replList &&
+              replList.map(repl => {
+                const { user, review, userDate, review_id, product } = repl;
                 return (
                   <Repl
-                    key={id}
-                    userName={userName}
-                    content={content}
+                    key={review_id}
+                    review_id={review_id}
+                    user={user}
+                    review={review}
                     userDate={userDate}
+                    product={product}
                   />
                 );
               })}
           </ul>
         </div>
-        <ReviewBtn replList={this.state.replList} />
+        <div className="viewMore">
+          <button className="viewMoreBtn" onClick={this.addReplCnt}>
+            &nbsp;&nbsp;VIEW MORE&#8314;&nbsp;&nbsp;
+          </button>
+          <span>1</span>
+          <span>/10</span>
+        </div>
       </section>
     );
   }
