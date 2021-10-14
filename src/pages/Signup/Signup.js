@@ -17,7 +17,7 @@ class Signup extends React.Component {
   idCheck = e => {
     e.preventDefault();
     const { usableId, account } = this.state;
-    fetch('http://10.58.2.115:8000/user/signup/check', {
+    fetch('http://10.58.2.208/user/signup', {
       method: 'POST',
       body: JSON.stringify({
         account: account,
@@ -51,7 +51,7 @@ class Signup extends React.Component {
     } else if (isChecked === false) {
       alert('개인정보 약관에 동의해주세요 ');
     } else {
-      fetch('http://10.58.2.115:8000/user/signup', {
+      fetch('http://10.58.2.208:8000/user/signup', {
         method: 'POST',
         body: JSON.stringify({
           name: this.state.name,

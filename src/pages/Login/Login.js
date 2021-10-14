@@ -8,7 +8,7 @@ class Login extends React.Component {
   }
 
   clickLogin = () => {
-    fetch('http://10.58.2.115:8000/user/login', {
+    fetch('http://10.58.2.208:8000/user/login', {
       method: 'POST',
       body: JSON.stringify({
         account: this.state.account,
@@ -24,6 +24,7 @@ class Login extends React.Component {
         } else {
           alert('아이디 또는 비밀번호가 다릅니다.');
         }
+        console.log(this.state);
       });
   };
 
@@ -56,13 +57,10 @@ class Login extends React.Component {
             onChange={this.handleInput}
             className="secretNumber"
             type="password"
-            name="pw"
-            placeholder="비밀번호"
+            name="password"
+            placeholder="비밀번호(8자이상)"
           />
         </div>
-
-        {/*<input type="checkbox" className="saveBtn" />
-         <label>아이디 저장</label>*/}
 
         <button
           className={`loginBtn ${isvalid ? '' : 'normalBtn'}`}
