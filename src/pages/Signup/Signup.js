@@ -1,5 +1,6 @@
 import React from 'react';
 import './Signup.scss';
+import { withRouter } from 'react-router-dom';
 class Signup extends React.Component {
   constructor() {
     super();
@@ -9,22 +10,22 @@ class Signup extends React.Component {
       password: '',
       pwCheck: '',
       email: '',
-      usableId: false,
+      usableId: true,
       isChecked: false,
     };
   }
 
   idCheck = e => {
     e.preventDefault();
-    const { usableId, account } = this.state;
-    fetch('http://10.58.2.115:8000/user/signup/check', {
+    const { account } = this.state;
+    fetch('http://10.58.2.208:8000/user/signup/check', {
       method: 'POST',
       body: JSON.stringify({
         account: account,
-        usableId: usableId,
       }),
     }).then(response => {
-      if (response.status === 200) {
+      console.log(response);
+      if (response.status === 201) {
         alert('사용 가능한 아이디 입니다.');
         this.setState({ usableId: true });
       } else if (response.status === 409) {
@@ -39,19 +40,23 @@ class Signup extends React.Component {
     e.preventDefault();
     const { name, account, password, pwCheck, email, usableId, isChecked } =
       this.state;
-    if (usableId === false) {
+    const ruleEmail = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
+    const rulePw = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}/;
+
+    if (usableId !== true) {
       alert('아이디 중복확인을 해주세요');
-    } else if (isChecked === false) {
-      !name ||
-        !account ||
-        !password ||
-        !pwCheck ||
-        !email ||
-        alert('필수 항목을 작성해주세요');
+    } else if (!(name && account && password && pwCheck && email)) {
+      alert('필수 항목을 작성해주세요');
+    } else if (!rulePw.test(password)) {
+      alert('비밀번호를 다시 입력해주세요');
+    } else if (password !== pwCheck) {
+      alert('비밀번호가 일치하지 않습니다.');
+    } else if (!ruleEmail.test(email)) {
+      alert('이메일을 다시 입력해주세요.');
     } else if (isChecked === false) {
       alert('개인정보 약관에 동의해주세요 ');
     } else {
-      fetch('http://10.58.2.115:8000/user/signup', {
+      fetch('http://10.58.2.208:8000/user/signup', {
         method: 'POST',
         body: JSON.stringify({
           name: this.state.name,
@@ -62,9 +67,9 @@ class Signup extends React.Component {
         }),
       }).then(res => {
         if (res.status === 400) {
-          alert('다시 한 번 확인해주세요!');
+          alert('입력한 정보를 다시 한 번 확인해주세요.');
         } else {
-          alert('가입 완료 !');
+          alert(`${this.state.name}님 가입을 환영합니다.`);
           this.props.history.push('/');
         }
       });
@@ -80,77 +85,81 @@ class Signup extends React.Component {
   };
 
   render() {
+    const isValid = this.state.pwCheck === this.state.password;
     return (
-      <div className="outContainer">
-        <button className="closeBtn"></button>
-        <h1>SIGNUP</h1>
+      <div className={`Signup ${this.props.isSignVisible ? ' ' : 'X'}`}>
+        <div className="outContainer" onClick={e => e.stopPropagation()}>
+          <button className="closeBtn" onClick={this.props.handleSign}></button>
+          <h1>SIGNUP</h1>
 
-        <input
-          className="nameInfo"
-          placeholder="이름"
-          onChange={this.handleInput}
-          name="name"
-        />
+          <input
+            className="nameInfo"
+            placeholder=" 이름"
+            onChange={this.handleInput}
+            name="name"
+          />
 
-        <input
-          className="idInfo"
-          placeholder="아이디"
-          onChange={this.handleInput}
-          name="id"
-        />
+          <input
+            className="idInfo"
+            placeholder=" 아이디"
+            onChange={this.handleInput}
+            name="account"
+          />
 
-        <button className="sameCheck" onChange={this.idCheck}>
-          중복확인
-        </button>
+          <button className="sameCheck" onClick={this.idCheck}>
+            중복확인
+          </button>
 
-        <input
-          className="secretNum"
-          type="password"
-          placeholder="비밀번호"
-          onChange={this.handleInput}
-          name="pw"
-        />
+          <input
+            className="secretNum"
+            type="password"
+            placeholder=" 비밀번호(알파벳 대,소문자,숫자,특수문자 포함)"
+            onChange={this.handleInput}
+            name="password"
+          />
 
-        <input
-          className="checkNumber"
-          type="password"
-          placeholder="비밀번호 확인"
-          name="pwcheck"
-        />
+          <input
+            className={`checkNumber ${isValid ? '' : 'fail'}`}
+            type="password"
+            placeholder=" 비밀번호 확인"
+            onChange={this.handleInput}
+            name="pwCheck"
+          />
 
-        <input
-          className="emailInfo"
-          placeholder="이메일"
-          onChange={this.handleInput}
-          name="email"
-        />
-        <label> 개인정보 이용 수집 </label>
-        <div className="privacyInfo">
-          <p className="privacySentence">
-            목적: 서비스 제공 및 서비스 사용에 따른 <br />
-            <br />
-            본인확인,가입연력 확인, 중복가입 및 부정이용 방지
-            <br />
-            <br />
-            -항목:성명,이메일,가입확인정보
-            <br /> -보유 및 이용기간:회원탈퇴 후 5일까지
-          </p>
+          <input
+            className="emailInfo"
+            placeholder=" 이메일"
+            onChange={this.handleInput}
+            name="email"
+          />
+          <label> 개인정보 이용 수집 </label>
+          <div className="privacyInfo">
+            <p className="privacySentence">
+              목적: 서비스 제공 및 서비스 사용에 따른 <br />
+              <br />
+              본인확인,가입연력 확인, 중복가입 및 부정이용 방지
+              <br />
+              <br />
+              -항목:성명,이메일,가입확인정보
+              <br /> -보유 및 이용기간:회원탈퇴 후 5일까지
+            </p>
+          </div>
+
+          <input
+            type="checkbox"
+            name="checked"
+            className="agreeCheck"
+            onChange={this.handleCheck}
+          />
+          <p>약관을 모두 읽었으며 동의합니다.</p>
+
+          <button className="join" onClick={this.clickSignup}>
+            등록
+          </button>
         </div>
-
-        <input
-          type="checkbox"
-          name="checked"
-          className="agreeCheck"
-          onChange={this.handleCheck}
-        />
-        <p>약관을 모두 읽었으며 동의합니다.</p>
-
-        <button className="join" onClick={this.clickSignup}>
-          등록
-        </button>
       </div>
     );
   }
 }
 
-export default Signup;
+export default withRouter(Signup);

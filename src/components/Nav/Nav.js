@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Login from '../../pages/Login/Login';
+import Signup from '../../pages/Signup/Signup';
+
 import './Nav.scss';
 
 const CATEGORY_LIST = ['DINING', 'CAFE', 'CUPBOARD'];
@@ -11,7 +13,8 @@ class Nav extends Component {
     this.state = {
       scrollTop: 0,
       isLogin: false,
-      isShowing: false,
+      isVisible: false,
+      isSignVisible: false,
     };
   }
 
@@ -30,34 +33,35 @@ class Nav extends Component {
     window.addEventListener('scroll', this.handleScroll);
 
     this.setState({
-      isLogin: localStorage.getItem('userToken') ? true : false,
+      isLogin: localStorage.getItem('token') ? true : false,
     });
   };
 
-  handleLog = () => {
-    if (localStorage.getItem('userToken') && this.state.isLogin) {
+  handleLog = e => {
+    if (localStorage.getItem('token') && this.state.isLogin) {
       this.setState({
         isLogin: false,
       });
       alert('로그아웃 되었습니다.');
-      localStorage.removeItem('userToken');
+      localStorage.removeItem('token');
     } else {
-      if (!this.state.isShowing) {
+      if (e.target.name === 'signin') {
         this.setState({
-          isShowing: true,
+          isVisible: !this.state.isVisible,
+          isSignVisible: !this.state.isSignVisible,
+        });
+      } else {
+        this.setState({
+          isVisible: !this.state.isVisible,
         });
       }
     }
   };
 
-  test = () => {
-    if (!localStorage.getItem('userToken')) {
-      localStorage.setItem('userToken', 'asd');
-      this.setState({
-        isLogin: true,
-      });
-      alert('로그인 되었습니다.');
-    }
+  handleSign = () => {
+    this.setState({
+      isSignVisible: !this.state.isSignVisible,
+    });
   };
 
   render() {
@@ -103,7 +107,20 @@ class Nav extends Component {
             </button>
           </div>
         </nav>
-        <div>{this.state.isShowing && <Login />}</div>
+        <div>
+          {this.state.isVisible && (
+            <Login
+              isVisible={this.state.isVisible}
+              handleLog={this.handleLog}
+            />
+          )}
+          {this.state.isSignVisible && (
+            <Signup
+              isSignVisible={this.state.isSignVisible}
+              handleSign={this.handleSign}
+            />
+          )}
+        </div>
       </>
     );
   }
