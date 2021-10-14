@@ -8,7 +8,7 @@ class ProductExplan extends React.Component {
         <img
           alt="물만두"
           src={
-            this.props.productData ? this.props.productData[0].mainImg : null
+            this.props.dataDetail ? this.props.dataDetail[0].imgDetail : null
           }
         />
       </div>

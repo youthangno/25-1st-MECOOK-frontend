@@ -12,7 +12,7 @@ class AddCartBtn extends React.Component {
         },
         body: JSON.stringify({
           product: '11',
-          quantity: 3,
+          quantity: this.props.quantity,
         }),
       })
         .then(res => res.json())
@@ -20,9 +20,11 @@ class AddCartBtn extends React.Component {
     } else {
       alert('로그인한 사용자만 이용할 수 있는 서비스입니다.');
     }
+    console.log(this.props.quantity);
   };
 
   render() {
+    // console.log(this.props.quantity);
     return (
       <button onClick={this.clickCartBtn} className="addCartBtn">
         ADD TO MY MENU

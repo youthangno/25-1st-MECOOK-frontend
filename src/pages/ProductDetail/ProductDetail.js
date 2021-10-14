@@ -33,28 +33,62 @@ class ProductDetail extends React.Component {
   }
 
   render() {
-    const { result, detail } = this.state.productData;
-
     return (
       <>
-        <div className="productDetail">
-          <ProductExplan productData={detail} />
-          <ProductInfo
-            dataList={detail}
-            productId={this.props.match.params.id}
-          />
-          <DetailImageTop dataList={detail} />
-          <DetailImageLeft dataList={detail} />
-          <DetailImageRight dataList={detail} />
-          <DetailImageBottom dataList={detail} />
-          <TagBottom
-            productId={this.props.match.params.id}
-            resultDataList={result}
-          />
-        </div>
+        {
+          <div className="productDetail">
+            <ProductExplan
+              dataDetail={
+                this.state.productData.result &&
+                this.state.productData.result[0].detail
+              }
+            />
+            <ProductInfo
+              productResult={
+                this.state.productData.result &&
+                this.state.productData.result[0]
+              }
+              productId={
+                this.state.productData.result &&
+                this.state.productData.result[0].id
+              }
+            />
+
+            <DetailImageTop
+              dataDetail={
+                this.state.productData.result &&
+                this.state.productData.result[0].detail
+              }
+            />
+            <DetailImageLeft
+              dataDetail={
+                this.state.productData.result &&
+                this.state.productData.result[0].detail
+              }
+            />
+            <DetailImageRight
+              dataDetail={
+                this.state.productData.result &&
+                this.state.productData.result[0].detail
+              }
+            />
+            <DetailImageBottom
+              dataDetail={
+                this.state.productData.result &&
+                this.state.productData.result[0].detail
+              }
+            />
+            <TagBottom
+              // productId={this.props.match.params.id}
+              dataResult={this.state && this.state.productData}
+            />
+          </div>
+        }
       </>
     );
   }
 }
+
+//.result[0].hashtag
 
 export default ProductDetail;

@@ -10,12 +10,9 @@ class HashTag extends Component {
     };
   }
   componentDidMount() {
-    fetch(
-      'https://f960-211-106-114-186.ngrok.io/product/menu/category/1/detail',
-      {
-        method: 'GET',
-      }
-    )
+    fetch('https://f960-211-106-114-186.ngrok.io/product/?product=1&detail=1', {
+      method: 'GET',
+    })
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -50,7 +47,7 @@ class HashTag extends Component {
               return (
                 <li className="li" key={tag}>
                   <Link
-                    to="#"
+                    to="/search-result"
                     onClick={() => this.handleSearch(tag)}
                   >{`#${tag}`}</Link>
                 </li>
