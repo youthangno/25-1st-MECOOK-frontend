@@ -101,9 +101,6 @@ class Nav extends Component {
             <button className="loginBtn" onClick={this.handleLog}>
               {this.state.isLogin ? 'L O G O U T' : 'L O G I N'}
             </button>
-            <Link to="/search">
-              <i className="fas fa-search"></i>
-            </Link>
           </div>
         </nav>
         <div>{this.state.isShowing && <Login />}</div>

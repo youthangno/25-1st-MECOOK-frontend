@@ -13,46 +13,13 @@
     .resultHeaderBox {
       margin-bottom: 60px;
 
-      .resultInput {
-        position: relative;
-        background-color: white;
-        border-bottom: 2px solid $theme-color;
-
-        .searchInput {
-          width: 500px;
-          padding: 20px;
-          border: none;
-          font-size: 32px;
-          font-weight: 100px;
-          &:focus {
-            outline: none;
-          }
-        }
-
-        .fa-ban {
-          position: absolute;
-          right: 55px;
-          bottom: 27px;
-          color: gray;
-          font-size: 22px;
-          cursor: pointer;
-        }
-
-        .fa-search {
-          position: absolute;
-          right: 10px;
-          bottom: 23px;
-          color: $theme-color;
-          font-size: 30px;
-          cursor: pointer;
-        }
-      }
       p {
         width: 675px;
         margin: 40px 0 15px;
         text-align: center;
         font-size: 25px;
         font-weight: 300;
+
         .resultContent {
           color: $theme-color;
         }

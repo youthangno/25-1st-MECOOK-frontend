@@ -47,7 +47,7 @@ class SearchResult extends Component {
   //     .then(response => response.json())
   //     .then(result => {
   //       this.setState({
-  //         searchResult: result,
+  //         productList: result,
   //       });
   //     });
   // };
@@ -57,17 +57,6 @@ class SearchResult extends Component {
       <div className="result">
         <div className="resultHeader">
           <div className="resultHeaderBox">
-            <div className="resultInput">
-              <input
-                type="text"
-                className="searchInput"
-                placeholder="SEARCH"
-                onChange={this.handleInput}
-                value={this.state.inputData}
-              />
-              <i className="fas fa-ban" onClick={this.refreshInput}></i>
-              <i className="fas fa-search" onClick={this.handleBtnSearch}></i>
-            </div>
             <p>
               <em className="resultContent">샐러드</em>에 대해{' '}
               <em className="resultContent">

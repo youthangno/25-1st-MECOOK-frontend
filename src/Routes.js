@@ -19,11 +19,11 @@ class Routes extends React.Component {
         <Switch>
           <Route exact path="/product-category" component={ProductCategory} />
           <Route exact path="/search" component={Search} />
+          <Route exact path="/minmenu" component={MinMenu} />
           <div>
             <Nav />
             <MyInfo />
             <Route exact path="/" component={Main} />
-            <Route exact path="/minmenu" component={MinMenu} />
             <Route exact path="/product-detail" component={ProductDetail} />
             <Route exact path="/best" component={BestProduct} />
             <Route exact path="/search-result" component={SearchResult} />
