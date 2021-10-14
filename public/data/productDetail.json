@@ -1,0 +1,54 @@
+{
+  "result": [
+    {
+      "id": 1,
+      "like": 3,
+      "name": "진한 우보탕",
+      "thumbImg": "https://image.shutterstock.com/z/stock-photo-healthy-salad-bowl-with-quinoa-tomatoes-chicken-avocado-lime-and-mixed-greens-lettuce-parsley-521741356.jpg",
+      "thumbImgHover": "https://image.shutterstock.com/z/stock-photo-healthy-salad-bowl-with-quinoa-tomatoes-chicken-avocado-lime-and-mixed-greens-lettuce-parsley-521741356.jpg",
+      "cookingTime": "5분",
+      "serving": "1~2인분",
+      "category": "KOREAN",
+      "priority": 0,
+      "mainImg": "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+      "mainImgKey": 1,
+      "hashtag": [
+        "전통보양식",
+        "식감가득",
+        "원기회복",
+        "탕요리",
+        "우보탕",
+        "고소함",
+        "소고기",
+        "활력충전"
+      ],
+      "detail": [
+        {
+          "text": "sample line 1\\n\ntest line2\\n\nsample long line3",
+          "priority": 1,
+          "imgDetail": "https://image.shutterstock.com/z/stock-photo-fresh-salad-with-chicken-tomatoes-and-mixed-greens-arugula-mesclun-mache-on-wooden-background-390942682.jpg"
+        },
+        {
+          "text": "",
+          "priority": 2,
+          "imgDetail": "https://image.shutterstock.com/z/stock-photo-close-up-of-two-jars-of-chia-seeds-pudding-with-topping-of-fresh-red-currant-raspberry-berry-kiwi-1918754939.jpg"
+        },
+        {
+          "text": "sample line 1\\n\ntest line2\\n\nsample long line3",
+          "priority": 3,
+          "imgDetail": "https://image.shutterstock.com/z/stock-photo-bunch-of-fresh-asparagus-on-wooden-table-135572054.jpg"
+        },
+        {
+          "text": "sample line 1\\n\ntest line2\\n\nsample long line3",
+          "priority": 4,
+          "imgDetail": "https://image.shutterstock.com/z/stock-photo-soup-with-vegetables-and-red-lentils-vegan-soup-with-beans-and-tomatoes-1925699582.jpg"
+        },
+        {
+          "text": "sample line 1\\n\ntest line2\\n\nsample long line3",
+          "priority": 5,
+          "imgDetail": "https://image.shutterstock.com/z/stock-photo-fettuccine-pasta-with-shrimp-tomatoes-and-herbs-top-view-283021049.jpg"
+        }
+      ]
+    }
+  ]
+}

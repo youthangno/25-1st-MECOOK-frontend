@@ -17,8 +17,7 @@ class Cart extends React.Component {
       fetch('http://10.58.2.208:8000/cart', {
         method: 'GET',
         headers: {
-          Authorization:
-            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24',
+          Authorization: TOKEN,
         },
       })
         .then(res => res.json())
@@ -29,19 +28,19 @@ class Cart extends React.Component {
   };
 
   // 로그인한 유저의 장바구니 list GET
-  componentDidMount() {
-    // fetch('http://10.58.2.208:8000/cart', {
-    //   method: 'POST',
-    //   headers: {
-    //     Authorization: TOKEN,
-    //   },
-    //   body: JSON.stringify({
-    //     product: '20',
-    //     quantity: 1,
-    //   }),
-    // });
-    this.getCartList();
-  }
+  // componentDidMount() {
+  //   // fetch('http://10.58.2.208:8000/cart', {
+  //   //   method: 'POST',
+  //   //   headers: {
+  //   //     Authorization: TOKEN,
+  //   //   },
+  //   //   body: JSON.stringify({
+  //   //     product: '20',
+  //   //     quantity: 1,
+  //   //   }),
+  //   // });
+  //   this.getCartList();
+  // }
 
   // 로그인한 유저가 장바구니에 추가했을 때 다시 list GET
   componentDidUpdate(prevProps) {

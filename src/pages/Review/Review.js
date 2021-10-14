@@ -63,8 +63,6 @@ class Review extends Component {
   };
 
   componentDidMount() {
-    // const token =
-    //   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.LI4hn7Fi_mX8KdmCmVAcAhejLdtCgmV4LefCTdcqR24';
     fetch('./data/reviewData.json', {
       method: 'GET',
       headers: {
