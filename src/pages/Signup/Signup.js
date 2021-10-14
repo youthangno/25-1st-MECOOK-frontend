@@ -42,7 +42,7 @@ class Signup extends React.Component {
     const ruleEmail = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
     const rulePw = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}/;
 
-    if (usableId === true) {
+    if (!usableId) {
       alert('아이디 중복확인을 해주세요');
     } else if (!(name && account && password && pwCheck && email)) {
       alert('필수 항목을 작성해주세요');
@@ -69,10 +69,9 @@ class Signup extends React.Component {
           alert('다시 한 번 확인해주세요!');
         } else {
           alert('가입 완료 !');
-          console.log(1);
+
           this.props.history.push('/');
         }
-        console.log(0);
       });
     }
   };
