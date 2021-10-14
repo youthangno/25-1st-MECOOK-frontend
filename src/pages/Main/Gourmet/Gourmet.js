@@ -52,13 +52,13 @@ class Gourmet extends Component {
               className="buttonPrev"
               onClick={() => this.onChangeImage(this.state.imageCurrentNo - 1)}
             >
-              <i class="fas fa-chevron-left"></i>
+              <i className="fas fa-chevron-left"></i>
             </div>
             <div
               className="buttonNext"
               onClick={() => this.onChangeImage(this.state.imageCurrentNo + 1)}
             >
-              <i class="fas fa-chevron-right"></i>
+              <i className="fas fa-chevron-right"></i>
             </div>
           </div>
           <div className="paginationBox">

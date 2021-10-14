@@ -24,6 +24,10 @@ class ProductCategory extends React.Component {
     this.setState({ isVisible: false });
   };
 
+  goToDetail = productId => {
+    this.props.history.push(`/product-detail/${productId}`);
+  };
+
   render() {
     const category = this.props.location.state.category.toLowerCase();
     return (
@@ -50,6 +54,7 @@ class ProductCategory extends React.Component {
           listId={this.state.listId}
           isVisible={this.state.isVisible}
           handleCloseProductList={this.handleCloseProductList}
+          goToDetail={this.goToDetail}
         />
       </div>
     );

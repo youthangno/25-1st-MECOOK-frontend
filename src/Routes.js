@@ -20,15 +20,15 @@ class Routes extends React.Component {
           <Route exact path="/product-category" component={ProductCategory} />
           <Route exact path="/search" component={Search} />
           <Route exact path="/minmenu" component={MinMenu} />
-          <div>
+          <>
             <Nav />
             <MyInfo />
             <Route exact path="/" component={Main} />
-            <Route exact path="/product-detail" component={ProductDetail} />
+            <Route exact path="/product-detail/:id" component={ProductDetail} />
             <Route exact path="/best" component={BestProduct} />
             <Route exact path="/search-result" component={SearchResult} />
             <Footer />
-          </div>
+          </>
         </Switch>
       </Router>
     );

@@ -10,7 +10,7 @@ class Btn extends React.Component {
 
     return (
       <div className="btn">
-        <LikeBtn />
+        <LikeBtn productId={this.props.productId} />
         <ProductCountBtn />
         <AddCartBtn dataList={dataList} />
       </div>
