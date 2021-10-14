@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Review.scss';
 import Repl from './Repl/Repl';
-import ReviewBtn from './ReviewBtn/ReviewBtn';
 
 class Review extends Component {
   constructor() {
@@ -11,8 +10,7 @@ class Review extends Component {
       review: '',
       product: '상품 id',
       replList: [],
-      limit: 100,
-      offset: 3,
+      page: 1,
     };
   }
 
@@ -38,48 +36,13 @@ class Review extends Component {
   };
 
   addComment = () => {
-    // const { review, replList, product } = this.state;
-    // let today = new Date();
-    // let time = {
-    //   year: today.getFullYear(),
-    //   month: today.getMonth() + 1,
-    //   date: today.getDate(),
-    // };
-    // // const cnt = replList.length + 1;
-    // let timestring = `${time.year}/${time.month}/${time.date}`;
-    // if (content.trim() === '' || content === '') {
-    //   alert('리뷰를 입력해주세요.');
-    //   return;
-    // }
-    // this.setState({
-    //   replList: replList.concat({
-    //     id: cnt,
-    //     userName: userName,
-    //     userDate: timestring,
-    //     content: content.trim(),
-    //   }),
-    //   content: '',
-    // });
+    const TOKEN = localStorage.getItem('token');
 
-    // id: 1,
-    //     userName: this.state.userName,
-    //     userDate: timestring,
-    //     review: this.state.content.trim(),
-
-    // review_id : 1
-    // review : 내용
-    // product : 상품 id
-    // usesr :
-
-    const token =
-      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s';
-
-    // fetch('http://10.58.2.208:8000/review/comment', {
-      fetch('http://localhost:3000/data/reviewData.json', {
+    fetch('http://10.58.2.208:8000/review/comment', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
-        Authorization: token,
+        Authorization: TOKEN,
       },
       body: JSON.stringify({
         product: 1,
@@ -87,27 +50,20 @@ class Review extends Component {
       }),
     })
       .then(res => res.json())
-      // .then(data =>
-      //   this.setState({
-      //     replList: data.result.sort((a, b) => b.review_id - a.review_id),
-      //   })
-      // );
-
       .then(() => {
-        // fetch('https://f960-211-106-114-186.ngrok.io/review/list/1')
-          // fetch('http://localhost:3000/data/reviewData.json')
+        fetch(
+          `http://10.58.2.208:8000/review/comment/1?limit=1&offset=${this.state.replList[0].review_id}`,
+          {
+            method: 'GET',
+          }
+        )
           .then(res => res.json())
           .then(data => {
+            console.log('add data===>', data);
             this.setState({
-              replList: data.result
-                // .slice(
-                //   data.result.length - 3 * (this.state.count + 1),
-                //   data.result.length
-                // )
-                .sort((a, b) => b.review_id - a.review_id),
+              replList: [...data.review_by_product, ...this.state.replList],
             });
-          })
-          .catch(err => console.log('feeds', err));
+          });
       });
   };
 
@@ -118,90 +74,42 @@ class Review extends Component {
   };
 
   addReplCnt = () => {
-    if (this.state.count * 3 < this.state.replList.length) {
-      this.setState({
-        count: this.state.count + 1,
-      });
-      if (this.state.replList.length - 3 * (this.state.count + 1) < 0) {
-        return;
-      }
-    }
+    this.setState({
+      page: this.state.page + 1,
+    });
 
-    // fetch('https://f960-211-106-114-186.ngrok.io/review/list/1', {
-    fetch('http://localhost:3000/data/reviewData.json', {
-      method: 'GET',
-      // headers: {
-      //   'Content-type': 'application/json',
-      //   Authorization: token,
-      // },
-    })
+    fetch(
+      `http://10.58.2.208:8000/review/comment/1?limit=3&offset=${
+        this.state.page * 3
+      }`,
+      {
+        method: 'GET',
+      }
+    )
       .then(res => res.json())
       .then(data => {
         this.setState({
-          replList: data.result
-            // .slice(
-            //   data.result.length - 3 * (this.state.count + 1),
-            //   data.result.length
-            // )
-            .sort((a, b) => b.review_id - a.review_id),
+          replList: [...this.state.replList, ...data.review_by_product],
         });
       });
   };
 
   componentDidMount() {
-    // const token =
-    //   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.qywu0fsg1ylVPyh359QAGGFq66TM839qyr-W0_EZT-s';
-
-    // 'https://f960-211-106-114-186.ngrok.io/review/list/1'
-
-    // fetch('https://f960-211-106-114-186.ngrok.io/review/list/1', {
-    fetch('http://localhost:3000/data/reviewData.json', {
+    fetch('http://10.58.2.208:8000/review/comment/1?limit=3&offset=0', {
       method: 'GET',
-      // headers: {
-      //   'Content-type': 'application/json',
-      //   Authorization: token,
-      // },
     })
       .then(res => res.json())
       .then(data => {
+        console.log('컴디마 data===>', data);
         this.setState({
-          replList: data.result
-            // .slice(
-            //   data.result.length - 3 * (this.state.count + 1),
-            //   data.result.length
-            // )
-            .sort((a, b) => b.review_id - a.review_id),
+          replList: data.review_by_product,
         });
       });
   }
 
-  // componentDidMount() {
-  //   fetch('./data/reviewData.json', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       id: this.state.id,
-  //       userName: this.state.userName,
-  //       userDate: this.state.userDate,
-  //       content: this.state.content.trim(),
-  //     }),
-  //   })
-  //     .then(res => {
-  //       if (res.ok) {
-  //         alert('댓글이 추가 되었습니다.');
-  //       }
-  //     })
-  //     .then(data => {
-  //       this.setState({
-  //         replList: data.result,
-  //       });
-  //     });
-  // }
-
   render() {
-    console.log(this.props.location.search);
+    console.log('state-->', this.state);
+    console.log('props-->', this.props);
     const { review, replList } = this.state;
     return (
       <section className="review">
@@ -226,13 +134,6 @@ class Review extends Component {
             </button>
           </div>
           <ul className="reviewList">
-            {/* <li>
-              <div className="reviewContent">asdasfasf</div>
-              <div className="reviewInfo">
-                <p id="userId">asdasfasfas</p>
-                <p id="userDate">2021/10/09</p>
-              </div>
-            </li> */}
             {replList &&
               replList.map(repl => {
                 const { user, review, userDate, review_id, product } = repl;
@@ -249,7 +150,6 @@ class Review extends Component {
               })}
           </ul>
         </div>
-        {/* <ReviewBtn replList={replList} /> */}
         <div className="viewMore">
           <button className="viewMoreBtn" onClick={this.addReplCnt}>
             &nbsp;&nbsp;VIEW MORE&#8314;&nbsp;&nbsp;
