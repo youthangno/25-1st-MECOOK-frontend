@@ -32,6 +32,10 @@ PEACOCK 브랜드 제품을 카테고리별로 소개하고 판매하고 주문�
 ## Demo
 ![image](https://user-images.githubusercontent.com/20683436/137589523-7a689221-91e5-4143-a563-833477358051.png)
 
+데모 영상 https://www.youtube.com/watch?v=p1O8gjB2X7I
+
+
+
 
 ## Reference
 - 이 프로젝트는 텀블벅 사이트를 참조하여 학습목적으로 만들었습니다.
