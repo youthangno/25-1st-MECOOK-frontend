@@ -2,7 +2,6 @@
 [이마트 PEACOCK 사이트](https://peacock.emart.com/peacockMain/main.do) 를 모티브로 한 프로젝트<br>
 PEACOCK 브랜드 제품을 카테고리별로 소개하고 판매하고 주문하는 웹사이트
 - 기간: 2021. 10. 04. ~ 2021. 10. 15.
-- [Backend GitHub](https://github.com/wecode-bootcamp-korea/25-1st-MECOOK-backend)
 - 초기 세팅부터 직접 구현하였으며, 프론트와 백을 연결해 모든 데이터는 통신으로 받아왔습니다.
 - 트렐로와 슬랙을 통해 협업의 효율을 높였습니다.
 - 프론트엔드 4, 백엔드 2인으로 구성되었습니다.
